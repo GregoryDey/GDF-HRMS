@@ -1,0 +1,5 @@
+FOR NOW CODING STYLE GUIDE IS AS FOLLOWS:
+
+FRONT-END
+The type of components that will be used in this project are function based components and not class based ones.
+Naming the file of a react component should begin with a capital letter for example, if your component is called perosn the name of the file will be Person.js
