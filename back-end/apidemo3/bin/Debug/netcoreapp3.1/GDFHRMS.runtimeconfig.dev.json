@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\samki\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\samki\\.nuget\\packages"
+    ]
+  }
+}
