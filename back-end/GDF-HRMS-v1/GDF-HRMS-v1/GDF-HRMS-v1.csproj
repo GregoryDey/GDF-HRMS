@@ -9,7 +9,6 @@
     <Folder Include="Data\" />
     <Folder Include="Migrations\" />
     <Folder Include="HRMS_Mapper\" />
-    <Folder Include="Models\Dtos\" />
     <Folder Include="Repository\IRepository\" />
   </ItemGroup>
 
