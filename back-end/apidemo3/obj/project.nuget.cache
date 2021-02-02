@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yyL73dBGuIGKMzeJmCWlQIOVthgfW4vnPsyl3IAzwHAuETfo5h9gKR/xXibHlU3Zy5yrqUpKd343cFrGVe5fcw==",
+  "dgSpecHash": "sPnWtDu1zJoVeEsAqa6CwmWDY9y9iSdt5VZypZxDRA+DekBex7vUpd2Dgc9Htz7jFPsdmVh0h5YW/sX7tapz+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\apidemo3.csproj",
+  "projectFilePath": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\GDF-HRMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andre\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",

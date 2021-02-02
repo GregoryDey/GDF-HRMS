@@ -16,7 +16,7 @@ namespace GDFHRMS.Data
         }
 
         public DbSet<NationalParkDto> NationalParks { get; set; }
-        //public DbSet<Employee_AddressDto> Employee_Address { get; set; }
-        //public DbSet<Employee_Personal_InformationDto> Employee_Personal_Information { get; set; }
+        public DbSet<Employee_AddressDto> Employee_Address { get; set; }
+        public DbSet<Employee_Personal_InformationDto> Employee_Personal_Information { get; set; }
     }
 }

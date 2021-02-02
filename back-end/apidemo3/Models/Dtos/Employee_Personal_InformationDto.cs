@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GDFHRMS.Models.Dtos
 {
-    public class Employee_Personal_Information
+    public class Employee_Personal_InformationDto
     {
 
         [Key]

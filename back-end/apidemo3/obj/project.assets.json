@@ -6055,9 +6055,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\apidemo3.csproj",
+      "projectUniqueName": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\GDF-HRMS.csproj",
       "projectName": "GDFHRMS",
-      "projectPath": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\apidemo3.csproj",
+      "projectPath": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\GDF-HRMS.csproj",
       "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\obj\\",
       "projectStyle": "PackageReference",
