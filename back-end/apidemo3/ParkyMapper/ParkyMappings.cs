@@ -12,7 +12,10 @@ namespace GDFHRMS.ParkyMapper
     {
         public ParkyMappings()
         {
-            CreateMap<NationalPark, NationalParkDto>().ReverseMap();
+            //CreateMap<NationalPark, NationalParkDto>().ReverseMap();
+            CreateMap<Employee_Personal_Information, Employee_Personal_InformationDto>().ReverseMap();
+         
+
         }
     }
 }

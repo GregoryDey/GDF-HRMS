@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GDFHRMS.Models.Dtos
 {
-    public class Employee_Address
+    public class Employee_AddressDto
     {
         [Key]
         public int Address_Id { get; set; }

@@ -15,6 +15,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using GDFHRMS.ParkyMapper;
+using System.Reflection;
+using System.IO;
 
 namespace apidemo3
 {
@@ -34,6 +36,7 @@ namespace apidemo3
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<INationalParksRepository, NationalParksRepository>();
+            services.AddScoped<IGDFRepository, GDFRepository>();
             services.AddAutoMapper(typeof(ParkyMappings));
             services.AddControllers();
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -71,7 +74,9 @@ namespace apidemo3
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+              
             });
+            
         }
     }
 }

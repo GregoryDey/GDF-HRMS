@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>GDFHRMS</AssemblyName>
     <RootNamespace>GDFHRMS</RootNamespace>
+	
   </PropertyGroup>
 
   <ItemGroup>

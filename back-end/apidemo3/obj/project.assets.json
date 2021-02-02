@@ -6054,9 +6054,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\samki\\Documents\\apidemo3\\apidemo3.csproj",
+      "projectUniqueName": "C:\\Users\\samki\\Documents\\apidemo3\\GDF-HRMS.csproj",
       "projectName": "GDFHRMS",
-      "projectPath": "C:\\Users\\samki\\Documents\\apidemo3\\apidemo3.csproj",
+      "projectPath": "C:\\Users\\samki\\Documents\\apidemo3\\GDF-HRMS.csproj",
       "packagesPath": "C:\\Users\\samki\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\samki\\Documents\\apidemo3\\obj\\",
       "projectStyle": "PackageReference",
