@@ -6049,20 +6049,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\samki\\.nuget\\packages\\": {}
+    "C:\\Users\\andre\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\samki\\Documents\\apidemo3\\GDF-HRMS.csproj",
+      "projectUniqueName": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\GDF-HRMS.csproj",
       "projectName": "GDFHRMS",
-      "projectPath": "C:\\Users\\samki\\Documents\\apidemo3\\GDF-HRMS.csproj",
-      "packagesPath": "C:\\Users\\samki\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\samki\\Documents\\apidemo3\\obj\\",
+      "projectPath": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\GDF-HRMS.csproj",
+      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\andre\\Desktop\\GDF-HRMS\\back-end\\apidemo3\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\samki\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -6073,7 +6078,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -6085,7 +6089,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "AutoMapper": {
             "target": "Package",
@@ -6132,7 +6135,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
