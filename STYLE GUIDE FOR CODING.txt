@@ -6,6 +6,9 @@ Naming the file of a react component should begin with a capital letter for exam
 
 BACK-END
 1. Model names should not include space or _, -, intead use Capital Letters eg. (CareerHistory)
+
+Variable names should be descriptive and not shortened, the code should self document as much as possible, meaning, someone reading the code should be able to look at variable names and know what it is, that will be difficult with things like RNumber and FNname.
+
 2. Model fields/ attr should begin with Capital Letter and Abbreviated where possible eg. (Fname instead ofFirst Name or RNumber instead of RegimentNumber)
    If more than one word is in the name follow rule 1. eg. (TinNumber)
 3. If a new project is created use version number, this is version 1, hence, GDF-HRMS-v1 next would be GDF-HRMS-v1.1
