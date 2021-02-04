@@ -12,6 +12,8 @@ namespace GDF_HRMS_v1.Models
         [Key]
         public int Id { get; set; }
         public int EId { get; set; }
+        [ForeignKey("EId")]
+        public EmployeePI EmployeePI { get; set; }
         public int PositionId { get; set; }
         [ForeignKey("PositionId")]
         public Position Position { get; set; }
