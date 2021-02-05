@@ -1,7 +1,9 @@
+import ResponsiveDrawer from './Layout'
+
 const App = () => {
   return (
     <div className="App">
-      <h1>some stuff</h1>
+       <ResponsiveDrawer></ResponsiveDrawer>
     </div>
   );
 }
