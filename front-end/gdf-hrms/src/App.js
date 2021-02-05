@@ -4,7 +4,7 @@ const App = () => {
   return (
     <div className="App">
        <ResponsiveDrawer>
-         <h1>Hello Fuckers </h1>
+         <h1>Hello There, thanks for stopping by. </h1>
        </ResponsiveDrawer>
     </div>
   );
