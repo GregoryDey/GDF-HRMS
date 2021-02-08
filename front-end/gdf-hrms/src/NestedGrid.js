@@ -52,15 +52,16 @@ export default function NestedGrid() {
                 <SimpleSelect option={SexOption} selectLabel="Sex" ></SimpleSelect>
             </Grid >
             <Grid item xs={2}>
-                <SimpleSelect></SimpleSelect>
+                <SimpleSelect selectLabel="Race"></SimpleSelect>
             </Grid >
             <Grid item xs={2}>
-                <SimpleSelect></SimpleSelect>
+                <SimpleSelect selectLabel="Nationality"></SimpleSelect>
             </Grid >
        </div> 
        <div>
        <Grid item xs={2}>
-                <SimpleSelect></SimpleSelect>
+                <SimpleSelect selectLabel="Religion"></SimpleSelect>
+                <SimpleSelect selectLabel="Marital Status"></SimpleSelect>
         </Grid >
         </div>
       </React.Fragment>
