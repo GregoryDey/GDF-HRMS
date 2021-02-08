@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,10 +16,20 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
 import gdfLogo from './gdfLogo.png';
+import { HourglassEmptyTwoTone, PersonAddRounded } from '@material-ui/icons';
 
 const drawerWidth = 240;
-const appBarHeight = AppBar.height;
+
+const hrmsHeader = {
+  color: 'black',
+}
+
+const gdfStyle = {
+  color: 'green'
+}
+
 const listMargin = {
   marginTop: '0px',
   paddingTop: '0px'
@@ -28,16 +38,12 @@ const listMargin = {
 const gdfLogoStyle = {
   width: drawerWidth,
   paddingTop: '0px',
-  height: appBarHeight,
+  height: AppBar.height,
   marginBottom: '0px'
 }
 
-const appBarStyle = {
-  color: 'green'
-}
-
-const hrmsHeader = {
-  color: 'black',
+const iconMargin = {
+  marginRight: '30px'
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -54,8 +60,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      paddingTop: '1%',
-      paddingBottom: '2%',
     },
   },
   menuButton: {
@@ -71,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    paddingTop: theme.spacing(11),
     padding: theme.spacing(3),
   },
 }));
@@ -89,10 +92,19 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <img src={gdfLogo} alt="Logo" style = {gdfLogoStyle} />;
-      <div className={classes.toolbar} style = {listMargin} />
+      <div className={classes.toolbar} />
+      {/*<Divider />*/}
+      <List>        
+        <ListItem button><PersonAddRounded style={iconMargin}/><ListItemText primary='Add Employee'/></ListItem>
+        <ListItem button><HourglassEmptyTwoTone style={iconMargin}/><ListItemText primary='Employee History'/></ListItem>
+        <ListItem button><SearchIcon style={iconMargin}/><ListItemText primary='Employee Search'/></ListItem>
+        <ListItem button><MailIcon style={iconMargin}/><ListItemText primary='Something'/></ListItem>
+      </List>
+      <Divider />
       <List>
-        {['Employee Search', 'Add Employee', 'Employee History', 'Something', 'Something Else', 'More'].map((text, index) => (
+        {['Something Else', 'More', 'Something More'].map((text, index) => (
           <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <HourglassEmptyTwoTone /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -105,7 +117,7 @@ function ResponsiveDrawer(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar} color = "transparent" style = {appBarStyle}>
+      <AppBar position="fixed" className={classes.appBar} color='white'>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -113,17 +125,12 @@ function ResponsiveDrawer(props) {
             edge="start"
             onClick={handleDrawerToggle}
             className={classes.menuButton}
-            style = {listMargin}
           >
             <MenuIcon />
           </IconButton>
           <Typography>
-            <Typography variant="h3" noWrap>
-              GUYANA DEFENCE FORCE
-            </Typography>
-            <Typography variant="h4" style = {hrmsHeader} noWrap>
-              Human Resources Management System
-            </Typography>
+            <Typography variant="h4" noWrap style={gdfStyle}>GUYANA DEFENCE FORCE</Typography>
+            <Typography variant="h5" style = {hrmsHeader} noWrap>Human Resources Management System</Typography>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -148,7 +155,6 @@ function ResponsiveDrawer(props) {
         </Hidden>
         <Hidden xsDown implementation="css">
           <Drawer
-             style = {listMargin}
             classes={{
               paper: classes.drawerPaper,
             }}
@@ -161,7 +167,7 @@ function ResponsiveDrawer(props) {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {props.children}
+        {props.children}        
       </main>
     </div>
   );
