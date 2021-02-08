@@ -34,12 +34,18 @@ export default function OfficialInformationForm() {
             <Grid item xs={2}>
             <TextField id="RegimentalNumber" label="Home Number" variant="outlined" size="small" />
             </Grid>
+        </div>
+        <div>
             <Grid item xs={2}>
                 <TextField id="IdentificationNumber" label="Cell Number" variant="outlined" size="small" />
             </Grid>
+        </div>
+        <div>
             <Grid item xs={2}>
             <TextField id="PassportNumber" label="Work Number" variant="outlined" size="small" />
             </Grid >
+        </div>
+        <div>
             <Grid item xs={2}>
             <TextField id="PassportExpirationDate" label="Passport Expiration Date" variant="outlined" size="small" InputLabelProps={{ shrink: true,}} type="date"/>
             </Grid >

@@ -8,6 +8,7 @@ import PersonalInformationForm from './PersonalInformationForm';
 import AddressForm from './AddressForm';
 import ContactForm from './ContactForm';
 import OfficialInformationForm from './OfficialInformationForm';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,40 +25,60 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  
+   careerButton: {
+     marginLeft: '20px,'
+   }
+
 }));
+
+
 
 export default function EmployeeProfileLayout() {
   const classes = useStyles();
   const SexOption = ["Male","Female"];
   function FormRow() {
     return (
-      <React.Fragment>
         <div>
-            <Grid item xs={6}>
-            <PersonalInformationForm></PersonalInformationForm>
+          < Grid container spacing={3}>
+
+            <Grid item xs={12}>
+               <PersonalInformationForm></PersonalInformationForm>
             </Grid>
-            <Grid item xs={6}>
+
+            <Grid item xs={12}>
             <AddressForm></AddressForm>
             </Grid>
-        </div>
-        <div>
-            <Grid item xs={6}>
+
+            <Grid item xs={12}>
             <ContactForm></ContactForm>
             </Grid >
-            <Grid item xs={6}>
+
+            <Grid item xs={12}>
             <OfficialInformationForm></OfficialInformationForm>
             </Grid >
-        </div>    
-    
-      </React.Fragment>
+
+          </Grid>
+           
+      </div>
       
     );
   }
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={1}>
-      <h4>Employee Profile Page</h4>
+      <Grid container spacing={1} >
+        <Grid xs={6}>
+         <h1>Employee Profile Page</h1>
+        </Grid>
+        <Grid xs={6}>
+          <h1>
+            <Button variant="outlined" color="primary"  href="#outlined-buttons">
+               View Career History
+            </Button>
+          </h1>
+
+        </Grid>
         <Grid container item xs={12} spacing={3}>
           <FormRow />
         </Grid>
