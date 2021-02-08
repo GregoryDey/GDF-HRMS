@@ -65,6 +65,10 @@ namespace GDF_HRMS_v1
             });
 
             app.UseRouting();
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseAuthorization();
 
