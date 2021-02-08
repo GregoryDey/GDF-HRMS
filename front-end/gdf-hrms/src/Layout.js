@@ -73,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     paddingTop: theme.spacing(11),
     padding: theme.spacing(3),
+    marginTop: '2%',
   },
 }));
 
