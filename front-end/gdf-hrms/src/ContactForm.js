@@ -34,17 +34,22 @@ export default function ContactForm() {
             <Grid item xs={2}>
             <TextField id="HomeNumber" label="Home Number" variant="outlined" size="small" />
             </Grid>
+        </div>
+        <div>
             <Grid item xs={2}>
                 <TextField id="CellNumber" label="Cell Number" variant="outlined" size="small" />
             </Grid>
+        </div>
+        <div>   
             <Grid item xs={2}>
             <TextField id="WorkNumber" label="Work Number" variant="outlined" size="small" />
             </Grid >
+         </div>
+         <div>
             <Grid item xs={2}>
             <TextField id="Email" label="Email" variant="outlined" size="small" />
             </Grid >
         </div>    
-    
       </React.Fragment>
       
     );

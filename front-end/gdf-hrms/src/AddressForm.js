@@ -30,28 +30,37 @@ export default function AddressForm() {
   function FormRow() {
     return (
       <React.Fragment>
-        <div>
-            <Grid item xs={2}>
+  
+          <div>
+          <Grid item xs={2}>
             <TextField id="Lot" label="Lot" variant="outlined" size="small" />
-            </Grid>
-            <Grid item xs={2}>
+          </Grid>
+          </div>
+          <div>
+          <Grid item xs={2}>
                 <TextField id="Street" label="Street" variant="outlined" size="small" />
-            </Grid>
-            <Grid item xs={2}>
+          </Grid>
+          </div>
+          <div>
+          <Grid item xs={2}>
             <TextField id="Area/Section" label="AreaSection" variant="outlined" size="small" />
-            </Grid >
-            <Grid item xs={2}>
+          </Grid >
+          </div>
+          <div>
+          <Grid item xs={2}>
             <TextField id="Village" label="Village" variant="outlined" size="small" />
-            </Grid >
-        </div>    
-        <div>
-            <Grid item xs={2}>
+          </Grid >
+          </div>
+          <div>
+          <Grid item xs={2}>
                 <TextField id="Region" label="Region" variant="outlined"  size="small" />
-            </Grid >
-            <Grid item xs={2}>
+          </Grid >
+          </div>
+          <div>
+          <Grid item xs={2}>
                 <TextField id="Country" label="Country" variant="outlined" size="small" />
-            </Grid >
-       </div> 
+          </Grid >
+          </div>
 
       </React.Fragment>
       

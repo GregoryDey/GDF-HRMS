@@ -33,35 +33,33 @@ export default function PersonalInformationForm() {
         <div>
             <Grid item xs={2}>
             <TextField id="FirstName" label="First Name" variant="outlined" size="small" />
-            </Grid>
-            <Grid item xs={2}>
-                <TextField id="LastName" label="Last Name" variant="outlined" size="small" />
-            </Grid>
-            <Grid item xs={2}>
-            <TextField id="MiddleNameOne" label="Middle Name" variant="outlined" size="small" />
-            </Grid >
-            <Grid item xs={2}>
-            <TextField id="MiddleNameOne" label="Middle Name" variant="outlined" size="small" />
-            </Grid >
+            <SimpleSelect option={SexOption} selectLabel="Sex" ></SimpleSelect>
+           </Grid>
         </div>    
         <div>
             <Grid item xs={2}>
-                <TextField id="dateOfBirth" label="Date of Birth" variant="outlined" InputLabelProps={{ shrink: true,}} size="small" type="date" />
-            </Grid >
-            <Grid item xs={2}>
-                <SimpleSelect option={SexOption} selectLabel="Sex" ></SimpleSelect>
-            </Grid >
-            <Grid item xs={2}>
+                <TextField id="LastName" label="Last Name" variant="outlined" size="small" />
                 <SimpleSelect selectLabel="Race"></SimpleSelect>
-            </Grid >
-            <Grid item xs={2}>
-                <SimpleSelect selectLabel="Nationality"></SimpleSelect>
             </Grid >
        </div> 
        <div>
        <Grid item xs={2}>
-                <SimpleSelect selectLabel="Religion"></SimpleSelect>
-                <SimpleSelect selectLabel="Marital Status"></SimpleSelect>
+           <Grid item xs={2}>
+              <TextField id="MiddleNameOne" label="Middle Name" variant="outlined" size="small" />
+              <SimpleSelect selectLabel="Nationality"></SimpleSelect>
+            </Grid>
+        </Grid >
+        </div>
+        <div>
+        <Grid item xs={2}>
+            <TextField id="MiddleNameOne" label="Middle Name" variant="outlined" size="small" />
+        </Grid >
+        <SimpleSelect selectLabel="Religion"></SimpleSelect>
+        </div>
+        <div>
+        <Grid item xs={2}>
+             <TextField id="dateOfBirth" label="Date of Birth" variant="outlined" InputLabelProps={{ shrink: true,}} size="small" type="date" />
+             <SimpleSelect selectLabel="Marital Status"></SimpleSelect>
         </Grid >
         </div>
       </React.Fragment>
