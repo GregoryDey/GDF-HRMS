@@ -98,7 +98,7 @@ function ResponsiveDrawer(props) {
       <List>        
         <ListItem button><PersonAddRounded style={iconMargin}/><ListItemText primary='Add Employee'/></ListItem>
         <ListItem button><HourglassEmptyTwoTone style={iconMargin}/><Link to="/employeehistory"><ListItemText primary='Employee History'/></Link></ListItem>
-        <ListItem button><SearchIcon style={iconMargin}/><ListItemText primary='Employee Search'/></ListItem>
+        <ListItem button><SearchIcon style={iconMargin}/><Link to='/search-page'><ListItemText primary='Employee Search'/></Link></ListItem>
         <ListItem button><PersonRounded style={iconMargin}/><Link to="/"><ListItemText primary='Employee Profile'/></Link></ListItem>
       </List>
       <Divider />
