@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -73,11 +74,10 @@ export default function EmployeeProfileLayout() {
         </Grid>
         <Grid xs={6}>
           <h1>
-            <Button variant="outlined" color="primary"  href="#outlined-buttons">
-               View Career History
+            <Button variant="outlined" color="primary">
+            <Link to="/employeehistory">View Career History</Link>
             </Button>
           </h1>
-
         </Grid>
         <Grid container item xs={12} spacing={3}>
           <FormRow />

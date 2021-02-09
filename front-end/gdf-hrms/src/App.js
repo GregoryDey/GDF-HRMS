@@ -12,9 +12,10 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <ResponsiveDrawer>
-        
-          {/*<EmployeeProfileLayout></EmployeeProfileLayout>*/}
-          <CareerHistoryLayout></CareerHistoryLayout>
+          <Route path="/" exact component={EmployeeProfileLayout} />
+          <Route path="/employeehistory" component={CareerHistoryLayout} />
+          {/* <EmployeeProfileLayout></EmployeeProfileLayout> */}
+          {/* <CareerHistoryLayout></CareerHistoryLayout> */}
       </ResponsiveDrawer>
       </BrowserRouter>
     </div>
