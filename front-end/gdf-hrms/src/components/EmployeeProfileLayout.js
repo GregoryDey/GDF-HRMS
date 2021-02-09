@@ -5,10 +5,10 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import SimpleSelect from './SimpleSelect';
-import PersonalInformationForm from './PersonalInformationForm';
-import AddressForm from './AddressForm';
-import ContactForm from './ContactForm';
-import OfficialInformationForm from './OfficialInformationForm';
+import PersonalInformationForm from './EmployeeProfileComponents/PersonalInformationForm';
+import AddressForm from './EmployeeProfileComponents/AddressForm';
+import ContactForm from './EmployeeProfileComponents/ContactForm';
+import OfficialInformationForm from './EmployeeProfileComponents/OfficialInformationForm';
 import Button from '@material-ui/core/Button';
 
 

@@ -1,11 +1,11 @@
-import ResponsiveDrawer from './Layout'
-import Api from './Api'
+import ResponsiveDrawer from './components/Layout';
+import Api from './components/Api';
 import React from "react";
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
-import SearchPage from './searchpage';
-import EmployeeProfileLayout from './EmployeeProfileLayout';
-import CareerHistoryLayout from './CareerHistoryLayout';
+import SearchPage from './components/searchpage';
+import EmployeeProfileLayout from './components/EmployeeProfileLayout';
+import CareerHistoryLayout from './components/CareerHistoryLayout';
 
 const App = () => {
   return (
