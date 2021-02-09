@@ -18,7 +18,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import gdfLogo from './gdfLogo.png';
+import gdfLogo from '../assets/gdfLogo.png';
 import { HourglassEmptyTwoTone, PersonAddRounded, PersonRounded } from '@material-ui/icons';
 
 const drawerWidth = 240;
