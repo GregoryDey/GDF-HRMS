@@ -1,18 +1,22 @@
-import ResponsiveDrawer from './Layout'
-import Api from './Api'
+import ResponsiveDrawer from './components/Layout';
+import Api from './components/Api';
 import React from "react";
-import { BrowserRouter, Route } from 'react-router-dom';
-import SearchPage from './searchpage';
+import { Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import SearchPage from './components/searchpage';
+import EmployeeProfileLayout from './components/EmployeeProfileLayout';
+import CareerHistoryLayout from './components/CareerHistoryLayout';
 
 const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <ResponsiveDrawer>
-          <h1>Hello There, thanks for stopping by. </h1>
-          <Api />
-          <Route path="/search-page" exact component={SearchPage} />
-        </ResponsiveDrawer>
+          <Route path="/" exact component={EmployeeProfileLayout} />
+          <Route path="/employeehistory" component={CareerHistoryLayout} />
+          {/* <EmployeeProfileLayout></EmployeeProfileLayout> */}
+          {/* <CareerHistoryLayout></CareerHistoryLayout> */}
+      </ResponsiveDrawer>
       </BrowserRouter>
     </div>
   );

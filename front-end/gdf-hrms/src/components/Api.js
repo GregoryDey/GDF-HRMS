@@ -32,12 +32,12 @@ function Api() {
         })
     }
 
-
-
 return (
-    
-<div>Hello api area <button onClick={() => getEmployeeByRegNumber(12345)}>Get employee by regNumber</button>
 
+<div>
+    <div>
+        Hello api area <button onClick={() => getEmployeeByRegNumber(203040)}>Get employee by regNumber</button>
+    </div>
 {employee }
 </div>
 
