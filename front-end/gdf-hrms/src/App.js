@@ -1,8 +1,7 @@
 import ResponsiveDrawer from './Layout'
 import Api from './Api'
 import React from "react";
-import { Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import SearchPage from './searchpage';
 
 const App = () => {

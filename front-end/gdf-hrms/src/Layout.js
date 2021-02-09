@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,8 +18,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import gdfLogo from './gdfLogo.png';
-import { HourglassEmptyTwoTone, PersonAddRounded } from '@material-ui/icons';
+import gdfLogo from '../assets/gdfLogo.png';
+import { HourglassEmptyTwoTone, PersonAddRounded, PersonRounded } from '@material-ui/icons';
 
 const drawerWidth = 240;
 
@@ -96,9 +97,9 @@ function ResponsiveDrawer(props) {
       {/*<Divider />*/}
       <List>        
         <ListItem button><PersonAddRounded style={iconMargin}/><ListItemText primary='Add Employee'/></ListItem>
-        <ListItem button><HourglassEmptyTwoTone style={iconMargin}/><ListItemText primary='Employee History'/></ListItem>
+        <ListItem button><HourglassEmptyTwoTone style={iconMargin}/><Link to="/employeehistory"><ListItemText primary='Employee History'/></Link></ListItem>
         <ListItem button><SearchIcon style={iconMargin}/><ListItemText primary='Employee Search'/></ListItem>
-        <ListItem button><MailIcon style={iconMargin}/><ListItemText primary='Something'/></ListItem>
+        <ListItem button><PersonRounded style={iconMargin}/><Link to="/"><ListItemText primary='Employee Profile'/></Link></ListItem>
       </List>
       <Divider />
       <List>
