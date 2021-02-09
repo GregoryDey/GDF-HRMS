@@ -5,6 +5,7 @@ import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import SearchPage from './searchpage';
 import EmployeeProfileLayout from './EmployeeProfileLayout';
+import CareerHistoryLayout from './CareerHistoryLayout';
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       <BrowserRouter>
         <ResponsiveDrawer>
         
-          <EmployeeProfileLayout></EmployeeProfileLayout>
+          {/*<EmployeeProfileLayout></EmployeeProfileLayout>*/}
+          <CareerHistoryLayout></CareerHistoryLayout>
       </ResponsiveDrawer>
       </BrowserRouter>
     </div>

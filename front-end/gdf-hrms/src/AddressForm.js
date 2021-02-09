@@ -29,8 +29,7 @@ export default function AddressForm() {
   const SexOption = ["Male","Female"];
   function FormRow() {
     return (
-      <React.Fragment>
-  
+    <React.Fragment>
           <div>
           <Grid item xs={2}>
             <TextField id="Lot" label="Lot" variant="outlined" size="small" />
@@ -61,9 +60,7 @@ export default function AddressForm() {
                 <TextField id="Country" label="Country" variant="outlined" size="small" />
           </Grid >
           </div>
-
-      </React.Fragment>
-      
+          </React.Fragment>
     );
   }
 
