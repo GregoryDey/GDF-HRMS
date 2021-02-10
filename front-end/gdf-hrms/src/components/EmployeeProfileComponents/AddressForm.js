@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddressForm() {
+export default function AddressForm({employeePI}) {
   const classes = useStyles();
   const SexOption = ["Male","Female"];
   function FormRow() {
@@ -32,7 +32,7 @@ export default function AddressForm() {
     <React.Fragment>
           <div>
           <Grid item xs={2}>
-            <TextField id="Lot" label="Lot" variant="outlined" size="small" />
+            <TextField id="Lot" label="Lot" variant="outlined" size="small" value={employeePI.aId}/>
           </Grid>
           </div>
           <div>
