@@ -7,7 +7,6 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -97,9 +96,9 @@ function ResponsiveDrawer(props) {
       {/*<Divider />*/}
       <List>        
         <ListItem button><PersonAddRounded style={iconMargin}/><ListItemText primary='Add Employee'/></ListItem>
-        <ListItem button><HourglassEmptyTwoTone style={iconMargin}/><Link to="/employeehistory"><ListItemText primary='Employee History'/></Link></ListItem>
-        <ListItem button><SearchIcon style={iconMargin}/><Link to='/search-page'><ListItemText primary='Employee Search'/></Link></ListItem>
-        <ListItem button><PersonRounded style={iconMargin}/><Link to="/"><ListItemText primary='Employee Profile'/></Link></ListItem>
+        <ListItem button><HourglassEmptyTwoTone style={iconMargin}/><Link to="/employeehistory" color="primary" variant="body2" underline="none"><ListItemText primary='Employee History'/></Link></ListItem>
+        <ListItem button><SearchIcon style={iconMargin}/><Link to='/search-page' color="primary" variant="body2" underline='none'><ListItemText primary='Employee Search'/></Link></ListItem>
+        <ListItem button><PersonRounded style={iconMargin}/><Link to="/" color="primary" variant="body2" underline='none'><ListItemText primary='Employee Profile'/></Link></ListItem>
       </List>
       <Divider />
       <List>
