@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function EmployeeProfileLayout() {
+export default function EmployeeProfileLayout({employeePIs}) {
   const classes = useStyles();
   const SexOption = ["Male","Female"];
   function FormRow() {
@@ -44,19 +44,19 @@ export default function EmployeeProfileLayout() {
           < Grid container spacing={3}>
 
             <Grid item xs={12}>
-               <PersonalInformationForm></PersonalInformationForm>
+               <PersonalInformationForm employeePI={employeePIs}></PersonalInformationForm>
             </Grid>
 
             <Grid item xs={12}>
-            <AddressForm></AddressForm>
+            <AddressForm employeePI={employeePIs}></AddressForm>
             </Grid>
 
             <Grid item xs={12}>
-            <ContactForm></ContactForm>
+            <ContactForm employeePI={employeePIs}></ContactForm>
             </Grid >
 
             <Grid item xs={12}>
-            <OfficialInformationForm></OfficialInformationForm>
+            <OfficialInformationForm employeePI={employeePIs}></OfficialInformationForm>
             </Grid >
 
           </Grid>

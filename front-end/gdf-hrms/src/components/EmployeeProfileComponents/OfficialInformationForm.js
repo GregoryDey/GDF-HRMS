@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function OfficialInformationForm() {
+export default function OfficialInformationForm({employeePI}) {
   const classes = useStyles();
   const SexOption = ["Male","Female"];
   function FormRow() {
@@ -32,27 +32,27 @@ export default function OfficialInformationForm() {
       <React.Fragment>
         <div>
             <Grid item xs={2}>
-            <TextField id="RegimentalNumber" label="Home Number" variant="outlined" size="small" />
+            <TextField id="RegimentalNumber" label="RegimentalNumber" variant="outlined" size="small" value={employeePI.rNumber}/>
             </Grid>
         </div>
         <div>
             <Grid item xs={2}>
-                <TextField id="IdentificationNumber" label="Cell Number" variant="outlined" size="small" />
+                <TextField id="IdentificationNumber" label="IdentificationNumber" variant="outlined" size="small" value={employeePI.nidNumber}/>
             </Grid>
         </div>
         <div>
             <Grid item xs={2}>
-            <TextField id="PassportNumber" label="Work Number" variant="outlined" size="small" />
+            <TextField id="PassportNumber" label="PassportNumber" variant="outlined" size="small" value={employeePI.pNumber}/>
             </Grid >
         </div>
         <div>
             <Grid item xs={2}>
-            <TextField id="PassportExpirationDate" label="Passport Expiration Date" variant="outlined" size="small" InputLabelProps={{ shrink: true,}} type="date"/>
+            <TextField id="PassportExpirationDate" label="Passport Expiration Date" variant="outlined" size="small" InputLabelProps={{ shrink: true,}} type="text" value={employeePI.pExpirationDate}/>
             </Grid >
         </div>    
         <div>
         <Grid item xs={2}>
-            <TextField id="NISNumber" label="NIS Number" variant="outlined" size="small" />
+            <TextField id="NISNumber" label="TIN Number" variant="outlined" size="small" value={employeePI.tinNumber}/>
             </Grid>
         </div>
     
