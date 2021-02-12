@@ -19,8 +19,8 @@ function Api() {
    //calling endpoints 
     const getEmployeeByRegNumber = (RNumber) => {
         Axios.get("https://localhost:44353/api/EmployeeInfo/regnumber/" + RNumber).then((response) => {
-            //console.log(response);
-            setEmployee(response.data.Title + "..." + response.data.Fname);
+            console.log(response);
+            setEmployee(response.data.title + "..." + response.data.fname);
             // which ever field you need it will be response.data.fieldName
         })
     }
