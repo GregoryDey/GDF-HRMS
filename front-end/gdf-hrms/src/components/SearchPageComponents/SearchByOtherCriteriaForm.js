@@ -19,7 +19,11 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     float: 'left',
     margin: theme.spacing(5),        
-  }    
+  },
+
+  paragraphColor: {
+    color: 'red'
+  }
 }));
 
 export default function SearchByOtherCriteriaForm() {
@@ -35,13 +39,13 @@ export default function SearchByOtherCriteriaForm() {
           <CardContent className={classes.cardcontents}>          
             <form className={classes.form} align='center' onSubmit={handleSubmit(onSubmit)}>
               <TextField name='fName' label='First Name' variant='outlined' margin='normal' defaultValue={''} inputRef={register({ maxLength: 25 })}/>
-              {errors.fName && errors.regNum.type === 'maxLength' && (<p>A maximum of 25 characters required</p>)}
+              {errors.fName && errors.regNum.type === 'maxLength' && (<p className={classes.paragraphColor}>A maximum of 25 characters required</p>)}
               <br />
               <TextField name='lName' label='Last Name' variant='outlined' margin='normal' defaultValue={''} inputRef={register({ maxLength: 25 })}/>
-              {errors.lName && errors.regNum.type === 'maxLength' && (<p>A maximum of 25 characters required</p>)}
+              {errors.lName && errors.regNum.type === 'maxLength' && (<p className={classes.paragraphColor}>A maximum of 25 characters required</p>)}
               <br />
               <TextField name='rank' label='Rank' variant='outlined' margin='normal' defaultValue={''} inputRef={register({ maxLength: 25 })}/>
-              {errors.rank && errors.regNum.type === 'maxLength' && (<p>A maximum of 25 characters required</p>)}
+              {errors.rank && errors.regNum.type === 'maxLength' && (<p className={classes.paragraphColor}>A maximum of 25 characters required</p>)}
               <br />
               <Button type='submit' color='primary' variant='contained'>Search<SearchIcon /></Button>
             </form>
