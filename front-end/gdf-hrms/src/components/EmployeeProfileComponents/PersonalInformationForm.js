@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersonalInformationForm() {
+export default function PersonalInformationForm({employeePI}) {
   const classes = useStyles();
   const SexOption = ["Male","Female"];
   function FormRow() {
@@ -32,21 +32,21 @@ export default function PersonalInformationForm() {
       <React.Fragment>
         <div>
             <Grid item xs={2}>
-            <TextField id="FirstName" label="First Name" variant="outlined" size="small" />
-            <SimpleSelect option={SexOption} selectLabel="Sex" ></SimpleSelect>
+            <TextField id="FirstName" label="First Name" variant="outlined" size="small" value={employeePI.fname} />
+            <TextField id="Sex" label="Sex" variant="outlined" size="small" value={employeePI.sex} />
            </Grid>
         </div>    
         <div>
             <Grid item xs={2}>
-                <TextField id="LastName" label="Last Name" variant="outlined" size="small" />
-                <SimpleSelect selectLabel="Race"></SimpleSelect>
+                <TextField id="LastName" label="Last Name" variant="outlined" size="small" value={employeePI.lname}/>
+                <TextField id="Race" label="Race" variant="outlined" size="small" value={employeePI.eId} />
             </Grid >
        </div> 
        <div>
        <Grid item xs={2}>
            <Grid item xs={2}>
-              <TextField id="MiddleNameOne" label="Middle Name" variant="outlined" size="small" />
-              <SimpleSelect selectLabel="Nationality"></SimpleSelect>
+              <TextField id="MiddleNameOne" label="Middle Name" variant="outlined" size="small" value={employeePI.oname} />
+              <TextField id="Nationality" label="Nationality" variant="outlined" size="small" value={employeePI.nId} />
             </Grid>
         </Grid >
         </div>
@@ -54,12 +54,12 @@ export default function PersonalInformationForm() {
         <Grid item xs={2}>
             <TextField id="MiddleNameOne" label="Middle Name" variant="outlined" size="small" />
         </Grid >
-        <SimpleSelect selectLabel="Religion"></SimpleSelect>
+        <TextField id="Religion" label="Religion" variant="outlined" size="small" value={employeePI.rId} />
         </div>
         <div>
         <Grid item xs={2}>
-             <TextField id="dateOfBirth" label="Date of Birth" variant="outlined" InputLabelProps={{ shrink: true,}} size="small" type="date" />
-             <SimpleSelect selectLabel="Marital Status"></SimpleSelect>
+             <TextField id="dateOfBirth" label="Date of Birth" variant="outlined" InputLabelProps={{ shrink: true,}} size="small" type="text" value={employeePI.dob}/>
+             <TextField id="Marital Status" label="Marital Status" variant="outlined" size="small" value={employeePI.mId} />
         </Grid >
         </div>
       </React.Fragment>
@@ -70,7 +70,7 @@ export default function PersonalInformationForm() {
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>
-      <h4>Personal Information </h4>
+      <h4>Personal Information {employeePI.id}</h4>
         <Grid container item xs={12} spacing={3}>
           <FormRow />
         </Grid>
