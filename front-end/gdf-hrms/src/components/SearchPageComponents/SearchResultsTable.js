@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
   container: {  
     maxHeight: 440,  
-  },  
+  },
 });  
 
 export default function MatPaginationTable() {  
@@ -53,27 +53,25 @@ export default function MatPaginationTable() {
           <TableHead>  
             <TableRow>  
               <TableCell>Id</TableCell>  
-              <TableCell align="right">Name</TableCell>  
-              <TableCell align="right">Age</TableCell>  
-              <TableCell align="right">Address</TableCell>  
-              <TableCell align="right">City</TableCell>  
-              <TableCell align="right">ContactNum</TableCell>  
-              <TableCell align="right">Salary</TableCell>  
+              <TableCell align="right">First Name</TableCell>
+              <TableCell align="right">Last Name</TableCell>
+              <TableCell align="right">Rank</TableCell>
+              <TableCell align="right">Regiment Number</TableCell>
+              <TableCell align="right">Date of Employment</TableCell>              
               <TableCell align="right">Department</TableCell>  
-            </TableRow>  
-          </TableHead>  
+            </TableRow>
+          </TableHead> 
 
           <TableBody>  
             {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
               return (  
                 <TableRow >  
                   <TableCell component="th" scope="row">{row.Id}</TableCell>  
-                  <TableCell align="right">{row.Name}</TableCell>  
-                  <TableCell align="right">{row.Age}</TableCell>  
-                  <TableCell align="right">{row.Address}</TableCell>  
-                  <TableCell align="right">{row.City}</TableCell>  
-                  <TableCell align="right">{row.ContactNum}</TableCell>  
-                  <TableCell align="right">{row.Salary}</TableCell>  
+                  <TableCell align="right">{row.FName}</TableCell>  
+                  <TableCell align="right">{row.LName}</TableCell>  
+                  <TableCell align="right">{row.Rank}</TableCell>  
+                  <TableCell align="right">{row.RNumber}</TableCell>  
+                  <TableCell align="right">{row.DoE}</TableCell>                    
                   <TableCell align="right">{row.Department}</TableCell>  
                 </TableRow>  
               );  
