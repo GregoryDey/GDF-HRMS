@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: theme.spacing(5),    
+    marginTop: theme.spacing(5),
   },
     
   cardcontents: {        
