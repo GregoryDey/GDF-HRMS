@@ -17,6 +17,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         bool CreateEmployeePI(EmployeePI employeePI);
         bool UpdateEmployeePI(EmployeePI employeePI);
         bool DeleteEmployeePI(EmployeePI employeePI);
+        bool UpdateEmployeeCH(CareerHistory careerHistory);
         bool Save();
     }
 }

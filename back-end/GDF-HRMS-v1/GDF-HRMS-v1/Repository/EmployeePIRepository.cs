@@ -71,5 +71,10 @@ namespace GDF_HRMS_v1.Repository
             _db.EmployeePIs.Update(employeePI);
             return Save();
         }
+        public bool UpdateEmployeeCH(CareerHistory careerHistory)
+        {
+            _db.CareerHistories.Update(careerHistory);
+            return Save();
+        }
     }
 }
