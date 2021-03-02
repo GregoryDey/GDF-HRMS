@@ -122,12 +122,12 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpPost( Name = "AddAnEmployee")]
+        [HttpPost(Name = "AddAnEmployee")]
         public IActionResult AddEmployee([FromBody] EmployeePIDto employeePIDto)
         {
             if (employeePIDto == null)
             {
-                return BadRequest(ModelState); 
+                return BadRequest(ModelState);
             }
 
             if (_npRepo.EmployeePIExists(employeePIDto.RNumber))
@@ -136,14 +136,14 @@ namespace GDF_HRMS_v1.Controllers
                 return StatusCode(404, ModelState);
             }
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
             var employeePIObj = _mapper.Map<EmployeePI>(employeePIDto);
 
-            if(!_npRepo.CreateEmployeePI(employeePIObj))
+            if (!_npRepo.CreateEmployeePI(employeePIObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when saving the record {employeePIObj.Fname}");
                 return StatusCode(500, ModelState);
@@ -151,5 +151,28 @@ namespace GDF_HRMS_v1.Controllers
 
             return Ok();
         }
+
+
+
+        [HttpDelete("{employeeId:int}", Name = "DeleteEmployee")]
+
+        public IActionResult DeleteEmployeeInfo(int employeeId)
+        {
+            if (!_npRepo.EmployeePIExists(employeeId))
+            {
+                return NotFound();
+            }
+
+            var employeePIObj = _npRepo.GetEmployeePIById(employeeId);
+            if (!_npRepo.DeleteEmployeePI(employeePIObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when deleting the record {employeePIObj.Fname}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+        }
     }
+
 }
+
