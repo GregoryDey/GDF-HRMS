@@ -74,7 +74,7 @@ namespace GDF_HRMS_v1.Controllers
 
         }
 
-        //Get employee career history by ID
+        //Get employee career history by EID
         [HttpGet("employeeCH/id/{employeeId:int}", Name = "GetEmployeeCHByEId")]
         public IActionResult GetEmployeeCHByEId(int employeeId)
         {
