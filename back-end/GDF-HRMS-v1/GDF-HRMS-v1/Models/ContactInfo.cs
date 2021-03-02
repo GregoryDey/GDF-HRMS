@@ -12,7 +12,7 @@ namespace GDF_HRMS_v1.Models
         public int Id { get; set; }
         [Required]
         public int HNumber { get; set; }
-        [Phone]
+       // [Phone]
         public int CNumber { get; set; }
         public int WNumber { get; set; }
         [EmailAddress]

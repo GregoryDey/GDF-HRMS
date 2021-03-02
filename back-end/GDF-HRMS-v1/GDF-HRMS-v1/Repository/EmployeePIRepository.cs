@@ -54,6 +54,7 @@ namespace GDF_HRMS_v1.Repository
         public EmployeePI GetEmployeePIByRegNumber(int employeeRNumber)
         {
             return _db.EmployeePIs.FirstOrDefault(a => a.RNumber == employeeRNumber);
+
         }
 
         public ICollection<EmployeePI> GetEmployeePIs()
