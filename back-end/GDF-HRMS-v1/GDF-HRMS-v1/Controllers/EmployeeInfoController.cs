@@ -121,5 +121,35 @@ namespace GDF_HRMS_v1.Controllers
             }
             return NoContent();
         }
+
+        [HttpPost( Name = "AddAnEmployee")]
+        public IActionResult AddEmployee([FromBody] EmployeePIDto employeePIDto)
+        {
+            if (employeePIDto == null)
+            {
+                return BadRequest(ModelState); 
+            }
+
+            if (_npRepo.EmployeePIExists(employeePIDto.RNumber))
+            {
+                ModelState.AddModelError("", "Employee already exists.");
+                return StatusCode(404, ModelState);
+            }
+
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var employeePIObj = _mapper.Map<EmployeePI>(employeePIDto);
+
+            if(!_npRepo.CreateEmployeePI(employeePIObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when saving the record {employeePIObj.Fname}");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok();
+        }
     }
 }
