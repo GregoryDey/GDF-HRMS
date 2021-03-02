@@ -74,6 +74,54 @@ namespace GDF_HRMS_v1.Controllers
 
         }
 
+        //Get employee career history by ID
+        [HttpGet("employeeCH/id/{employeeId:int}", Name = "GetEmployeeCHByEId")]
+        public IActionResult GetEmployeeCHByEId(int employeeId)
+        {
+            var obj = _npRepo.GetEmployeeCHByEId(employeeId);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var objDto = _mapper.Map<CareerHistoryDto>(obj);
+            return Ok(objDto);
+
+        }
+
+        [HttpPatch("update/employeePI/{employeeId:int}", Name = "UpdateEmployeePI")] //Update employee info
+        public IActionResult UpdateEmployeePI(int employeeId, [FromBody] EmployeePIDto employeePIDto)
+        {
+            if (employeePIDto == null || employeeId != employeePIDto.Id)
+            {
+                return BadRequest(ModelState);
+            }
+            var employeeObj = _mapper.Map<EmployeePI>(employeePIDto);
+
+            if (!_npRepo.UpdateEmployeePI(employeeObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when updating the record {employeeObj.Id}");
+                return StatusCode(500, ModelState);
+            }
+            return NoContent();
+        }
+
+        [HttpPatch("update/employeeCH/{employeeId:int}", Name = "UpdateEmployeeCH")] //Update career history
+        public IActionResult UpdateEmployeeCH(int employeeId, [FromBody] CareerHistoryDto careerHistoryDto)
+        {
+            if (careerHistoryDto == null || employeeId != careerHistoryDto.Id)
+            {
+                return BadRequest(ModelState);
+            }
+            var careerHistoryObj = _mapper.Map<CareerHistory>(careerHistoryDto);
+
+            if (!_npRepo.UpdateEmployeeCH(careerHistoryObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when updating the record {careerHistoryObj.Id}");
+                return StatusCode(500, ModelState);
+            }
+            return NoContent();
+        }
+
         [HttpPost( Name = "AddAnEmployee")]
         public IActionResult AddEmployee([FromBody] EmployeePIDto employeePIDto)
         {
@@ -102,9 +150,6 @@ namespace GDF_HRMS_v1.Controllers
             }
 
             return Ok();
-
-
         }
-
     }
 }
