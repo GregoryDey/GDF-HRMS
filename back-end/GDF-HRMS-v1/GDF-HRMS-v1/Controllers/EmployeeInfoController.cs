@@ -106,5 +106,25 @@ namespace GDF_HRMS_v1.Controllers
 
         }
 
+
+        [HttpDelete("{employeeId:int}", Name = "DeleteEmployee")]
+
+        public IActionResult DeleteEmployeeInfo(int employeeId)
+        {
+            if (!_npRepo.EmployeePIExists(employeeId))
+            {
+                return NotFound();
+            }
+
+            var employeePIObj = _npRepo.GetEmployeePIById(employeeId);
+            if (!_npRepo.DeleteEmployeePI(employeePIObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when deleting the record {employeePIObj.Fname}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+}
+
     }
 }
