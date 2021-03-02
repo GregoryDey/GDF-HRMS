@@ -76,5 +76,14 @@ namespace GDF_HRMS_v1.Repository
             _db.CareerHistories.Update(careerHistory);
             return Save();
         }
+        public CareerHistory GetEmployeeCHByEId(int employeeId)
+        {
+            return _db.CareerHistories.FirstOrDefault(a => a.EId == employeeId);
+        }
+        public bool EmployeeCHExists(int id)
+        {
+            bool value = _db.CareerHistories.Any(a => a.Id == id);
+            return value;
+        }
     }
 }

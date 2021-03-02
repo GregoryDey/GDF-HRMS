@@ -73,7 +73,21 @@ namespace GDF_HRMS_v1.Controllers
             return Ok(objDto);
 
         }
-        
+
+        //Get employee career history by ID
+        [HttpGet("employeeCH/id/{employeeId:int}", Name = "GetEmployeeCHByEId")]
+        public IActionResult GetEmployeeCHByEId(int employeeId)
+        {
+            var obj = _npRepo.GetEmployeeCHByEId(employeeId);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var objDto = _mapper.Map<CareerHistoryDto>(obj);
+            return Ok(objDto);
+
+        }
+
         [HttpPatch("update/employeePI/{employeeId:int}", Name = "UpdateEmployeePI")] //Update employee info
         public IActionResult UpdateEmployeePI(int employeeId, [FromBody] EmployeePIDto employeePIDto)
         {
