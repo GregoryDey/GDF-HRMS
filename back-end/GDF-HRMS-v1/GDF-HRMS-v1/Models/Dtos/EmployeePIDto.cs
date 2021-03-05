@@ -11,24 +11,11 @@ namespace GDF_HRMS_v1.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        public int NId { get; set; }
-        [ForeignKey("NId")]
         public Nationality Nationality { get; set; }
-        public int RId { get; set; }
-        [ForeignKey("RId")]
         public Religion Religion { get; set; }
-        public int EId { get; set; }
-        [ForeignKey("EId")]
         public Ethnicity Ethnicity { get; set; }
-        public int MId { get; set; }
-        [ForeignKey("MId")]
         public MaritalStatus MaritalStatus { get; set; }
-        public int CId { get; set; }
-        [ForeignKey("CId")]
         public ContactInfo ContactInfo { get; set; }
-        public int AId { get; set; }
-        [ForeignKey("AId")]
         public Address Address { get; set; }
         public string Title { get; set; }
         public string Fname { get; set; }

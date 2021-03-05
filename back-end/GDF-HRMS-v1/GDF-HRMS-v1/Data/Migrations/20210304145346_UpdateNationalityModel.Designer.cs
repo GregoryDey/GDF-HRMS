@@ -4,14 +4,16 @@ using GDF_HRMS_v1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GDF_HRMS_v1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210304145346_UpdateNationalityModel")]
+    partial class UpdateNationalityModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,16 +155,16 @@ namespace GDF_HRMS_v1.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("AId")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CId")
+                    b.Property<int?>("ContactInfoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Dob")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EId")
+                    b.Property<int?>("EthnicityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Fname")
@@ -171,10 +173,10 @@ namespace GDF_HRMS_v1.Migrations
                     b.Property<string>("Lname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MId")
+                    b.Property<int?>("MaritalStatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("NId")
+                    b.Property<int?>("NationalityId")
                         .HasColumnType("int");
 
                     b.Property<int>("NidNumber")
@@ -189,10 +191,10 @@ namespace GDF_HRMS_v1.Migrations
                     b.Property<string>("PNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RId")
+                    b.Property<int>("RNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("RNumber")
+                    b.Property<int?>("ReligionId")
                         .HasColumnType("int");
 
                     b.Property<string>("Sex")
@@ -206,17 +208,17 @@ namespace GDF_HRMS_v1.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AId");
+                    b.HasIndex("AddressId");
 
-                    b.HasIndex("CId");
+                    b.HasIndex("ContactInfoId");
 
-                    b.HasIndex("EId");
+                    b.HasIndex("EthnicityId");
 
-                    b.HasIndex("MId");
+                    b.HasIndex("MaritalStatusId");
 
-                    b.HasIndex("NId");
+                    b.HasIndex("NationalityId");
 
-                    b.HasIndex("RId");
+                    b.HasIndex("ReligionId");
 
                     b.ToTable("EmployeePIs");
                 });
@@ -365,39 +367,27 @@ namespace GDF_HRMS_v1.Migrations
                 {
                     b.HasOne("GDF_HRMS_v1.Models.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AddressId");
 
                     b.HasOne("GDF_HRMS_v1.Models.ContactInfo", "ContactInfo")
                         .WithMany()
-                        .HasForeignKey("CId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ContactInfoId");
 
                     b.HasOne("GDF_HRMS_v1.Models.Ethnicity", "Ethnicity")
                         .WithMany()
-                        .HasForeignKey("EId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EthnicityId");
 
                     b.HasOne("GDF_HRMS_v1.Models.MaritalStatus", "MaritalStatus")
                         .WithMany()
-                        .HasForeignKey("MId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MaritalStatusId");
 
                     b.HasOne("GDF_HRMS_v1.Models.Nationality", "Nationality")
-                        .WithMany()
-                        .HasForeignKey("NId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("EmployeePIs")
+                        .HasForeignKey("NationalityId");
 
                     b.HasOne("GDF_HRMS_v1.Models.Religion", "Religion")
                         .WithMany()
-                        .HasForeignKey("RId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ReligionId");
 
                     b.Navigation("Address");
 
@@ -410,6 +400,11 @@ namespace GDF_HRMS_v1.Migrations
                     b.Navigation("Nationality");
 
                     b.Navigation("Religion");
+                });
+
+            modelBuilder.Entity("GDF_HRMS_v1.Models.Nationality", b =>
+                {
+                    b.Navigation("EmployeePIs");
                 });
 #pragma warning restore 612, 618
         }

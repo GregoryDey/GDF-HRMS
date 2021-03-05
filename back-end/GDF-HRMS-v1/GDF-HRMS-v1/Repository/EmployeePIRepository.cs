@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace GDF_HRMS_v1.Repository
 {
@@ -48,7 +49,7 @@ namespace GDF_HRMS_v1.Repository
 
         public EmployeePI GetEmployeePIById(int employeeId)
         {
-            return _db.EmployeePIs.FirstOrDefault(a => a.Id == employeeId);
+            return _db.EmployeePIs.Include(b => b.Nationality).FirstOrDefault(a => a.Id == employeeId);
         }
 
         public EmployeePI GetEmployeePIByRegNumber(int employeeRNumber)
