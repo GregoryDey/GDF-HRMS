@@ -10,8 +10,10 @@ namespace GDF_HRMS_v1.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
 
         public ICollection<EmployeePI> EmployeePIs { get; set; }
+        public ICollection<CareerHistory> CareerHistorys { get; set; }
     }
 }

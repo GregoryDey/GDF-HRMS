@@ -61,8 +61,8 @@ namespace GDF_HRMS_v1.Repository
                 NationalityName = a.Nationality.Name,
                 EthnicityName = a.Ethnicity.Name,
                 MaritalStatusName = a.MaritalStatus.Name,
-                //CountryName = a.Country.Name,
-                //PositionName = a.Position.Name
+                CountryName = a.Country.Name,
+                PositionName = a.Position.Name
 
 
             }).FirstOrDefault();
@@ -106,7 +106,8 @@ namespace GDF_HRMS_v1.Repository
         }
         public CareerHistory GetEmployeeCHByEId(int employeeId)
         {
-            return _db.CareerHistories.FirstOrDefault(a => a.EId == employeeId);
+            // return _db.CareerHistories.FirstOrDefault(a => a.EId == employeeId);
+            return null;
         }
         public bool EmployeeCHExists(int id)
         {

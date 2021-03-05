@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GDF_HRMS_v1.Models.Dtos
+namespace GDF_HRMS_v1.Models
 {
-    public class Department
+    public class DepartmentDto
     {
         [Key]
         public int Id { get; set; }
