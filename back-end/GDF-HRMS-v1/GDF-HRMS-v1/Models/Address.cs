@@ -21,5 +21,7 @@ namespace GDF_HRMS_v1.Models
         public int Ctry { get; set; }
         [ForeignKey("Ctry")]
         public Country Country { get; set; }
+
+        public ICollection<EmployeePI> EmployeePIs { get; set; }
     }
 }

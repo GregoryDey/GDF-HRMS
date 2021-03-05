@@ -23,10 +23,19 @@ namespace GDF_HRMS_v1.Models
         public Ethnicity Ethnicity { get; set; }
         public int MId { get; set; }
         [ForeignKey("MId")]
-        public MaritalStatus MaritalStatus { get; set; } 
+        public MaritalStatus MaritalStatus { get; set; }
+
+        public int PId { get; set; }
+        [ForeignKey("PId")]
+        public Position Position { get; set; }
         public int CId { get; set; }
         [ForeignKey("CId")]
         public ContactInfo ContactInfo { get; set; }
+
+        public int CountryId { get; set; }
+        [ForeignKey("CountryId")]
+        public Country Country { get; set; }
+        
         public int AId { get; set; }
         [ForeignKey("AId")]
         public Address Address { get; set; }

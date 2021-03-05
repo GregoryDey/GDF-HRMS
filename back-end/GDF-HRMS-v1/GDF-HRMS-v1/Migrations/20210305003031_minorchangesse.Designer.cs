@@ -4,14 +4,16 @@ using GDF_HRMS_v1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GDF_HRMS_v1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210305003031_minorchangesse")]
+    partial class minorchangesse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -196,11 +198,11 @@ namespace GDF_HRMS_v1.Migrations
                     b.Property<DateTime>("PExpirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PNumber")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PositionId")
+                        .HasColumnType("int");
 
                     b.Property<int>("RId")
                         .HasColumnType("int");
@@ -238,7 +240,7 @@ namespace GDF_HRMS_v1.Migrations
 
                     b.HasIndex("NId");
 
-                    b.HasIndex("PId");
+                    b.HasIndex("PositionId");
 
                     b.HasIndex("RId");
 
@@ -433,11 +435,9 @@ namespace GDF_HRMS_v1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GDF_HRMS_v1.Models.Position", "Position")
+                    b.HasOne("GDF_HRMS_v1.Models.Position", null)
                         .WithMany("EmployeePIs")
-                        .HasForeignKey("PId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PositionId");
 
                     b.HasOne("GDF_HRMS_v1.Models.Religion", "Religion")
                         .WithMany("EmployeePIs")
@@ -460,8 +460,6 @@ namespace GDF_HRMS_v1.Migrations
                     b.Navigation("MaritalStatus");
 
                     b.Navigation("Nationality");
-
-                    b.Navigation("Position");
 
                     b.Navigation("Religion");
                 });
