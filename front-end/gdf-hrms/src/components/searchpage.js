@@ -36,7 +36,7 @@ export default function SearchPage() {
           <Typography variant='h5' align='center' gutterBottom>Search by Other Criteria</Typography>
           <SearchByOtherCriteriaForm> </SearchByOtherCriteriaForm>
         </CardContent>
-      </Card>        
+      </Card>      
     </div>
   );
 }
