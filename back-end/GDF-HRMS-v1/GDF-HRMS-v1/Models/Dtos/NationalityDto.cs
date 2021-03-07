@@ -8,9 +8,9 @@ namespace GDF_HRMS_v1.Models
 {
     public class NationalityDto
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
+       // [Key]
+      //  public int Id { get; set; }
+       // [Required]
         public string Name { get; set; }
 
     }

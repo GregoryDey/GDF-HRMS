@@ -8,6 +8,9 @@ using GDF_HRMS_v1.Repository.IRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
+
+
 namespace GDF_HRMS_v1.Controllers
 {
     [Route("api/[controller]")]
@@ -74,7 +77,7 @@ namespace GDF_HRMS_v1.Controllers
 
         }
 
-        //Get employee career history by EID
+        //Get employee career history by ID
         [HttpGet("employeeCH/id/{employeeId:int}", Name = "GetEmployeeCHByEId")]
         public IActionResult GetEmployeeCHByEId(int employeeId)
         {

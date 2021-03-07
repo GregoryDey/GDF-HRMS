@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GDF_HRMS_v1.Migrations
 {
-    public partial class AddModelsToDb : Migration
+    public partial class NewDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,21 +34,6 @@ namespace GDF_HRMS_v1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Countries", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Departments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Departments", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,7 +81,7 @@ namespace GDF_HRMS_v1.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,35 +112,6 @@ namespace GDF_HRMS_v1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Religions", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CareerHistories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EId = table.Column<int>(type: "int", nullable: false),
-                    PositionId = table.Column<int>(type: "int", nullable: false),
-                    DeptId = table.Column<int>(type: "int", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CareerHistories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CareerHistories_Departments_DeptId",
-                        column: x => x.DeptId,
-                        principalTable: "Departments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CareerHistories_Positions_PositionId",
-                        column: x => x.PositionId,
-                        principalTable: "Positions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -195,11 +151,16 @@ namespace GDF_HRMS_v1.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NId = table.Column<int>(type: "int", nullable: false),
-                    RId = table.Column<int>(type: "int", nullable: false),
-                    EId = table.Column<int>(type: "int", nullable: false),
-                    MId = table.Column<int>(type: "int", nullable: false),
-                    CId = table.Column<int>(type: "int", nullable: false),
-                    AId = table.Column<int>(type: "int", nullable: false),
+                    RId = table.Column<int>(type: "int", nullable: true),
+                    EId = table.Column<int>(type: "int", nullable: true),
+                    MId = table.Column<int>(type: "int", nullable: true),
+                    PId = table.Column<int>(type: "int", nullable: true),
+                    CId = table.Column<int>(type: "int", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: true),
+                    AId = table.Column<int>(type: "int", nullable: true),
+                    DId = table.Column<int>(type: "int", nullable: true),
+                    CHId = table.Column<int>(type: "int", nullable: true),
+                    RegId = table.Column<int>(type: "int", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Lname = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -220,25 +181,31 @@ namespace GDF_HRMS_v1.Migrations
                         column: x => x.AId,
                         principalTable: "Addresses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_EmployeePIs_ContactInfos_CId",
                         column: x => x.CId,
                         principalTable: "ContactInfos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmployeePIs_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_EmployeePIs_Ethnicities_EId",
                         column: x => x.EId,
                         principalTable: "Ethnicities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_EmployeePIs_MaritalStatuses_MId",
                         column: x => x.MId,
                         principalTable: "MaritalStatuses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_EmployeePIs_Nationalities_NId",
                         column: x => x.NId,
@@ -246,11 +213,73 @@ namespace GDF_HRMS_v1.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_EmployeePIs_Positions_PId",
+                        column: x => x.PId,
+                        principalTable: "Positions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmployeePIs_Regions_RegId",
+                        column: x => x.RegId,
+                        principalTable: "Regions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_EmployeePIs_Religions_RId",
                         column: x => x.RId,
                         principalTable: "Religions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CareerHistories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EmployeePIId = table.Column<int>(type: "int", nullable: true),
+                    PositionId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CareerHistories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CareerHistories_EmployeePIs_EmployeePIId",
+                        column: x => x.EmployeePIId,
+                        principalTable: "EmployeePIs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CareerHistories_Positions_PositionId",
+                        column: x => x.PositionId,
+                        principalTable: "Positions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Departments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeePIId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Departments_EmployeePIs_EmployeePIId",
+                        column: x => x.EmployeePIId,
+                        principalTable: "EmployeePIs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -264,9 +293,9 @@ namespace GDF_HRMS_v1.Migrations
                 column: "Reg");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CareerHistories_DeptId",
+                name: "IX_CareerHistories_EmployeePIId",
                 table: "CareerHistories",
-                column: "DeptId");
+                column: "EmployeePIId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CareerHistories_PositionId",
@@ -274,14 +303,34 @@ namespace GDF_HRMS_v1.Migrations
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Departments_EmployeePIId",
+                table: "Departments",
+                column: "EmployeePIId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmployeePIs_AId",
                 table: "EmployeePIs",
                 column: "AId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EmployeePIs_CHId",
+                table: "EmployeePIs",
+                column: "CHId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmployeePIs_CId",
                 table: "EmployeePIs",
                 column: "CId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeePIs_CountryId",
+                table: "EmployeePIs",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeePIs_DId",
+                table: "EmployeePIs",
+                column: "DId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmployeePIs_EId",
@@ -299,30 +348,83 @@ namespace GDF_HRMS_v1.Migrations
                 column: "NId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EmployeePIs_PId",
+                table: "EmployeePIs",
+                column: "PId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeePIs_RegId",
+                table: "EmployeePIs",
+                column: "RegId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmployeePIs_RId",
                 table: "EmployeePIs",
                 column: "RId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_EmployeePIs_CareerHistories_CHId",
+                table: "EmployeePIs",
+                column: "CHId",
+                principalTable: "CareerHistories",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_EmployeePIs_Departments_DId",
+                table: "EmployeePIs",
+                column: "DId",
+                principalTable: "Departments",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Addresses_Countries_Ctry",
+                table: "Addresses");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_EmployeePIs_Countries_CountryId",
+                table: "EmployeePIs");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Addresses_Regions_Reg",
+                table: "Addresses");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_EmployeePIs_Regions_RegId",
+                table: "EmployeePIs");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_CareerHistories_EmployeePIs_EmployeePIId",
+                table: "CareerHistories");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Departments_EmployeePIs_EmployeePIId",
+                table: "Departments");
+
             migrationBuilder.DropTable(
-                name: "CareerHistories");
+                name: "Countries");
+
+            migrationBuilder.DropTable(
+                name: "Regions");
 
             migrationBuilder.DropTable(
                 name: "EmployeePIs");
 
             migrationBuilder.DropTable(
-                name: "Departments");
-
-            migrationBuilder.DropTable(
-                name: "Positions");
-
-            migrationBuilder.DropTable(
                 name: "Addresses");
 
             migrationBuilder.DropTable(
+                name: "CareerHistories");
+
+            migrationBuilder.DropTable(
                 name: "ContactInfos");
+
+            migrationBuilder.DropTable(
+                name: "Departments");
 
             migrationBuilder.DropTable(
                 name: "Ethnicities");
@@ -337,10 +439,7 @@ namespace GDF_HRMS_v1.Migrations
                 name: "Religions");
 
             migrationBuilder.DropTable(
-                name: "Countries");
-
-            migrationBuilder.DropTable(
-                name: "Regions");
+                name: "Positions");
         }
     }
 }
