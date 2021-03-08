@@ -56,13 +56,32 @@ namespace GDF_HRMS_v1.Repository
         {
             return _db.EmployeePIs.Where(a => a.RNumber == employeeRNumber).Select(a => new EmployeePIDto
             {
-                Fname = a.Fname,
-                ReligionName = a.Religion.Name,
-                NationalityName = a.Nationality.Name,
-                EthnicityName = a.Ethnicity.Name,
-                MaritalStatusName = a.MaritalStatus.Name,
-                CountryName = a.Country.Name,
-                PositionName = a.Position.Name
+                FirstName = a.Fname,
+                LastName = a.Lname,
+                OtherName = a.Oname,
+                NationalIdNumber = a.NidNumber,
+                PassportNumber = a.PNumber,
+                PassportExpirationDate = a.PExpirationDate,
+                Sex = a.Sex,
+                TinNumber = a.TinNumber,
+                Title = a.Title,
+                DateOfBirth = a.Dob,
+                Religion = a.Religion.Name,
+                Nationality = a.Nationality.Name,
+                Ethnicity = a.Ethnicity.Name,
+                MaritalStatus = a.MaritalStatus.Name,
+                Country = a.Country.Name,
+                Position = a.Position.Name,
+                RegimentNumber = a.RNumber,
+                AddressLot = a.Address.Lot,
+                AddressArea = a.Address.Area,
+                AddressStreet = a.Address.Street,
+                AddressVillage = a.Address.Village,
+                HomeNumber = a.ContactInfo.HNumber,
+                CellNumber = a.ContactInfo.CNumber,
+                WorkNumber = a.ContactInfo.WNumber,
+                Email = a.ContactInfo.Email
+
 
 
             }).FirstOrDefault();

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GDF_HRMS_v1.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeInfoController : ControllerBase
@@ -92,13 +93,13 @@ namespace GDF_HRMS_v1.Controllers
         }
 
         [HttpPatch("update/employeePI/{employeeId:int}", Name = "UpdateEmployeePI")] //Update employee info
-        public IActionResult UpdateEmployeePI(int employeeId, [FromBody] EmployeePIDto employeePIDto)
+        public IActionResult UpdateEmployeePI(int employeeId, [FromBody] EmployeePIDtoForChanges employeePIDtoForChanges)
         {
-            if (employeePIDto == null || employeeId != employeePIDto.Id)
+            if (employeePIDtoForChanges == null || employeeId != employeePIDtoForChanges.Id)
             {
                 return BadRequest(ModelState);
             }
-            var employeeObj = _mapper.Map<EmployeePI>(employeePIDto);
+            var employeeObj = _mapper.Map<EmployeePI>(employeePIDtoForChanges);
 
             if (!_npRepo.UpdateEmployeePI(employeeObj))
             {
@@ -133,7 +134,7 @@ namespace GDF_HRMS_v1.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (_npRepo.EmployeePIExists(employeePIDto.RNumber))
+            if (_npRepo.EmployeePIExists(employeePIDto.RegimentNumber))
             {
                 ModelState.AddModelError("", "Employee already exists.");
                 return StatusCode(404, ModelState);

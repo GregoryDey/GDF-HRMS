@@ -43,6 +43,7 @@ namespace GDF_HRMS_v1
                         Version = "1"
                     });
             });
+
             services.AddControllers();
         }
 

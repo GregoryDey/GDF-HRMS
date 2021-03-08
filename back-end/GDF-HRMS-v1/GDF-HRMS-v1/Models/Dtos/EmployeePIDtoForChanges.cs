@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace GDF_HRMS_v1.Models
 {
-    public class EmployeePIDto
+    public class EmployeePIDtoForChanges
     {
-       // [Key]
-      //  public int Id { get; set; }
-     //   [Required]
-       // public int NId { get; set; }
-       // [ForeignKey("NId")]
-       // public Nationality Nationality { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        // public int NId { get; set; }
+        // [ForeignKey("NId")]
+        // public Nationality Nationality { get; set; }
         public string Nationality { get; set; }
-      //  public int RId { get; set; }
-       // [ForeignKey("RId")]
+        //  public int RId { get; set; }
+        // [ForeignKey("RId")]
         //public Religion Religion { get; set; }
 
         public string Religion { get; set; }
-       // public int EId { get; set; }
-       // [ForeignKey("EId")]
-       // public Ethnicity Ethnicity { get; set; }
+        // public int EId { get; set; }
+        // [ForeignKey("EId")]
+        // public Ethnicity Ethnicity { get; set; }
         public string Ethnicity { get; set; }
         //  public int MId { get; set; }
         //  [ForeignKey("MId")]
@@ -34,16 +34,16 @@ namespace GDF_HRMS_v1.Models
         public string Position { get; set; }
 
         public string Country { get; set; }
-       // public int CId { get; set; }
-       // [ForeignKey("CId")]
-       // public ContactInfo ContactInfo { get; set; }
+        // public int CId { get; set; }
+        // [ForeignKey("CId")]
+        // public ContactInfo ContactInfo { get; set; }
         public int HomeNumber { get; set; }
         public int CellNumber { get; set; }
         public int WorkNumber { get; set; }
         public string Email { get; set; }
-       // public int AId { get; set; }
-       // [ForeignKey("AId")]
-       // public Address Address { get; set; }
+        // public int AId { get; set; }
+        // [ForeignKey("AId")]
+        // public Address Address { get; set; }
 
         public string AddressLot { get; set; }
         public string AddressStreet { get; set; }

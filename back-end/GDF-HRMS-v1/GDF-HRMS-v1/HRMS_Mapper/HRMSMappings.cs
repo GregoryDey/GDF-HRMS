@@ -13,6 +13,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
         public HRMSMappings()
         {
             CreateMap<EmployeePI, EmployeePIDto>().ReverseMap();
+            CreateMap<EmployeePI, EmployeePIDtoForChanges>().ReverseMap();
             CreateMap<Religion, ReligionDto>().ReverseMap();
             CreateMap<Nationality, NationalityDto>().ReverseMap();
             CreateMap<Position, PositionDto>().ReverseMap();
