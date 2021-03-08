@@ -1,4 +1,4 @@
-//import React from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
@@ -6,9 +6,7 @@ import Card from "@material-ui/core/Card";
 import { TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useForm } from 'react-hook-form';
-//import Api from '../Api'
-import React, { useState } from "react";
-import Axios from 'axios'; // remember to npm install Axios
+import Api from '../Api';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,37 +29,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchByRegimentNumberForm() {
 
-  const [employee, setEmployee] = useState("")
   const classes = useStyles();
 
-  //calling endpoints 
-  const getEmployeeByRegNumber = (RNumber) => {
-    Axios.get("https://localhost:44353/api/EmployeeInfo/regnumber/" + RNumber).then((response) => {
-        //console.log(response);
-        setEmployee(response.data.title + "..." + response.data.fname);
-        // which ever field you need it will be response.data.fieldName
-        console.log(response.data.fname);
-    })
-}
-
-
   const { register, handleSubmit, errors } = useForm();
-  let onSubmit = data => getEmployeeByRegNumber(data.regNum);
-  //fetch('https://localhost:44353/api/EmployeeInfo/regnumber/123456').then(res => console.log(res.json() )) .then(json => {
-   // this.setState ({
-       //isLoaded: true,
-       //items: json,
-      // items.fname
-       
-   // })
-    //console.log(res)
- //});
-  //Api.getEmployeeByRegNumber(data);
-  //getEmployeeByRegNumber(data)
-  
+  let onSubmit = data => Api.getEmployeeByRegNumber(data.regNum);
+    
   return (    
     <React.Fragment>
-      <div> {employee}
+      <div>
         <Card>
           <CardContent className={classes.cardcontents}>          
             <form className={classes.form} align='center' onSubmit={handleSubmit(onSubmit)}>
@@ -79,4 +54,3 @@ export default function SearchByRegimentNumberForm() {
     </React.Fragment>    
   );
 }
-
