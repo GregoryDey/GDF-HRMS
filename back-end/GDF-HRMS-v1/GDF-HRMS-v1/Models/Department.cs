@@ -13,5 +13,7 @@ namespace GDF_HRMS_v1.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
+
+       // public ICollection<EmployeePI> EmployeePIs { get; set; }
     }
 }

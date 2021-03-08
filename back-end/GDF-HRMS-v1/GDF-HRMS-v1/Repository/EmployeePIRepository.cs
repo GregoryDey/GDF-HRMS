@@ -1,6 +1,7 @@
 ﻿using GDF_HRMS_v1.Data;
 using GDF_HRMS_v1.Models;
 using GDF_HRMS_v1.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,9 +52,36 @@ namespace GDF_HRMS_v1.Repository
             return _db.EmployeePIs.FirstOrDefault(a => a.Id == employeeId);
         }
 
-        public EmployeePI GetEmployeePIByRegNumber(int employeeRNumber)
+        public EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber)
         {
-            return _db.EmployeePIs.FirstOrDefault(a => a.RNumber == employeeRNumber);
+            return _db.EmployeePIs.Where(a => a.RNumber == employeeRNumber).Select(a => new EmployeePIDto
+            {
+                Fname = a.Fname,
+                ReligionName = a.Religion.Name,
+                NationalityName = a.Nationality.Name,
+                EthnicityName = a.Ethnicity.Name,
+                MaritalStatusName = a.MaritalStatus.Name,
+                CountryName = a.Country.Name,
+                PositionName = a.Position.Name
+
+
+            }).FirstOrDefault();
+
+            //var result =  (from a in _db.EmployeePIs
+            //              select new EmployeePIDto
+            //              {
+
+            //                  Id = a.Id,
+            //                  Fname = a.Fname,
+            //                  Lname = a.Lname,
+            //                  RId = a.Religion.Id,
+            //                  ReligionName = a.Religion.Name
+
+            //              }).FirstOrDefault();
+            //return result;
+
+
+
         }
 
         public ICollection<EmployeePI> GetEmployeePIs()
@@ -70,6 +98,21 @@ namespace GDF_HRMS_v1.Repository
         {
             _db.EmployeePIs.Update(employeePI);
             return Save();
+        }
+        public bool UpdateEmployeeCH(CareerHistory careerHistory)
+        {
+            _db.CareerHistories.Update(careerHistory);
+            return Save();
+        }
+        public CareerHistory GetEmployeeCHByEId(int employeeId)
+        {
+            // return _db.CareerHistories.FirstOrDefault(a => a.EId == employeeId);
+            return null;
+        }
+        public bool EmployeeCHExists(int id)
+        {
+            bool value = _db.CareerHistories.Any(a => a.Id == id);
+            return value;
         }
     }
 }
