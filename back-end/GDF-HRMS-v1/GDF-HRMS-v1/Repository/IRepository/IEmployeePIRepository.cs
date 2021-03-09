@@ -16,7 +16,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         bool EmployeePIExists(string name);
         bool EmployeePIExists(int id);
         bool EmployeeCHExists(int id);
-        bool CreateEmployeePI(EmployeePIDto employeePIDto);
+        bool CreateEmployeePI(EmployeePI employeePI);
         bool UpdateEmployeePI(EmployeePI employeePI);
         bool DeleteEmployeePI(EmployeePI employeePI);
         bool UpdateEmployeeCH(CareerHistory careerHistory);
