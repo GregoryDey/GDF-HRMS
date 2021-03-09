@@ -1,5 +1,6 @@
 ﻿using GDF_HRMS_v1.Data;
 using GDF_HRMS_v1.Models;
+using GDF_HRMS_v1.Models.Dtos;
 using GDF_HRMS_v1.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,9 +19,9 @@ namespace GDF_HRMS_v1.Repository
             _db = db;
         }
 
-        public bool CreateEmployeePI(EmployeePI employeePI)
+        public bool CreateEmployeePI(EmployeePIDto employeePIDto)
         {
-            _db.EmployeePIs.Add(employeePI);
+            _db.EmployeePIs.Add(employeePIDto);
             return Save();
         }
 
