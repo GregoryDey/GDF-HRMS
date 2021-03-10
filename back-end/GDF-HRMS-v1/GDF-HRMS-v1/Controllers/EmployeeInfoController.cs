@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using GDF_HRMS_v1.Models;
+using GDF_HRMS_v1.Models.Dtos;
 using GDF_HRMS_v1.Repository.IRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -127,14 +128,14 @@ namespace GDF_HRMS_v1.Controllers
         }
 
         [HttpPost(Name = "AddAnEmployee")]
-        public IActionResult AddAnEmployee([FromBody] EmployeePIDto employeePIDto)
+        public IActionResult AddAnEmployee([FromBody] CreateEmployeeDto createEmployeeDto)
         {
-            if (employeePIDto == null)
+            if (createEmployeeDto == null)
             {
                 return BadRequest(ModelState);
             }
 
-            if (_npRepo.EmployeePIExists(employeePIDto.RegimentNumber))
+            if (_npRepo.EmployeePIExists(createEmployeeDto.RegimentNumber))
             {
                 ModelState.AddModelError("", "Employee already exists.");
                 return StatusCode(404, ModelState);
@@ -145,8 +146,10 @@ namespace GDF_HRMS_v1.Controllers
                 return BadRequest(ModelState);
             }
 
-            var employeePIObj = _mapper.Map<EmployeePI>(employeePIDto);
+            var ContactInfoObj = _mapper.Map<CreateEmployeeDto, ContactInfo>(createEmployeeDto);
+            var employeePIObj = _mapper.Map<CreateEmployeeDto,EmployeePI>(createEmployeeDto);
 
+            employeePIObj.ContactInfo = ContactInfoObj;
             if (!_npRepo.CreateEmployeePI(employeePIObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when saving the record {employeePIObj.Fname}");

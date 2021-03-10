@@ -250,23 +250,21 @@ namespace GDF_HRMS_v1.HRMS_Mapper
            dest.RegId,
            opt => opt.MapFrom(src => src.RegionId)).ForMember(dest =>
            dest.RNumber,
-           opt => opt.MapFrom(src => src.RegimentNumber)).ForMember(dest =>
-           dest.Address.Area,
-           opt => opt.MapFrom(src => src.AddressArea)).ForMember(dest =>
-           dest.Address.Lot,
-           opt => opt.MapFrom(src => src.AddressLot)).ForMember(dest =>
+           opt => opt.MapFrom(src => src.RegimentNumber))
+           .ForPath(dest => dest.ContactInfo.HNumber, opt => opt.MapFrom(src => src.HomeNumber))
+           .ForPath(dest => dest.ContactInfo.CNumber, opt => opt.MapFrom(src => src.CellNumber))
+           .ForPath(dest => dest.ContactInfo.WNumber, opt => opt.MapFrom(src => src.WorkNumber))
+           .ForPath(dest => dest.ContactInfo.Email, opt => opt.MapFrom(src => src.Email))
+           .ForPath(dest => dest.Address.Area, opt => opt.MapFrom(src => src.AddressArea))
+           .ForPath(dest => dest.Address.Lot, opt => opt.MapFrom(src => src.AddressLot))
+           .ForPath(dest =>
            dest.Address.Street,
-           opt => opt.MapFrom(src => src.AddressStreet)).ForMember(dest =>
+           opt => opt.MapFrom(src => src.AddressStreet)).ForPath(dest =>
            dest.Address.Village,
-           opt => opt.MapFrom(src => src.AddressVillage)).ForMember(dest =>
-           dest.ContactInfo.HNumber,
-           opt => opt.MapFrom(src => src.HomeNumber)).ForMember(dest =>
-           dest.ContactInfo.CNumber,
-           opt => opt.MapFrom(src => src.CellNumber)).ForMember(dest =>
-           dest.ContactInfo.WNumber,
-           opt => opt.MapFrom(src => src.WorkNumber)).ForMember(dest =>
-           dest.ContactInfo.Email,
-           opt => opt.MapFrom(src => src.Email)).ForMember(dest =>
+           opt => opt.MapFrom(src => src.AddressVillage))
+       
+           
+           .ForMember(dest =>
            dest.Fname,
            opt => opt.MapFrom(src => src.FirstName)).ForMember(dest =>
            dest.Lname,
@@ -321,9 +319,8 @@ namespace GDF_HRMS_v1.HRMS_Mapper
             //dest.CId,
             //opt => opt.MapFrom(src => src.CountryId)).ForPath(dest =>
             //dest.PId,
-            //opt => opt.MapFrom(src => src.PositionId)).ForMember(dest =>
-            //dest.RNumber,
-            //opt => opt.MapFrom(src => src.RegimentNumber)).ForPath(dest =>
+            //opt => opt.MapFrom(src => src.PositionId))
+            //.ForMember(dest =>dest.RNumber, opt => opt.MapFrom(src => src.RegimentNumber)).ForPath(dest =>
             //dest.Address.Area,
             //opt => opt.MapFrom(src => src.AddressArea)).ForPath(dest =>
             //dest.Address.Lot,
@@ -337,13 +334,18 @@ namespace GDF_HRMS_v1.HRMS_Mapper
             //dest.ContactInfo.CNumber,
             //opt => opt.MapFrom(src => src.CellNumber)).ForPath(dest =>
             //dest.ContactInfo.WNumber,
-            //opt => opt.MapFrom(src => src.WorkNumber)).ForPath(dest =>
+            //opt => opt.MapFrom(src => src.WorkNumber)).ForPath(dest =
             //dest.ContactInfo.Email,
             //opt => opt.MapFrom(src => src.Email)).ForPath(dest =>
             //dest.NId,
             //opt => opt.MapFrom(src => src.NationalityId));
 
 
+            CreateMap<CreateEmployeeDto, ContactInfo>()
+                .ForMember(dest => dest.HNumber, opt => opt.MapFrom(src => src.HomeNumber))
+                .ForMember(dest => dest.CNumber, opt => opt.MapFrom(src => src.CellNumber))
+                .ForMember(dest => dest.WNumber, opt => opt.MapFrom(src => src.WorkNumber))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
 
             CreateMap<Religion, ReligionDto>().ReverseMap();
             CreateMap<EmployeePI, CreateEmployeeDto>().ReverseMap();

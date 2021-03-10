@@ -19,24 +19,15 @@ namespace GDF_HRMS_v1.Repository
             _db = db;
         }
 
-        public bool CreateEmployeePI(CreateEmployeeDto createEmployeeDto)
+        public bool CreateEmployeePI(EmployeePI employeePI)
         {
 
-            EmployeePI newEmp = new EmployeePI();
-            newEmp.Fname = createEmployeeDto.FirstName;
-            newEmp.Lname = createEmployeeDto.LastName;
-            newEmp.Oname = createEmployeeDto.OtherName;
-            newEmp.NId = createEmployeeDto.NationalityId;
-            newEmp.NId = createEmployeeDto.NationalityId;
+           
 
 
-            _db.EmployeePIs.Add(newEmp);
+            _db.EmployeePIs.Add(employeePI);
 
-            int latestEmployeeId = newEmp.Id;
-
-
-
-
+        
             return Save();
         }
 
