@@ -10,35 +10,35 @@ namespace GDF_HRMS_v1.Models
     public class CreateEmployeeDto
     {
         [Key]
-       // public int Id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public int NId { get; set; }
+        public int NationalityId { get; set; }
         // [ForeignKey("NId")]
         // public Nationality Nationality { get; set; }
         //public string Nationality { get; set; }
-         public int RId { get; set; }
+         public int ReligionId { get; set; }
         // [ForeignKey("RId")]
         //public Religion Religion { get; set; }
 
        // public string Religion { get; set; }
-        public int EId { get; set; }
+        public int EthnicityId { get; set; }
         // [ForeignKey("EId")]
         // public Ethnicity Ethnicity { get; set; }
         //public string Ethnicity { get; set; }
-          public int MId { get; set; }
+          public int MaritalStatusId { get; set; }
         //  [ForeignKey("MId")]
         //  public MaritalStatus MaritalStatus { get; set; }
 
         //public string MaritalStatus { get; set; }
 
         //public string Position { get; set; }
-        public int PId { get; set; }
+        public int PositionId { get; set; }
 
         //public string Country { get; set; }
-         public int CId { get; set; }
+         public int CountryId { get; set; }
         // [ForeignKey("CId")]
 
-        public int RegId { get; set; }
+        public int RegionId { get; set; }
         // public ContactInfo ContactInfo { get; set; }
         public int HomeNumber { get; set; }
         public int CellNumber { get; set; }

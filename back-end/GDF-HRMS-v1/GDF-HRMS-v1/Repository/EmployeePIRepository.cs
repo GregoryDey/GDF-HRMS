@@ -21,8 +21,22 @@ namespace GDF_HRMS_v1.Repository
 
         public bool CreateEmployeePI(CreateEmployeeDto createEmployeeDto)
         {
-            
-         _db.EmployeePIs.Add(createEmployeeDto);
+
+            EmployeePI newEmp = new EmployeePI();
+            newEmp.Fname = createEmployeeDto.FirstName;
+            newEmp.Lname = createEmployeeDto.LastName;
+            newEmp.Oname = createEmployeeDto.OtherName;
+            newEmp.NId = createEmployeeDto.NationalityId;
+            newEmp.NId = createEmployeeDto.NationalityId;
+
+
+            _db.EmployeePIs.Add(newEmp);
+
+            int latestEmployeeId = newEmp.Id;
+
+
+
+
             return Save();
         }
 
