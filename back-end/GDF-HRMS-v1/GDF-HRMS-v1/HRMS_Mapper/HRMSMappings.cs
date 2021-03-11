@@ -13,6 +13,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
         public HRMSMappings()
         {
             CreateMap<EmployeePI, EmployeePIDto>().ReverseMap();
+            CreateMap<EmployeePIDto, EmployeePI>().ReverseMap();
             CreateMap<EmployeePI, EmployeePIDtoForChanges>().ReverseMap();
             CreateMap<Religion, ReligionDto>().ReverseMap();
             CreateMap<Nationality, NationalityDto>().ReverseMap();
@@ -26,6 +27,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
             CreateMap<Address, AddressDto>().ReverseMap();
             CreateMap<ContactInfo, ContactInfoDto>().ReverseMap();
             CreateMap<Department, DepartmentDto>().ReverseMap();
+            ///CreateMap<CreateEmployeeDto, EmployeePI>().ReverseMap();
         }
     }
 }

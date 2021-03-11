@@ -127,7 +127,7 @@ namespace GDF_HRMS_v1.Controllers
         }
 
         [HttpPost(Name = "AddAnEmployee")]
-        public IActionResult AddEmployee([FromBody] EmployeePIDto employeePIDto)
+        public IActionResult AddAnEmployee([FromBody] EmployeePIDto employeePIDto)
         {
             if (employeePIDto == null)
             {
