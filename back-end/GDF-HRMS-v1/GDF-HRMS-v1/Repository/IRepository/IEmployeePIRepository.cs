@@ -21,7 +21,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         EmployeePI GetEmployeePIById(int employeeId);
         CareerHistory GetEmployeeCHByEId(int employeeId);
         EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber);
-        ICollection<EmployeePIDto> GetEmployeePIByFname(string employeeFname, string employeeLname);
+        ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
 
         EmployeePIDto GetEmployeePIByLname(string employeeLname);
         bool EmployeePIExists(string name);

@@ -49,11 +49,11 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
-        public ICollection<EmployeePIDto> GetEmployeePIByFname(string employeeFname, string employeeLname)
+        public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
             //return _db.EmployeePIs.FirstOrDefault(a => a.Fname.ToLower().Trim() == employeeFname.ToLower().Trim());
 
-            return _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname).Select(a => new EmployeePIDto
+            return _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || a.Position.Name == employeePosition).Select(a => new EmployeePIDto
             {
                 FirstName = a.Fname,
                 LastName = a.Lname,

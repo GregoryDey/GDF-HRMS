@@ -147,10 +147,10 @@ namespace GDF_HRMS_v1.Controllers
 
         }
         //Get employee info by other criteria
-        [HttpGet("OtherCriteria/{FirstNameAndLastName}", Name = "GetEmployeePIByFnameand")]
-        public IActionResult GetEmployeePIByFname(string employeeFname, string employeeLname)
+        [HttpGet("OtherCriteria/{FirstName,LastName,Position}", Name = "GetEmployeePIByOtherCriteria/{FirstName,LastName,Position}")]
+        public IActionResult GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
-            var obj = _npRepo.GetEmployeePIByFname(employeeFname, employeeLname);
+            var obj = _npRepo.GetEmployeePIByOtherCriteria(employeeFname, employeeLname, employeePosition);
             if (obj.Count == 0)
             {
                 return NotFound();
