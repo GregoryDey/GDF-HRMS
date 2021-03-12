@@ -9,10 +9,21 @@ namespace GDF_HRMS_v1.Repository.IRepository
     public interface IEmployeePIRepository
     {
         ICollection<EmployeePI> GetEmployeePIs();
+        ICollection<Region> GetAllRegions();
+
+        ICollection<Religion> GetAllReligions();
+
+        ICollection<Nationality> GetAllNationalities();
+
+        ICollection<Ethnicity> GetAllEthnicities();
+        ICollection<Position> GetAllPositions();
+        ICollection<MaritalStatus> GetAllMaritalStatus();
         EmployeePI GetEmployeePIById(int employeeId);
         CareerHistory GetEmployeeCHByEId(int employeeId);
         EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber);
-        EmployeePI GetEmployeePIByFname(string employeeFname);
+        ICollection<EmployeePIDto> GetEmployeePIByFname(string employeeFname, string employeeLname);
+
+        EmployeePIDto GetEmployeePIByLname(string employeeLname);
         bool EmployeePIExists(string name);
         bool EmployeePIExists(int id);
         bool EmployeeCHExists(int id);

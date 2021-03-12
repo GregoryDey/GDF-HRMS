@@ -39,6 +39,87 @@ namespace GDF_HRMS_v1.Controllers
             }
             return Ok(objDto);
         }
+
+
+        //Get all Regions
+        [HttpGet("GetAllRegions", Name = "GetAllRegions")]
+        public IActionResult GetAllRegions()
+        {
+            var objList = _npRepo.GetAllRegions();
+            var objDto = new List<RegionDto>();
+            foreach (var obj in objList)
+            {
+                objDto.Add(_mapper.Map<RegionDto>(obj));
+            }
+            return Ok(objDto);
+        }
+
+        //Get all Religions
+        [HttpGet("GetAllReligions", Name = "GetAllReligions")]
+        public IActionResult GetAllReligions()
+        {
+            var objList = _npRepo.GetAllReligions();
+            var objDto = new List<ReligionDto>();
+            foreach (var obj in objList)
+            {
+                objDto.Add(_mapper.Map<ReligionDto>(obj));
+            }
+            return Ok(objDto);
+        }
+
+        //Get all Nationalities
+        [HttpGet("GetAllNationalities", Name = "GetAllNationalities")]
+        public IActionResult GetAllNationalities()
+        {
+            var objList = _npRepo.GetAllNationalities();
+            var objDto = new List<NationalityDto>();
+            foreach (var obj in objList)
+            {
+                objDto.Add(_mapper.Map<NationalityDto>(obj));
+            }
+            return Ok(objDto);
+        }
+
+        //Get all Ethnicities
+        [HttpGet("GetAllEthnicities", Name = "GetAllEthnicities")]
+        public IActionResult GetAllEthnicities()
+        {
+            var objList = _npRepo.GetAllEthnicities();
+            var objDto = new List<EthnicityDto>();
+            foreach (var obj in objList)
+            {
+                objDto.Add(_mapper.Map<EthnicityDto>(obj));
+            }
+            return Ok(objDto);
+        }
+
+        //Get all Positions
+        [HttpGet("GetAllPositions", Name = "GetAllPositions")]
+        public IActionResult GetAllPositions()
+        {
+            var objList = _npRepo.GetAllPositions();
+            var objDto = new List<PositionDto>();
+            foreach (var obj in objList)
+            {
+                objDto.Add(_mapper.Map<PositionDto>(obj));
+            }
+            return Ok(objDto);
+        }
+
+        //Get all MaritalStatus
+        [HttpGet("GetAllMaritalStaus", Name = "GetAllMaritalStatus")]
+        public IActionResult GetAllMaritalStatus()
+        {
+            var objList = _npRepo.GetAllMaritalStatus();
+            var objDto = new List<MaritalStatusDto>();
+            foreach (var obj in objList)
+            {
+                objDto.Add(_mapper.Map<MaritalStatusDto>(obj));
+            }
+            return Ok(objDto);
+        }
+
+
         //Get employee info by ID
         [HttpGet("id/{employeeId:int}", Name = "GetEmployeePIById")]
         public IActionResult GetEmployeePIById(int employeeId)
@@ -53,7 +134,7 @@ namespace GDF_HRMS_v1.Controllers
 
         }
         //Get employee info by Regiment Number
-        [HttpGet("regnumber/{employeeRNumber:int}", Name = "GetEmployeePIByRegNumber")]
+        [HttpGet("RegimentNumber/{employeeRNumber:int}", Name = "GetEmployeePIByRegNumber")]
         public IActionResult GetEmployeePIByRegNumber(int employeeRNumber)
         {
             var obj = _npRepo.GetEmployeePIByRegNumber(employeeRNumber);
@@ -65,11 +146,26 @@ namespace GDF_HRMS_v1.Controllers
             return Ok(objDto);
 
         }
-        //Get employee info by First Name
-        [HttpGet("fname/{employeeFname}", Name = "GetEmployeePIByFname")]
-        public IActionResult GetEmployeePIByFname(string employeeFname)
+        //Get employee info by other criteria
+        [HttpGet("OtherCriteria/{FirstNameAndLastName}", Name = "GetEmployeePIByFnameand")]
+        public IActionResult GetEmployeePIByFname(string employeeFname, string employeeLname)
         {
-            var obj = _npRepo.GetEmployeePIByFname(employeeFname);
+            var obj = _npRepo.GetEmployeePIByFname(employeeFname, employeeLname);
+            if (obj.Count == 0)
+            {
+                return NotFound();
+            }
+            //var objDto = _mapper.Map<EmployeePIDto>(obj);
+            return Ok(obj);
+
+        }
+
+        //Get employee info by Last Name
+        // [HttpGet("lname/{employeeLname}", Name = "GetEmployeePIByLname")]
+        [HttpGet("LastName", Name = "GetEmployeePIByLname")]
+        public IActionResult GetEmployeePIByLname(string employeeLname)
+        {
+            var obj = _npRepo.GetEmployeePIByLname(employeeLname);
             if (obj == null)
             {
                 return NotFound();
@@ -93,10 +189,10 @@ namespace GDF_HRMS_v1.Controllers
 
         }
 
-        [HttpPatch("update/employeePI/{employeeId:int}", Name = "UpdateEmployeePI")] //Update employee info
-        public IActionResult UpdateEmployeePI(int employeeId, [FromBody] EmployeePIDtoForChanges employeePIDtoForChanges)
+        [HttpPatch("update/employeePI/{employeeRegimentNumber:int}", Name = "UpdateEmployeePI")] //Update employee info
+        public IActionResult UpdateEmployeePI(int employeeRegimentNumber, [FromBody] CreateEmployeeDto employeePIDtoForChanges)
         {
-            if (employeePIDtoForChanges == null || employeeId != employeePIDtoForChanges.Id)
+            if (employeePIDtoForChanges == null || employeeRegimentNumber != employeePIDtoForChanges.RegimentNumber)
             {
                 return BadRequest(ModelState);
             }
@@ -146,10 +242,10 @@ namespace GDF_HRMS_v1.Controllers
                 return BadRequest(ModelState);
             }
 
-            var ContactInfoObj = _mapper.Map<CreateEmployeeDto, ContactInfo>(createEmployeeDto);
+           // var ContactInfoObj = _mapper.Map<CreateEmployeeDto, ContactInfo>(createEmployeeDto);
             var employeePIObj = _mapper.Map<CreateEmployeeDto,EmployeePI>(createEmployeeDto);
 
-            employeePIObj.ContactInfo = ContactInfoObj;
+           // employeePIObj.ContactInfo = ContactInfoObj;
             if (!_npRepo.CreateEmployeePI(employeePIObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when saving the record {employeePIObj.Fname}");

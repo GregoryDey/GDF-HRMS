@@ -124,7 +124,6 @@ C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\bin\De
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\Debug\netcoreapp3.1\GDF-HRMS-v1.csprojAssemblyReference.cache
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\Debug\netcoreapp3.1\GDF-HRMS-v1.AssemblyInfoInputs.cache
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\Debug\netcoreapp3.1\GDF-HRMS-v1.AssemblyInfo.cs
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\Debug\netcoreapp3.1\GDF-HRMS-v1.csproj.CoreCompileInputs.cache
@@ -138,3 +137,4 @@ C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\De
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\Debug\netcoreapp3.1\GDF-HRMS-v1.dll
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\Debug\netcoreapp3.1\GDF-HRMS-v1.pdb
 C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\Debug\netcoreapp3.1\GDF-HRMS-v1.genruntimeconfig.cache
+C:\Users\samki\Documents\GitHub\GDF-HRMS\back-end\GDF-HRMS-v1\GDF-HRMS-v1\obj\Debug\netcoreapp3.1\GDF-HRMS-v1.csprojAssemblyReference.cache
