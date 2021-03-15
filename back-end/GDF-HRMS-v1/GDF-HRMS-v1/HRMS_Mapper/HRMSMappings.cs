@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿
+using AutoMapper;
 using GDF_HRMS_v1.Models;
 using GDF_HRMS_v1.Models.Dtos;
 using System;
@@ -37,8 +38,9 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.CellNumber, opt => opt.MapFrom(src => src.ContactInfo.CNumber))
                 .ForMember(dest => dest.WorkNumber, opt => opt.MapFrom(src => src.ContactInfo.WNumber))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.ContactInfo.Email))
-                .ForMember(dest => dest.Nationality, opt => opt.MapFrom(src => src.Nationality.Name))             
-                
+                .ForMember(dest => dest.Nationality, opt => opt.MapFrom(src => src.Nationality.Name));
+
+
             CreateMap<EmployeePIDto, EmployeePI>()
                 .ForMember(dest => dest.Fname, opt => opt.MapFrom(src => src.FirstName))
                 .ForMember(dest => dest.Lname, opt => opt.MapFrom(src => src.LastName))
