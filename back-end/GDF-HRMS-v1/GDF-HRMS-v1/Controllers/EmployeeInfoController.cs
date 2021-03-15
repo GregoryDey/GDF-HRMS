@@ -189,14 +189,14 @@ namespace GDF_HRMS_v1.Controllers
 
         }
 
-        [HttpPatch("update/employeePI/{employeeRegimentNumber:int}", Name = "UpdateEmployeePI")] //Update employee info
-        public IActionResult UpdateEmployeePI(int employeeId, [FromBody] CreateEmployeeDto createEmployeeDto)
+        [HttpPatch("update/employeePI/{employeeId:int}", Name = "UpdateEmployeePI")] //Update employee info
+        public IActionResult UpdateEmployeePI(int employeeId, [FromBody] UpdateEmployeeDto updateEmployeeDto)
         {
-            if (createEmployeeDto == null || employeeId != createEmployeeDto.Id)
+            if (updateEmployeeDto == null || employeeId != updateEmployeeDto.Id)
             {
                 return BadRequest(ModelState);
             }
-            var employeeObj = _mapper.Map<EmployeePI>(createEmployeeDto);
+            var employeeObj = _mapper.Map<EmployeePI>(updateEmployeeDto);
 
             if (!_npRepo.UpdateEmployeePI(employeeObj))
             {
