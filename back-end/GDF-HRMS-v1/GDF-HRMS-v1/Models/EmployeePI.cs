@@ -8,7 +8,15 @@ using System.Threading.Tasks;
 namespace GDF_HRMS_v1.Models
 {
     public class EmployeePI
+
     {
+
+        public EmployeePI()
+        {
+            ContactInfo = new ContactInfo();
+            Address = new Address();
+        }
+
         [Key]
         public int Id { get; set; }
         [Required]
