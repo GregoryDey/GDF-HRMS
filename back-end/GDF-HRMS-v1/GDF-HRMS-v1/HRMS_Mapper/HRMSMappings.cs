@@ -197,7 +197,10 @@ namespace GDF_HRMS_v1.HRMS_Mapper
             dest.AddressArea,
             opt => opt.MapFrom(src => src.Address.Area)).ForMember(dest =>
             dest.AddressLot,
-            opt => opt.MapFrom(src => src.Address.Lot)).ForMember(dest =>
+            opt => opt.MapFrom(src => src.Address.Lot))
+            .ForPath(dest => dest.CountryId, opt => opt.MapFrom(src => src.Address.Ctry))
+             .ForPath(dest => dest.RegionId, opt => opt.MapFrom(src => src.Address.Reg))
+             .ForMember(dest =>
             dest.AddressStreet,
             opt => opt.MapFrom(src => src.Address.Street)).ForMember(dest =>
             dest.AddressVillage,
@@ -257,6 +260,9 @@ namespace GDF_HRMS_v1.HRMS_Mapper
            .ForPath(dest => dest.ContactInfo.Email, opt => opt.MapFrom(src => src.Email))
            .ForPath(dest => dest.Address.Area, opt => opt.MapFrom(src => src.AddressArea))
            .ForPath(dest => dest.Address.Lot, opt => opt.MapFrom(src => src.AddressLot))
+            .ForPath(dest => dest.Address.Ctry, opt => opt.MapFrom(src => src.CountryId))
+             .ForPath(dest => dest.Address.Reg, opt => opt.MapFrom(src => src.RegionId))
+
            .ForPath(dest =>
            dest.Address.Street,
            opt => opt.MapFrom(src => src.AddressStreet)).ForPath(dest =>
@@ -348,7 +354,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
 
             CreateMap<Religion, ReligionDto>().ReverseMap();
-            CreateMap<EmployeePI, CreateEmployeeDto>().ReverseMap();
+            
             CreateMap<Nationality, NationalityDto>().ReverseMap();
             CreateMap<Position, PositionDto>().ReverseMap();
             CreateMap<Country, CountryDto>().ReverseMap();

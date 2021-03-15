@@ -49,9 +49,78 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
-        public EmployeePI GetEmployeePIByFname(string employeeFname)
+        public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
-            return _db.EmployeePIs.FirstOrDefault(a => a.Fname.ToLower().Trim() == employeeFname.ToLower().Trim());
+            //return _db.EmployeePIs.FirstOrDefault(a => a.Fname.ToLower().Trim() == employeeFname.ToLower().Trim());
+
+            return _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || a.Position.Name == employeePosition).Select(a => new EmployeePIDto
+            {
+                FirstName = a.Fname,
+                LastName = a.Lname,
+                OtherName = a.Oname,
+                NationalIdNumber = a.NidNumber,
+                PassportNumber = a.PNumber,
+                PassportExpirationDate = a.PExpirationDate,
+                Sex = a.Sex,
+                TinNumber = a.TinNumber,
+                Title = a.Title,
+                DateOfBirth = a.Dob,
+                Religion = a.Religion.Name,
+                Nationality = a.Nationality.Name,
+                Ethnicity = a.Ethnicity.Name,
+                MaritalStatus = a.MaritalStatus.Name,
+                Country = a.Country.Name,
+                Position = a.Position.Name,
+                RegimentNumber = a.RNumber,
+                AddressLot = a.Address.Lot,
+                AddressArea = a.Address.Area,
+                AddressStreet = a.Address.Street,
+                AddressVillage = a.Address.Village,
+                HomeNumber = a.ContactInfo.HNumber,
+                CellNumber = a.ContactInfo.CNumber,
+                WorkNumber = a.ContactInfo.WNumber,
+                Email = a.ContactInfo.Email
+
+
+
+            }).ToList();
+        }
+
+        public EmployeePIDto GetEmployeePIByLname(string employeeLname)
+        {
+            //return _db.EmployeePIs.FirstOrDefault(a => a.Fname.ToLower().Trim() == employeeFname.ToLower().Trim());
+
+            return _db.EmployeePIs.Where(a => a.Lname == employeeLname).Select(a => new EmployeePIDto
+            {
+                FirstName = a.Fname,
+                LastName = a.Lname,
+                OtherName = a.Oname,
+                NationalIdNumber = a.NidNumber,
+                PassportNumber = a.PNumber,
+                PassportExpirationDate = a.PExpirationDate,
+                Sex = a.Sex,
+                TinNumber = a.TinNumber,
+                Title = a.Title,
+                DateOfBirth = a.Dob,
+                Religion = a.Religion.Name,
+                Nationality = a.Nationality.Name,
+                Ethnicity = a.Ethnicity.Name,
+                MaritalStatus = a.MaritalStatus.Name,
+                Country = a.Country.Name,
+                Position = a.Position.Name,
+                RegimentNumber = a.RNumber,
+                AddressLot = a.Address.Lot,
+                AddressArea = a.Address.Area,
+                AddressStreet = a.Address.Street,
+                AddressVillage = a.Address.Village,
+                HomeNumber = a.ContactInfo.HNumber,
+                CellNumber = a.ContactInfo.CNumber,
+                WorkNumber = a.ContactInfo.WNumber,
+                Email = a.ContactInfo.Email
+
+
+
+            }).FirstOrDefault();
         }
 
         public EmployeePI GetEmployeePIById(int employeeId)
@@ -113,6 +182,36 @@ namespace GDF_HRMS_v1.Repository
         public ICollection<EmployeePI> GetEmployeePIs()
         {
             return _db.EmployeePIs.OrderBy(a => a.Lname).ToList();
+        }
+
+        public ICollection<Region> GetAllRegions()
+        {
+            return _db.Regions.OrderBy(a => a.Id).ToList();
+        }
+
+        public ICollection<Religion> GetAllReligions()
+        {
+            return _db.Religions.OrderBy(a => a.Id).ToList();
+        }
+
+        public ICollection<Nationality> GetAllNationalities()
+        {
+            return _db.Nationalities.OrderBy(a => a.Id).ToList();
+        }
+
+        public ICollection<Ethnicity> GetAllEthnicities()
+        {
+            return _db.Ethnicities.OrderBy(a => a.Id).ToList();
+        }
+
+        public ICollection<Position> GetAllPositions()
+        {
+            return _db.Positions.OrderBy(a => a.Id).ToList();
+        }
+
+        public ICollection<MaritalStatus> GetAllMaritalStatus()
+        {
+            return _db.MaritalStatuses.OrderBy(a => a.Id).ToList();
         }
 
         public bool Save()
