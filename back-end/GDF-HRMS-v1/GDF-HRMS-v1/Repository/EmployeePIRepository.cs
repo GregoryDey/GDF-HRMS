@@ -79,7 +79,10 @@ namespace GDF_HRMS_v1.Repository
                 HomeNumber = a.ContactInfo.HNumber,
                 CellNumber = a.ContactInfo.CNumber,
                 WorkNumber = a.ContactInfo.WNumber,
-                Email = a.ContactInfo.Email
+                Email = a.ContactInfo.Email,
+                DepartmentName = a.Department.Name,
+                DepartmentDescription = a.Department.Description,
+                DepartmentLocation = a.Department.Location
 
 
 
@@ -156,7 +159,10 @@ namespace GDF_HRMS_v1.Repository
                 HomeNumber = a.ContactInfo.HNumber,
                 CellNumber = a.ContactInfo.CNumber,
                 WorkNumber = a.ContactInfo.WNumber,
-                Email = a.ContactInfo.Email
+                Email = a.ContactInfo.Email,
+                DepartmentName = a.Department.Name,
+                DepartmentDescription = a.Department.Description,
+                DepartmentLocation = a.Department.Location
 
 
 

@@ -50,6 +50,12 @@ namespace GDF_HRMS_v1.Models
         public string AddressArea { get; set; }
 
         public string AddressVillage { get; set; }
+
+        public string DepartmentName { get; set; }
+
+        public string DepartmentDescription { get; set; }
+
+        public string DepartmentLocation { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
