@@ -21,9 +21,11 @@ namespace GDF_HRMS_v1.Models
         //public Religion Religion { get; set; }
 
         public string Religion { get; set; }
-       // public int EId { get; set; }
-       // [ForeignKey("EId")]
-       // public Ethnicity Ethnicity { get; set; }
+
+        public string Region { get; set; }
+        // public int EId { get; set; }
+        // [ForeignKey("EId")]
+        // public Ethnicity Ethnicity { get; set; }
         public string Ethnicity { get; set; }
         //  public int MId { get; set; }
         //  [ForeignKey("MId")]

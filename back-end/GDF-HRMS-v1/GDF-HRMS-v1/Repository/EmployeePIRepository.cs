@@ -49,11 +49,11 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
-        public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
+        public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition )
         {
             //return _db.EmployeePIs.FirstOrDefault(a => a.Fname.ToLower().Trim() == employeeFname.ToLower().Trim());
 
-            return _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || a.Position.Name == employeePosition).Select(a => new EmployeePIDto
+            return _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || a.CareerHistory.Position.Name == employeePosition).Select(a => new EmployeePIDto
             {
                 FirstName = a.Fname,
                 LastName = a.Lname,
@@ -69,20 +69,21 @@ namespace GDF_HRMS_v1.Repository
                 Nationality = a.Nationality.Name,
                 Ethnicity = a.Ethnicity.Name,
                 MaritalStatus = a.MaritalStatus.Name,
-                Country = a.Country.Name,
-                Position = a.Position.Name,
+                //Position = a.CareerHistory.Position.Name,
                 RegimentNumber = a.RNumber,
                 AddressLot = a.Address.Lot,
                 AddressArea = a.Address.Area,
                 AddressStreet = a.Address.Street,
                 AddressVillage = a.Address.Village,
+                Country = a.Address.Country.Name,
+                Region = a.Address.Region.Name,
                 HomeNumber = a.ContactInfo.HNumber,
                 CellNumber = a.ContactInfo.CNumber,
                 WorkNumber = a.ContactInfo.WNumber,
-                Email = a.ContactInfo.Email,
-                DepartmentName = a.Department.Name,
-                DepartmentDescription = a.Department.Description,
-                DepartmentLocation = a.Department.Location
+                Email = a.ContactInfo.Email
+                //DepartmentName = a.Department.Name,
+               // DepartmentDescription = a.Department.Description,
+               // DepartmentLocation = a.Department.Location
 
 
 
@@ -109,8 +110,9 @@ namespace GDF_HRMS_v1.Repository
                 Nationality = a.Nationality.Name,
                 Ethnicity = a.Ethnicity.Name,
                 MaritalStatus = a.MaritalStatus.Name,
-                Country = a.Country.Name,
-                Position = a.Position.Name,
+                Country = a.Address.Country.Name,
+               // Position = a.CareerHistory.Position.Name,
+                Region = a.Address.Region.Name,
                 RegimentNumber = a.RNumber,
                 AddressLot = a.Address.Lot,
                 AddressArea = a.Address.Area,
@@ -149,8 +151,9 @@ namespace GDF_HRMS_v1.Repository
                 Nationality = a.Nationality.Name,
                 Ethnicity = a.Ethnicity.Name,
                 MaritalStatus = a.MaritalStatus.Name,
-                Country = a.Country.Name,
-                Position = a.Position.Name,
+                Country = a.Address.Country.Name,
+                //Position = a.CareerHistory.Position.Name,
+                Region = a.Address.Country.Name,
                 RegimentNumber = a.RNumber,
                 AddressLot = a.Address.Lot,
                 AddressArea = a.Address.Area,
@@ -160,9 +163,9 @@ namespace GDF_HRMS_v1.Repository
                 CellNumber = a.ContactInfo.CNumber,
                 WorkNumber = a.ContactInfo.WNumber,
                 Email = a.ContactInfo.Email,
-                DepartmentName = a.Department.Name,
-                DepartmentDescription = a.Department.Description,
-                DepartmentLocation = a.Department.Location
+               /// DepartmentName = a.CareerHistory.Department.Name,
+               // DepartmentDescription = a.CareerHistory.Department.Description,
+               // DepartmentLocation = a.CareerHistory.Department.Location
 
 
 

@@ -60,13 +60,17 @@ namespace GDF_HRMS_v1.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("EmployeePIId")
+                    b.Property<int?>("DeptId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PositionId")
+                    b.Property<int?>("PosId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
@@ -74,9 +78,11 @@ namespace GDF_HRMS_v1.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeePIId");
+                    b.HasIndex("DeptId");
 
-                    b.HasIndex("PositionId");
+                    b.HasIndex("EId");
+
+                    b.HasIndex("PosId");
 
                     b.ToTable("CareerHistories");
                 });
@@ -130,9 +136,6 @@ namespace GDF_HRMS_v1.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EmployeePIId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
@@ -140,8 +143,6 @@ namespace GDF_HRMS_v1.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeePIId");
 
                     b.ToTable("Departments");
                 });
@@ -156,16 +157,7 @@ namespace GDF_HRMS_v1.Migrations
                     b.Property<int?>("AId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CHId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("CId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Dob")
@@ -196,9 +188,6 @@ namespace GDF_HRMS_v1.Migrations
                     b.Property<DateTime>("PExpirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -206,9 +195,6 @@ namespace GDF_HRMS_v1.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("RNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RegId")
                         .HasColumnType("int");
 
                     b.Property<string>("Sex")
@@ -224,13 +210,7 @@ namespace GDF_HRMS_v1.Migrations
 
                     b.HasIndex("AId");
 
-                    b.HasIndex("CHId");
-
                     b.HasIndex("CId");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("DId");
 
                     b.HasIndex("EId");
 
@@ -238,11 +218,7 @@ namespace GDF_HRMS_v1.Migrations
 
                     b.HasIndex("NId");
 
-                    b.HasIndex("PId");
-
                     b.HasIndex("RId");
-
-                    b.HasIndex("RegId");
 
                     b.ToTable("EmployeePIs");
                 });
@@ -345,13 +321,13 @@ namespace GDF_HRMS_v1.Migrations
             modelBuilder.Entity("GDF_HRMS_v1.Models.Address", b =>
                 {
                     b.HasOne("GDF_HRMS_v1.Models.Country", "Country")
-                        .WithMany()
+                        .WithMany("Addresses")
                         .HasForeignKey("Ctry")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GDF_HRMS_v1.Models.Region", "Region")
-                        .WithMany()
+                        .WithMany("Addresses")
                         .HasForeignKey("Reg")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -363,20 +339,25 @@ namespace GDF_HRMS_v1.Migrations
 
             modelBuilder.Entity("GDF_HRMS_v1.Models.CareerHistory", b =>
                 {
-                    b.HasOne("GDF_HRMS_v1.Models.EmployeePI", null)
+                    b.HasOne("GDF_HRMS_v1.Models.Department", "Department")
                         .WithMany("CareerHistorys")
-                        .HasForeignKey("EmployeePIId");
+                        .HasForeignKey("DeptId");
 
-                    b.HasOne("GDF_HRMS_v1.Models.Position", null)
+                    b.HasOne("GDF_HRMS_v1.Models.EmployeePI", "EmployeePI")
                         .WithMany("CareerHistorys")
-                        .HasForeignKey("PositionId");
-                });
+                        .HasForeignKey("EId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-            modelBuilder.Entity("GDF_HRMS_v1.Models.Department", b =>
-                {
-                    b.HasOne("GDF_HRMS_v1.Models.EmployeePI", null)
-                        .WithMany("Departments")
-                        .HasForeignKey("EmployeePIId");
+                    b.HasOne("GDF_HRMS_v1.Models.Position", "Position")
+                        .WithMany("CareerHistorys")
+                        .HasForeignKey("PosId");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("EmployeePI");
+
+                    b.Navigation("Position");
                 });
 
             modelBuilder.Entity("GDF_HRMS_v1.Models.EmployeePI", b =>
@@ -385,21 +366,9 @@ namespace GDF_HRMS_v1.Migrations
                         .WithMany("EmployeePIs")
                         .HasForeignKey("AId");
 
-                    b.HasOne("GDF_HRMS_v1.Models.CareerHistory", "CareerHistory")
-                        .WithMany()
-                        .HasForeignKey("CHId");
-
                     b.HasOne("GDF_HRMS_v1.Models.ContactInfo", "ContactInfo")
                         .WithMany("EmployeePIs")
                         .HasForeignKey("CId");
-
-                    b.HasOne("GDF_HRMS_v1.Models.Country", "Country")
-                        .WithMany("EmployeePIs")
-                        .HasForeignKey("CountryId");
-
-                    b.HasOne("GDF_HRMS_v1.Models.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DId");
 
                     b.HasOne("GDF_HRMS_v1.Models.Ethnicity", "Ethnicity")
                         .WithMany("EmployeePIs")
@@ -415,37 +384,19 @@ namespace GDF_HRMS_v1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GDF_HRMS_v1.Models.Position", "Position")
-                        .WithMany("EmployeePIs")
-                        .HasForeignKey("PId");
-
                     b.HasOne("GDF_HRMS_v1.Models.Religion", "Religion")
                         .WithMany("EmployeePIs")
                         .HasForeignKey("RId");
 
-                    b.HasOne("GDF_HRMS_v1.Models.Region", "Region")
-                        .WithMany("EmployeePIs")
-                        .HasForeignKey("RegId");
-
                     b.Navigation("Address");
 
-                    b.Navigation("CareerHistory");
-
                     b.Navigation("ContactInfo");
-
-                    b.Navigation("Country");
-
-                    b.Navigation("Department");
 
                     b.Navigation("Ethnicity");
 
                     b.Navigation("MaritalStatus");
 
                     b.Navigation("Nationality");
-
-                    b.Navigation("Position");
-
-                    b.Navigation("Region");
 
                     b.Navigation("Religion");
                 });
@@ -462,14 +413,17 @@ namespace GDF_HRMS_v1.Migrations
 
             modelBuilder.Entity("GDF_HRMS_v1.Models.Country", b =>
                 {
-                    b.Navigation("EmployeePIs");
+                    b.Navigation("Addresses");
+                });
+
+            modelBuilder.Entity("GDF_HRMS_v1.Models.Department", b =>
+                {
+                    b.Navigation("CareerHistorys");
                 });
 
             modelBuilder.Entity("GDF_HRMS_v1.Models.EmployeePI", b =>
                 {
                     b.Navigation("CareerHistorys");
-
-                    b.Navigation("Departments");
                 });
 
             modelBuilder.Entity("GDF_HRMS_v1.Models.Ethnicity", b =>
@@ -490,13 +444,11 @@ namespace GDF_HRMS_v1.Migrations
             modelBuilder.Entity("GDF_HRMS_v1.Models.Position", b =>
                 {
                     b.Navigation("CareerHistorys");
-
-                    b.Navigation("EmployeePIs");
                 });
 
             modelBuilder.Entity("GDF_HRMS_v1.Models.Region", b =>
                 {
-                    b.Navigation("EmployeePIs");
+                    b.Navigation("Addresses");
                 });
 
             modelBuilder.Entity("GDF_HRMS_v1.Models.Religion", b =>

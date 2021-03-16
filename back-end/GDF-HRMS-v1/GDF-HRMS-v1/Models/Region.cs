@@ -12,6 +12,7 @@ namespace GDF_HRMS_v1.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<EmployeePI> EmployeePIs { get; set; }
+        //public ICollection<EmployeePI> EmployeePIs { get; set; }
+       public ICollection<Address> Addresses { get; set; }
     }
 }

@@ -13,21 +13,25 @@ namespace GDF_HRMS_v1.Models
         [Key]
         public int Id { get; set; }
         [Required]
-       // public int? EId { get; set; }
-       // [ForeignKey("EId")]
-      //  public EmployeePI EmployeePI { get; set; }
+        public int? EId { get; set; }
+        [ForeignKey("EId")]
+        public EmployeePI EmployeePI { get; set; }
         //public int? PositionId { get; set; }
         //[ForeignKey("PositionId")]
         //public Position Position { get; set; }
-        //public int? DeptId { get; set; }
-        //[ForeignKey("DeptId")]
-        //public Department Department { get; set; }
+        public int? DeptId { get; set; }
+        [ForeignKey("DeptId")]
+        public Department Department { get; set; }
+
+        public int? PosId { get; set; }
+        [ForeignKey("PosId")]
+        public Position Position { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-       // public ICollection<EmployeePI> EmployeePIs { get; set; }
+      //  public ICollection<EmployeePI> EmployeePIs { get; set; }
        // public ICollection<Position> Positions { get; set; }
 
-       // public ICollection<Department> Departments { get; set; }
+        //public ICollection<Department> Departments { get; set; }
     }
 }
