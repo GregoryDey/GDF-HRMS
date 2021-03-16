@@ -132,7 +132,8 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.Dob))
                 .ForPath(dest => dest.CountryId, opt => opt.MapFrom(src => src.Address.Ctry))
-                .ForPath(dest => dest.RegionId, opt => opt.MapFrom(src => src.Address.Reg));
+                .ForPath(dest => dest.RegionId, opt => opt.MapFrom(src => src.Address.Reg))
+                .ForPath(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.Department.EmployeeId));
 
 
             CreateMap<CreateEmployeeDto, EmployeePI>()
@@ -164,7 +165,8 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForPath(dest => dest.Address.Ctry, opt => opt.MapFrom(src => src.CountryId))
                 .ForPath(dest => dest.Address.Reg, opt => opt.MapFrom(src => src.RegionId))
                 .ForPath(dest => dest.Address.Street, opt => opt.MapFrom(src => src.AddressStreet))
-                .ForPath(dest => dest.Address.Village, opt => opt.MapFrom(src => src.AddressVillage));
+                .ForPath(dest => dest.Address.Village, opt => opt.MapFrom(src => src.AddressVillage))
+                .ForPath(dest => dest.Department.EmployeeId, opt => opt.MapFrom(src => src.DepartmentId));
 
 
             CreateMap<CreateEmployeeDto, ContactInfo>()
@@ -181,6 +183,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.MId, opt => opt.MapFrom(src => src.MaritalStatusId))
                 .ForMember(dest => dest.PId, opt => opt.MapFrom(src => src.PositionId))
                 .ForMember(dest => dest.CId, opt => opt.MapFrom(src => src.CountryId))
+                .ForMember(dest => dest.DId, opt => opt.MapFrom(src => src.DepartmentId))
                 .ForMember(dest => dest.RegId, opt => opt.MapFrom(src => src.RegionId))
                 .ForMember(dest => dest.RNumber, opt => opt.MapFrom(src => src.RegimentNumber))
                 .ForMember(dest => dest.Fname, opt => opt.MapFrom(src => src.FirstName))
@@ -213,6 +216,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.PositionId, opt => opt.MapFrom(src => src.PId))
                 .ForMember(dest => dest.CountryId, opt => opt.MapFrom(src => src.CId))
                 .ForMember(dest => dest.RegionId, opt => opt.MapFrom(src => src.RegId))
+                .ForMember(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.DId))
                 .ForMember(dest => dest.RegimentNumber, opt => opt.MapFrom(src => src.RNumber))
                 .ForMember(dest => dest.AddressArea, opt => opt.MapFrom(src => src.Address.Area))
                 .ForMember(dest => dest.AddressLot, opt => opt.MapFrom(src => src.Address.Lot))
