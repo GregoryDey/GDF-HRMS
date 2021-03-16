@@ -20,6 +20,7 @@ namespace GDF_HRMS_v1.Models.Dtos
         public int RegionId { get; set; }
 
         public int DepartmentId { get; set; }
+        public int CareerHistoryId { get; set; }
         public int HomeNumber { get; set; }
         public int CellNumber { get; set; }
         public int WorkNumber { get; set; }

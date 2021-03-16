@@ -241,6 +241,14 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForPath(dest => dest.DeptId, opt => opt.MapFrom(src => src.DepartmentId))
                  .ForPath(dest => dest.PosId, opt => opt.MapFrom(src => src.PositionId));
 
+            CreateMap<CareerHistory, UpdateEmployeeDto>()
+                .ForPath(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.DeptId))
+                 .ForPath(dest => dest.PositionId, opt => opt.MapFrom(src => src.PosId));
+
+            CreateMap<UpdateEmployeeDto, CareerHistory>()
+                .ForPath(dest => dest.DeptId, opt => opt.MapFrom(src => src.DepartmentId))
+                 .ForPath(dest => dest.PosId, opt => opt.MapFrom(src => src.PositionId));
+
 
 
             CreateMap<Religion, ReligionDto>().ReverseMap();
