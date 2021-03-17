@@ -21,9 +21,11 @@ namespace GDF_HRMS_v1.Models
         //public Religion Religion { get; set; }
 
         public string Religion { get; set; }
-       // public int EId { get; set; }
-       // [ForeignKey("EId")]
-       // public Ethnicity Ethnicity { get; set; }
+
+        public string Region { get; set; }
+        // public int EId { get; set; }
+        // [ForeignKey("EId")]
+        // public Ethnicity Ethnicity { get; set; }
         public string Ethnicity { get; set; }
         //  public int MId { get; set; }
         //  [ForeignKey("MId")]
@@ -50,6 +52,12 @@ namespace GDF_HRMS_v1.Models
         public string AddressArea { get; set; }
 
         public string AddressVillage { get; set; }
+
+        public string DepartmentName { get; set; }
+
+        public string DepartmentDescription { get; set; }
+
+        public string DepartmentLocation { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

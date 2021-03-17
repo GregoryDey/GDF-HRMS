@@ -15,6 +15,7 @@ namespace GDF_HRMS_v1.Models
         {
             ContactInfo = new ContactInfo();
             Address = new Address();
+            //CareerHistory = new CareerHistory();
         }
 
         [Key]
@@ -33,32 +34,30 @@ namespace GDF_HRMS_v1.Models
         [ForeignKey("MId")]
         public MaritalStatus MaritalStatus { get; set; }
 
-        public int? PId { get; set; }
-        [ForeignKey("PId")]
-        public Position Position { get; set; }
+       // public int? PId { get; set; }
+       // [ForeignKey("PId")]
+       // public Position Position { get; set; }
         public int? CId { get; set; }
         [ForeignKey("CId")]
         public ContactInfo ContactInfo { get; set; }
 
-        public int? CountryId { get; set; }
-        [ForeignKey("CountryId")]
-        public Country Country { get; set; }
+        //public int? CountryId { get; set; }
+        //[ForeignKey("CountryId")]
+       // public Country Country { get; set; }
         
         public int? AId { get; set; }
         [ForeignKey("AId")]
         public Address Address { get; set; }
 
-        public int? DId { get; set; }
-        [ForeignKey("DId")]
-        public Department Department { get; set; }
 
-        public int? CHId { get; set; }
-        [ForeignKey("CHId")]
+
+        //public int? CHId { get; set; }
+        //[ForeignKey("CHId")]
         public CareerHistory CareerHistory { get; set; }
 
-        public int? RegId { get; set; }
-        [ForeignKey("RegId")]
-        public Region Region { get; set; }
+        //  public int? RegId { get; set; }
+        // [ForeignKey("RegId")]
+        //public Region Region { get; set; }
         public string Title { get; set; }
         public string Fname { get; set; }
         public string Lname { get; set; }
@@ -73,8 +72,8 @@ namespace GDF_HRMS_v1.Models
 
 
 
-        public ICollection<CareerHistory> CareerHistorys { get; set; }
-        public ICollection<Department> Departments { get; set; } 
+      public ICollection<CareerHistory> CareerHistorys { get; set; }
+        //public ICollection<Department> Departments { get; set; } 
 
     }
 }

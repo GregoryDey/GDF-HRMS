@@ -16,17 +16,19 @@ namespace GDF_HRMS_v1.Models.Dtos
         public int EthnicityId { get; set; }
         public int MaritalStatusId { get; set; }
         public int PositionId { get; set; }
-        public int ContactId { get; set; }
+        public int CountryId { get; set; }
+        public int RegionId { get; set; }
+
+        public int DepartmentId { get; set; }
+        public int CareerHistoryId { get; set; }
         public int HomeNumber { get; set; }
         public int CellNumber { get; set; }
         public int WorkNumber { get; set; }
         public string Email { get; set; }
-        public int AddressId { get; set; }
         public string AddressLot { get; set; }
         public string AddressStreet { get; set; }
         public string AddressArea { get; set; }
-        public int CountryId { get; set; }
-        public int RegionId { get; set; }
+
         public string AddressVillage { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
