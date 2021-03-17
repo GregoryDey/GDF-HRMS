@@ -79,6 +79,12 @@ namespace GDF_HRMS_v1.Repository
             return Save();
         }
 
+        public bool DeleteCountry(Country country)
+        {
+            _db.Countries.Remove(country);
+            return Save();
+        }
+
         public bool EmployeePIExists(string name)
         {
             bool value = _db.EmployeePIs.Any(a => a.Lname.ToLower().Trim() == name.ToLower().Trim());
@@ -97,6 +103,11 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
+        public bool CountryExists(int Id)
+        {
+            bool value = _db.Countries.Any(a => a.Id == Id);
+            return value;
+        }
         public bool NationalityExists(string name)
         {
             bool value = _db.Nationalities.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
@@ -222,6 +233,10 @@ namespace GDF_HRMS_v1.Repository
             return _db.EmployeePIs.FirstOrDefault(a => a.Id == employeeId);
         }
 
+        public Country GetCountryById(int countryId)
+        {
+            return _db.Countries.FirstOrDefault(a => a.Id == countryId);
+        }
         public EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber)
         {
             return _db.EmployeePIs.Where(a => a.RNumber == employeeRNumber).Select(a => new EmployeePIDto

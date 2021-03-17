@@ -42,5 +42,24 @@ namespace GDF_HRMS_v1.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{DeleteCountry}", Name = "DeleteCountry")]
+
+        public IActionResult DeleteCountry(int countryId)
+        {
+            if (!_npRepo.CountryExists(countryId))
+            {
+                return NotFound();
+            }
+
+            var countryObj = _npRepo.GetCountryById(countryId);
+            if (!_npRepo.DeleteCountry(countryObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when deleting the record {countryObj.Name}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         ICollection<Position> GetAllPositions();
         ICollection<MaritalStatus> GetAllMaritalStatus();
         EmployeePI GetEmployeePIById(int employeeId);
+        Country GetCountryById(int countryId);
         CareerHistory GetEmployeeCHByEId(int employeeId);
         EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber);
         ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
@@ -29,6 +30,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         bool EmployeePIExists(string name);
         bool ReligionExists(string name);
         bool CountryExists(string name);
+        bool CountryExists(int id);
         bool NationalityExists(string name);
         bool DepartmentExists(string name);
         bool EthnicityExists(string name);
@@ -49,6 +51,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         bool CreateRegion(Region region);
         bool UpdateEmployeePI(EmployeePI employeePI);
         bool DeleteEmployeePI(EmployeePI employeePI);
+        bool DeleteCountry(Country country);
         bool UpdateEmployeeCH(CareerHistory careerHistory);
         bool Save();
 
