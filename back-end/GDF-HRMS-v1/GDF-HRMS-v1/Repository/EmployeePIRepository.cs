@@ -21,13 +21,55 @@ namespace GDF_HRMS_v1.Repository
 
         public bool CreateEmployeePI(EmployeePI employeePI)
         {
-
-           
-
-
             _db.EmployeePIs.Add(employeePI);
+            return Save();
+        }
 
-        
+        public bool CreateReligion(Religion religion)
+        {
+            _db.Religions.Add(religion);
+            return Save();
+        }
+
+        public bool CreateCountry(Country country)
+        {
+            _db.Countries.Add(country);
+            return Save();
+        }
+
+        public bool CreateNationality(Nationality nationality)
+        {
+            _db.Nationalities.Add(nationality);
+            return Save();
+        }
+
+        public bool CreateDepartment(Department department)
+        {
+            _db.Departments.Add(department);
+            return Save();
+        }
+
+        public bool CreateEthnicity(Ethnicity ethnicity)
+        {
+            _db.Ethnicities.Add(ethnicity);
+            return Save();
+        }
+
+        public bool CreateMaritalStatus(MaritalStatus maritalStatus)
+        {
+            _db.MaritalStatuses.Add(maritalStatus);
+            return Save();
+        }
+
+        public bool CreatePosition(Position position)
+        {
+            _db.Positions.Add(position);
+            return Save();
+        }
+
+        public bool CreateRegion(Region region)
+        {
+            _db.Regions.Add(region);
             return Save();
         }
 
@@ -43,6 +85,53 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
+        public bool ReligionExists(string name)
+        {
+            bool value = _db.Religions.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool CountryExists(string name)
+        {
+            bool value = _db.Countries.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool NationalityExists(string name)
+        {
+            bool value = _db.Nationalities.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool DepartmentExists(string name)
+        {
+            bool value = _db.Departments.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool EthnicityExists(string name)
+        {
+            bool value = _db.Ethnicities.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool MaritalStatusExists(string name)
+        {
+            bool value = _db.MaritalStatuses.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool PositionExists(string name)
+        {
+            bool value = _db.Positions.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool RegionExists(string name)
+        {
+            bool value = _db.Regions.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
         public bool EmployeePIExists(int id)
         {
             bool value = _db.EmployeePIs.Any(a => a.Id == id);
@@ -191,6 +280,16 @@ namespace GDF_HRMS_v1.Repository
         public ICollection<EmployeePI> GetEmployeePIs()
         {
             return _db.EmployeePIs.OrderBy(a => a.Lname).ToList();
+        }
+
+        public ICollection<Country> GetAllCountries()
+        {
+            return _db.Countries.OrderBy(a => a.Name).ToList();
+        }
+
+        public ICollection<Department> GetAllDepartments()
+        {
+            return _db.Departments.OrderBy(a => a.Name).ToList();
         }
 
         public ICollection<Region> GetAllRegions()
