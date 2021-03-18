@@ -70,22 +70,6 @@ namespace GDF_HRMS_v1.Controllers
             return Ok(objDto);
 
         }
-        
-
-        //Get employee info by Last Name
-        // [HttpGet("lname/{employeeLname}", Name = "GetEmployeePIByLname")]
-        [HttpGet("LastName", Name = "GetEmployeePIByLname")]
-        public IActionResult GetEmployeePIByLname(string employeeLname)
-        {
-            var obj = _npRepo.GetEmployeePIByLname(employeeLname);
-            if (obj == null)
-            {
-                return NotFound();
-            }
-            var objDto = _mapper.Map<EmployeePIDto>(obj);
-            return Ok(objDto);
-
-        }
 
         //Get employee career history by ID
         [HttpGet("employeeCH/id/{employeeId:int}", Name = "GetEmployeeCHByEId")]

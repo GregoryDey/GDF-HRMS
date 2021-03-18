@@ -53,7 +53,7 @@ namespace GDF_HRMS_v1.Models
 
         //public int? CHId { get; set; }
         //[ForeignKey("CHId")]
-        public CareerHistory CareerHistory { get; set; }
+        //public CareerHistory CareerHistory { get; set; }
 
         //  public int? RegId { get; set; }
         // [ForeignKey("RegId")]

@@ -233,85 +233,82 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
-        public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition )
+        public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
-            //return _db.EmployeePIs.FirstOrDefault(a => a.Fname.ToLower().Trim() == employeeFname.ToLower().Trim());
-
-            return _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || a.CareerHistory.Position.Name == employeePosition).Select(a => new EmployeePIDto
+            var employeeData = _db.CareerHistories.Where(a => a.EmployeePI.Fname == employeeFname || a.EmployeePI.Lname == employeeLname || a.Position.Name == employeePosition)
+                .Join(
+                    _db.EmployeePIs,
+                    careerHistory => careerHistory.EId,
+                    employeePI => employeePI.Id,
+                    (careerHistory, employeePI) => new
+                    {
+                        CareerHistoryId = careerHistory.Id,
+                        EmployeePIFname = employeePI.Fname,
+                        EmployeePILname = employeePI.Lname,
+                        EmployeePIOname = employeePI.Oname,
+                        EmployeePINidNumber = employeePI.NidNumber,
+                        EmployeePIPNumber = employeePI.PNumber,
+                        EmployeePIPExpirationDate = employeePI.PExpirationDate,
+                        EmployeePISex = employeePI.Sex,
+                        EmployeePITinNumber = employeePI.TinNumber,
+                        EmployeePITitle = employeePI.Title,
+                        EmployeePIDob = employeePI.Dob,
+                        EmployeePIReligion = employeePI.Religion,
+                        EmployeePINationality = employeePI.Nationality,
+                        EmployeePIEthnicity = employeePI.Ethnicity,
+                        EmployeePIMaritalStatus = employeePI.MaritalStatus,
+                        EmployeePICountry = employeePI.Address.Country.Name,
+                        EmployeePIRegion = employeePI.Address.Region.Name,
+                        EmployeePIRNumber = employeePI.RNumber,
+                        EmployeePILot = employeePI.Address.Lot,
+                        EmployeePIArea = employeePI.Address.Area,
+                        EmployeePIStreet = employeePI.Address.Street,
+                        EmployeePIVillage = employeePI.Address.Village,
+                        EmployeePIHNumber = employeePI.ContactInfo.HNumber,
+                        EmployeePICNumber = employeePI.ContactInfo.CNumber,
+                        EmployeePIWNumber = employeePI.ContactInfo.WNumber,
+                        EmployeePIEmail = employeePI.ContactInfo.Email,
+                        CareerHistoryPosition = careerHistory.Position.Name,
+                        CareerHistoryDepartmentName = careerHistory.Department.Name,
+                        CareerHistoryDepartmentDescription = careerHistory.Department.Description,
+                        CareerHistoryDepartmentLocation = careerHistory.Department.Location
+                    }
+                ).ToList();
+            return employeeData.Select(a => new EmployeePIDto
             {
-                FirstName = a.Fname,
-                LastName = a.Lname,
-                OtherName = a.Oname,
-                NationalIdNumber = a.NidNumber,
-                PassportNumber = a.PNumber,
-                PassportExpirationDate = a.PExpirationDate,
-                Sex = a.Sex,
-                TinNumber = a.TinNumber,
-                Title = a.Title,
-                DateOfBirth = a.Dob,
-                Religion = a.Religion.Name,
-                Nationality = a.Nationality.Name,
-                Ethnicity = a.Ethnicity.Name,
-                MaritalStatus = a.MaritalStatus.Name,
-                //Position = a.CareerHistory.Position.Name,
-                RegimentNumber = a.RNumber,
-                AddressLot = a.Address.Lot,
-                AddressArea = a.Address.Area,
-                AddressStreet = a.Address.Street,
-                AddressVillage = a.Address.Village,
-                Country = a.Address.Country.Name,
-                Region = a.Address.Region.Name,
-                HomeNumber = a.ContactInfo.HNumber,
-                CellNumber = a.ContactInfo.CNumber,
-                WorkNumber = a.ContactInfo.WNumber,
-                Email = a.ContactInfo.Email
-                //DepartmentName = a.Department.Name,
-               // DepartmentDescription = a.Department.Description,
-               // DepartmentLocation = a.Department.Location
-
-
-
+                FirstName = a.EmployeePIFname,
+                LastName = a.EmployeePILname,
+                OtherName = a.EmployeePIOname,
+                NationalIdNumber = a.EmployeePINidNumber,
+                PassportNumber = a.EmployeePIPNumber,
+                PassportExpirationDate = a.EmployeePIPExpirationDate,
+                Sex = a.EmployeePISex,
+                TinNumber = a.EmployeePITinNumber,
+                Title = a.EmployeePITitle,
+                DateOfBirth = a.EmployeePIDob,
+                Religion = a.EmployeePIReligion.Name,
+                Nationality = a.EmployeePINationality.Name,
+                Ethnicity = a.EmployeePIEthnicity.Name,
+                MaritalStatus = a.EmployeePIMaritalStatus.Name,
+                Country = a.EmployeePICountry,
+                Position = a.CareerHistoryPosition,
+                Region = a.EmployeePIRegion,
+                RegimentNumber = a.EmployeePIRNumber,
+                AddressLot = a.EmployeePILot,
+                AddressArea = a.EmployeePIArea,
+                AddressStreet = a.EmployeePIStreet,
+                AddressVillage = a.EmployeePIVillage,
+                HomeNumber = a.EmployeePIHNumber,
+                CellNumber = a.EmployeePICNumber,
+                WorkNumber = a.EmployeePIWNumber,
+                Email = a.EmployeePIEmail,
+                DepartmentName = a.CareerHistoryDepartmentName,
+                DepartmentDescription = a.CareerHistoryDepartmentDescription,
+                DepartmentLocation = a.CareerHistoryDepartmentLocation
             }).ToList();
         }
 
-        public EmployeePIDto GetEmployeePIByLname(string employeeLname)
-        {
-            //return _db.EmployeePIs.FirstOrDefault(a => a.Fname.ToLower().Trim() == employeeFname.ToLower().Trim());
-
-            return _db.EmployeePIs.Where(a => a.Lname == employeeLname).Select(a => new EmployeePIDto
-            {
-                FirstName = a.Fname,
-                LastName = a.Lname,
-                OtherName = a.Oname,
-                NationalIdNumber = a.NidNumber,
-                PassportNumber = a.PNumber,
-                PassportExpirationDate = a.PExpirationDate,
-                Sex = a.Sex,
-                TinNumber = a.TinNumber,
-                Title = a.Title,
-                DateOfBirth = a.Dob,
-                Religion = a.Religion.Name,
-                Nationality = a.Nationality.Name,
-                Ethnicity = a.Ethnicity.Name,
-                MaritalStatus = a.MaritalStatus.Name,
-                Country = a.Address.Country.Name,
-               // Position = a.CareerHistory.Position.Name,
-                Region = a.Address.Region.Name,
-                RegimentNumber = a.RNumber,
-                AddressLot = a.Address.Lot,
-                AddressArea = a.Address.Area,
-                AddressStreet = a.Address.Street,
-                AddressVillage = a.Address.Village,
-                HomeNumber = a.ContactInfo.HNumber,
-                CellNumber = a.ContactInfo.CNumber,
-                WorkNumber = a.ContactInfo.WNumber,
-                Email = a.ContactInfo.Email
-
-
-
-            }).FirstOrDefault();
-        }
-
+        
         public EmployeePI GetEmployeePIById(int employeeId)
         {
             return _db.EmployeePIs.FirstOrDefault(a => a.Id == employeeId);
@@ -358,40 +355,76 @@ namespace GDF_HRMS_v1.Repository
         }
         public EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber)
         {
-            return _db.EmployeePIs.Where(a => a.RNumber == employeeRNumber).Select(a => new EmployeePIDto
+            var employeeData = _db.EmployeePIs.Where(a => a.RNumber.Equals(employeeRNumber))
+                .Join(
+                    _db.CareerHistories,
+                    employeePI => employeePI.Id,
+                    careerHistory => careerHistory.EmployeePI.Id,
+                    (employeePI, careerHistory) => new
+                    {
+                        CareerHistoryId = careerHistory.Id,
+                        EmployeePIFname = employeePI.Fname,
+                        EmployeePILname = employeePI.Lname,
+                        EmployeePIOname = employeePI.Oname,
+                        EmployeePINidNumber = employeePI.NidNumber,
+                        EmployeePIPNumber = employeePI.PNumber,
+                        EmployeePIPExpirationDate = employeePI.PExpirationDate,
+                        EmployeePISex = employeePI.Sex,
+                        EmployeePITinNumber = employeePI.TinNumber,
+                        EmployeePITitle = employeePI.Title,
+                        EmployeePIDob = employeePI.Dob,
+                        EmployeePIReligion = employeePI.Religion,
+                        EmployeePINationality = employeePI.Nationality,
+                        EmployeePIEthnicity = employeePI.Ethnicity,
+                        EmployeePIMaritalStatus = employeePI.MaritalStatus,
+                        EmployeePICountry = employeePI.Address.Country.Name,
+                        EmployeePIRegion = employeePI.Address.Region.Name,
+                        EmployeePIRNumber = employeePI.RNumber,
+                        EmployeePILot = employeePI.Address.Lot,
+                        EmployeePIArea = employeePI.Address.Area,
+                        EmployeePIStreet = employeePI.Address.Street,
+                        EmployeePIVillage = employeePI.Address.Village,
+                        EmployeePIHNumber = employeePI.ContactInfo.HNumber,
+                        EmployeePICNumber = employeePI.ContactInfo.CNumber,
+                        EmployeePIWNumber = employeePI.ContactInfo.WNumber,
+                        EmployeePIEmail = employeePI.ContactInfo.Email,
+                        CareerHistoryPosition = careerHistory.Position.Name,
+                        CareerHistoryDepartmentName = careerHistory.Department.Name,
+                        CareerHistoryDepartmentDescription = careerHistory.Department.Description,
+                        CareerHistoryDepartmentLocation = careerHistory.Department.Location
+                    }
+                );
+            return employeeData.Select(a => new EmployeePIDto
             {
-                FirstName = a.Fname,
-                LastName = a.Lname,
-                OtherName = a.Oname,
-                NationalIdNumber = a.NidNumber,
-                PassportNumber = a.PNumber,
-                PassportExpirationDate = a.PExpirationDate,
-                Sex = a.Sex,
-                TinNumber = a.TinNumber,
-                Title = a.Title,
-                DateOfBirth = a.Dob,
-                Religion = a.Religion.Name,
-                Nationality = a.Nationality.Name,
-                Ethnicity = a.Ethnicity.Name,
-                MaritalStatus = a.MaritalStatus.Name,
-                Country = a.Address.Country.Name,
-                //Position = a.CareerHistory.Position.Name,
-                Region = a.Address.Country.Name,
-                RegimentNumber = a.RNumber,
-                AddressLot = a.Address.Lot,
-                AddressArea = a.Address.Area,
-                AddressStreet = a.Address.Street,
-                AddressVillage = a.Address.Village,
-                HomeNumber = a.ContactInfo.HNumber,
-                CellNumber = a.ContactInfo.CNumber,
-                WorkNumber = a.ContactInfo.WNumber,
-                Email = a.ContactInfo.Email,
-               /// DepartmentName = a.CareerHistory.Department.Name,
-               // DepartmentDescription = a.CareerHistory.Department.Description,
-               // DepartmentLocation = a.CareerHistory.Department.Location
-
-
-
+                FirstName = a.EmployeePIFname,
+                LastName = a.EmployeePILname,
+                OtherName = a.EmployeePIOname,
+                NationalIdNumber = a.EmployeePINidNumber,
+                PassportNumber = a.EmployeePIPNumber,
+                PassportExpirationDate = a.EmployeePIPExpirationDate,
+                Sex = a.EmployeePISex,
+                TinNumber = a.EmployeePITinNumber,
+                Title = a.EmployeePITitle,
+                DateOfBirth = a.EmployeePIDob,
+                Religion = a.EmployeePIReligion.Name,
+                Nationality = a.EmployeePINationality.Name,
+                Ethnicity = a.EmployeePIEthnicity.Name,
+                MaritalStatus = a.EmployeePIMaritalStatus.Name,
+                Country = a.EmployeePICountry,
+                Position = a.CareerHistoryPosition,
+                Region = a.EmployeePIRegion,
+                RegimentNumber = a.EmployeePIRNumber,
+                AddressLot = a.EmployeePILot,
+                AddressArea = a.EmployeePIArea,
+                AddressStreet = a.EmployeePIStreet,
+                AddressVillage = a.EmployeePIVillage,
+                HomeNumber = a.EmployeePIHNumber,
+                CellNumber = a.EmployeePICNumber,
+                WorkNumber = a.EmployeePIWNumber,
+                Email = a.EmployeePIEmail,
+                DepartmentName = a.CareerHistoryDepartmentName,
+                DepartmentDescription = a.CareerHistoryDepartmentDescription,
+                DepartmentLocation = a.CareerHistoryDepartmentLocation
             }).FirstOrDefault();
 
             //var result =  (from a in _db.EmployeePIs
