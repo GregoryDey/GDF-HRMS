@@ -85,6 +85,48 @@ namespace GDF_HRMS_v1.Repository
             return Save();
         }
 
+        public bool DeleteDepartment(Department department)
+        {
+            _db.Departments.Remove(department);
+            return Save();
+        }
+
+        public bool DeleteEthnicity(Ethnicity ethnicity)
+        {
+            _db.Ethnicities.Remove(ethnicity);
+            return Save();
+        }
+
+        public bool DeleteMaritalStatus(MaritalStatus maritalStatus)
+        {
+            _db.MaritalStatuses.Remove(maritalStatus);
+            return Save();
+        }
+
+        public bool DeleteNationality(Nationality nationality)
+        {
+            _db.Nationalities.Remove(nationality);
+            return Save();
+        }
+
+        public bool DeletePosition(Position position)
+        {
+            _db.Positions.Remove(position);
+            return Save();
+        }
+
+        public bool DeleteRegion(Region region)
+        {
+            _db.Regions.Remove(region);
+            return Save();
+        }
+
+        public bool DeleteReligion(Religion religion)
+        {
+            _db.Religions.Remove(religion);
+            return Save();
+        }
+
         public bool EmployeePIExists(string name)
         {
             bool value = _db.EmployeePIs.Any(a => a.Lname.ToLower().Trim() == name.ToLower().Trim());
@@ -94,6 +136,12 @@ namespace GDF_HRMS_v1.Repository
         public bool ReligionExists(string name)
         {
             bool value = _db.Religions.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool ReligionExists(int Id)
+        {
+            bool value = _db.Religions.Any(a => a.Id == Id);
             return value;
         }
 
@@ -114,9 +162,21 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
+        public bool NationalityExists(int Id)
+        {
+            bool value = _db.Nationalities.Any(a => a.Id == Id);
+            return value;
+        }
+
         public bool DepartmentExists(string name)
         {
             bool value = _db.Departments.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool DepartmentExists(int Id)
+        {
+            bool value = _db.Departments.Any(a => a.Id == Id);
             return value;
         }
 
@@ -126,9 +186,21 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
+        public bool EthnicityExists(int Id)
+        {
+            bool value = _db.Ethnicities.Any(a => a.Id == Id);
+            return value;
+        }
+
         public bool MaritalStatusExists(string name)
         {
             bool value = _db.MaritalStatuses.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool MaritalStatusExists(int Id)
+        {
+            bool value = _db.MaritalStatuses.Any(a => a.Id == Id);
             return value;
         }
 
@@ -138,9 +210,21 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
+        public bool PositionExists(int Id)
+        {
+            bool value = _db.Positions.Any(a => a.Id == Id);
+            return value;
+        }
+
         public bool RegionExists(string name)
         {
             bool value = _db.Regions.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool RegionExists(int Id)
+        {
+            bool value = _db.Regions.Any(a => a.Id == Id);
             return value;
         }
         public bool EmployeePIExists(int id)
@@ -233,6 +317,41 @@ namespace GDF_HRMS_v1.Repository
         public Country GetCountryById(int countryId)
         {
             return _db.Countries.FirstOrDefault(a => a.Id == countryId);
+        }
+
+        public Department GetDepartmentById(int departmentId)
+        {
+            return _db.Departments.FirstOrDefault(a => a.Id == departmentId);
+        }
+
+        public Ethnicity GetEthnicityById(int ethnicityId)
+        {
+            return _db.Ethnicities.FirstOrDefault(a => a.Id == ethnicityId);
+        }
+
+        public MaritalStatus GetMaritalStatusById(int maritalStatusId)
+        {
+            return _db.MaritalStatuses.FirstOrDefault(a => a.Id == maritalStatusId);
+        }
+
+        public Nationality GetNationalityById(int nationalityId)
+        {
+            return _db.Nationalities.FirstOrDefault(a => a.Id == nationalityId);
+        }
+
+        public Position GetPositionById(int positionId)
+        {
+            return _db.Positions.FirstOrDefault(a => a.Id == positionId);
+        }
+
+        public Region GetRegionById(int regionId)
+        {
+            return _db.Regions.FirstOrDefault(a => a.Id == regionId);
+        }
+
+        public Religion GetReligionById(int religionId)
+        {
+            return _db.Religions.FirstOrDefault(a => a.Id == religionId);
         }
         public EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber)
         {
