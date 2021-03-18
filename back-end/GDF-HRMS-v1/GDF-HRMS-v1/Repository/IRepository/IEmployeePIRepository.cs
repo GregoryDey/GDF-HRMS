@@ -22,6 +22,13 @@ namespace GDF_HRMS_v1.Repository.IRepository
         ICollection<MaritalStatus> GetAllMaritalStatus();
         EmployeePI GetEmployeePIById(int employeeId);
         Country GetCountryById(int countryId);
+        Department GetDepartmentById(int departmentId);
+        Ethnicity GetEthnicityById(int ethnicityId);
+        MaritalStatus GetMaritalStatusById(int maritalStatusId);
+        Nationality GetNationalityById(int nationalityId);
+        Position GetPositionById(int positionId);
+        Region GetRegionById(int regionId);
+        Religion GetReligionById(int religionId);
         CareerHistory GetEmployeeCHByEId(int employeeId);
         EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber);
         ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
@@ -29,14 +36,21 @@ namespace GDF_HRMS_v1.Repository.IRepository
         EmployeePIDto GetEmployeePIByLname(string employeeLname);
         bool EmployeePIExists(string name);
         bool ReligionExists(string name);
+        bool ReligionExists(int id);
         bool CountryExists(string name);
         bool CountryExists(int id);
         bool NationalityExists(string name);
+        bool NationalityExists(int id);
         bool DepartmentExists(string name);
+        bool DepartmentExists(int id);
         bool EthnicityExists(string name);
+        bool EthnicityExists(int id);
         bool MaritalStatusExists(string name);
+        bool MaritalStatusExists(int id);
         bool PositionExists(string name);
+        bool PositionExists(int id);
         bool RegionExists(string name);
+        bool RegionExists(int id);
         bool EmployeePIExists(int id);
         bool EmployeeCHExists(int id);
         bool CreateEmployeePI(EmployeePI employeePI);
@@ -52,6 +66,14 @@ namespace GDF_HRMS_v1.Repository.IRepository
         bool UpdateEmployeePI(EmployeePI employeePI);
         bool DeleteEmployeePI(EmployeePI employeePI);
         bool DeleteCountry(Country country);
+        bool DeleteDepartment(Department department);
+        bool DeleteEthnicity(Ethnicity ethnicity);
+        bool DeleteMaritalStatus(MaritalStatus maritalStatus);
+        bool DeleteNationality(Nationality nationality);
+
+        bool DeletePosition(Position position);
+        bool DeleteRegion(Region region);
+        bool DeleteReligion(Religion religion);
         bool UpdateEmployeeCH(CareerHistory careerHistory);
         bool Save();
 
