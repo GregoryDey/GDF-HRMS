@@ -70,5 +70,7 @@ namespace GDF_HRMS_v1.Models
         public DateTime PassportExpirationDate { get; set; }
         public int TinNumber { get; set; }
 
+        public List<CareerHistoryDto> CareerHistoryList { get; set; }
+
     }
 }

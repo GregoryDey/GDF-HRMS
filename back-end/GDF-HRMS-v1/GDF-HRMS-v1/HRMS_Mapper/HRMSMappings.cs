@@ -39,6 +39,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.WorkNumber, opt => opt.MapFrom(src => src.ContactInfo.WNumber))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.ContactInfo.Email))
                 .ForMember(dest => dest.Nationality, opt => opt.MapFrom(src => src.Nationality.Name));
+                
             // .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.CareerHistory.Department.Name))
             // .ForMember(dest => dest.DepartmentDescription, opt => opt.MapFrom(src => src.CareerHistory.Department.Description))
             // .ForMember(dest => dest.DepartmentLocation, opt => opt.MapFrom(src => src.CareerHistory.Department.Location));

@@ -1,4 +1,5 @@
-﻿using GDF_HRMS_v1.Models;
+﻿using GDF_HRMS_v1.Data;
+using GDF_HRMS_v1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         Region GetRegionById(int regionId);
         Religion GetReligionById(int religionId);
         CareerHistory GetEmployeeCHByEId(int employeeId);
-        EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber);
+        EmployeePI GetEmployeePIByRegNumber(int employeeRNumber);
         ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
         bool EmployeePIExists(string name);
         bool ReligionExists(string name);

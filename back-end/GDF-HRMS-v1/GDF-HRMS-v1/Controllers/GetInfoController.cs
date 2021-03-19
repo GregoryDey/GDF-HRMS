@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using GDF_HRMS_v1.Data;
 using GDF_HRMS_v1.Models;
 using GDF_HRMS_v1.Models.Dtos;
 using GDF_HRMS_v1.Repository.IRepository;
@@ -17,7 +18,6 @@ namespace GDF_HRMS_v1.Controllers
     {
         private IEmployeePIRepository _npRepo;
         private readonly IMapper _mapper;
-
         public GetInfoController(IEmployeePIRepository npRepo, IMapper mapper)
         {
             _npRepo = npRepo;
@@ -132,12 +132,14 @@ namespace GDF_HRMS_v1.Controllers
         [HttpGet("RegimentNumber/{employeeRNumber:int}", Name = "GetEmployeePIByRegNumber")]
         public IActionResult GetEmployeePIByRegNumber(int employeeRNumber)
         {
+           
             var obj = _npRepo.GetEmployeePIByRegNumber(employeeRNumber);
             if (obj == null)
             {
                 return NotFound();
             }
             var objDto = _mapper.Map<EmployeePIDto>(obj);
+            
             return Ok(objDto);
 
         }
