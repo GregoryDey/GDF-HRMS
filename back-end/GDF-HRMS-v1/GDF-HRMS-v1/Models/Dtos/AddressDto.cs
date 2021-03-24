@@ -15,11 +15,15 @@ namespace GDF_HRMS_v1.Models
         public string Street { get; set; }
         public string Area { get; set; }
         public string Village { get; set; }
-        public int Reg { get; set; }
-        [ForeignKey("Reg")]
-        public Region Region { get; set; }
-        public int Ctry { get; set; }
-        [ForeignKey("Ctry")]
-        public Country Country { get; set; }
+
+        public string Region { get; set; }
+
+        public string Country { get; set; }
+        //public int Reg { get; set; }
+        //[ForeignKey("Reg")]
+        //public Region Region { get; set; }
+        //public int Ctry { get; set; }
+        //[ForeignKey("Ctry")]
+        //public Country Country { get; set; }
     }
 }

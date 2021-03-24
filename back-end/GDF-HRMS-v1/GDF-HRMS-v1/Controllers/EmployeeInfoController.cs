@@ -72,7 +72,7 @@ namespace GDF_HRMS_v1.Controllers
         }
 
         //Get employee career history by ID
-        [HttpGet("employeeCH/id/{employeeId:int}", Name = "GetEmployeeCHByEId")]
+        [HttpGet("GetEmployeeCareerHistoryByTheirId", Name = "GetEmployeeCareerHistoryByTheirId")]
         public IActionResult GetEmployeeCHByEId(int employeeId)
         {
             var obj = _npRepo.GetEmployeeCHByEId(employeeId);
@@ -80,18 +80,32 @@ namespace GDF_HRMS_v1.Controllers
             {
                 return NotFound();
             }
-            var objDto = _mapper.Map<CareerHistoryDto>(obj);
+            var objDto = _mapper.Map<List<CareerHistoryDto>>(obj);
             return Ok(objDto);
 
         }
 
-        
+        //Get employee career history by ID
+        [HttpGet("GetEmployeeAddressByTheirId", Name = "GetEmployeeAddressByTheirId")]
+        public IActionResult GetEmployeeAddressByEId(int employeeId)
+        {
+            var obj = _npRepo.GetEmployeeAddressByEId(employeeId);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var objDto = _mapper.Map<List<AddressDto>>(obj);
+            return Ok(objDto);
 
-        
+        }
 
 
 
-        
+
+
+
+
+
     }
 
 }

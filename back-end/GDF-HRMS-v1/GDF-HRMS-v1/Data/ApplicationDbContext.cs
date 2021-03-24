@@ -17,7 +17,7 @@ namespace GDF_HRMS_v1.Data
         public DbSet<EmployeePI> EmployeePIs { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<CareerHistory> CareerHistories { get; set; }
-        public DbSet<ContactInfo> ContactInfos { get; set; }
+        //public DbSet<ContactInfo> ContactInfos { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Ethnicity> Ethnicities { get; set; }
