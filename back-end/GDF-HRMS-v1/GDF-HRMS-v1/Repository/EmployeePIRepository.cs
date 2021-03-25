@@ -86,6 +86,12 @@ namespace GDF_HRMS_v1.Repository
             return Save();
         }
 
+        public bool DeleteAddress(Address address)
+        {
+            _db.Addresses.Remove(address);
+            return Save();
+        }
+
         public bool DeleteEmployeePI(EmployeePI employeePI)
         {
             _db.EmployeePIs.Remove(employeePI);
@@ -248,7 +254,7 @@ namespace GDF_HRMS_v1.Repository
 
         public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
-            var employeeData = _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || _db.CareerHistories.Positions.Where(a => a.Name == employeePosition)). // == employeePosition).
+            var employeeData = _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || _db.CareerHistories.Any(a => a.Position.Name == employeePosition)). // == employeePosition).
                
 
                                 IncludeOptimized(x => x.MaritalStatus).
@@ -266,7 +272,7 @@ namespace GDF_HRMS_v1.Repository
                                 FirstOrDefault();
 
 
-            return employeeData;
+            return (ICollection<EmployeePIDto>)employeeData;
 
             //.Join(
             //    _db.EmployeePIs,
@@ -537,6 +543,11 @@ namespace GDF_HRMS_v1.Repository
             _db.CareerHistories.Update(careerHistory);
             return Save();
         }
+        public bool UpdateEmployeeAddress(Address address)
+        {
+            _db.Addresses.Update(address);
+            return Save();
+        }
         public List<CareerHistory> GetEmployeeCHByEId(int employeeId)
         {
             return _db.CareerHistories.Where(a => a.EId == employeeId)
@@ -546,13 +557,18 @@ namespace GDF_HRMS_v1.Repository
            // return null;
         }
 
-        public List<Address> GetEmployeeAddressByEId(int employeeId)
+        public Address GetAddressById(int addressId)
         {
-            return _db.Addresses.Where(a => a.EId == employeeId)
+            //return _db.Addresses.Where(a => a.Id == addressId)
+            //  .IncludeOptimized(a => a.Region)
+            //.IncludeOptimized(a => a.Country)
+            //.ToList();
+            // return null;
+            var addressData = _db.Addresses.Where(a => a.Id == addressId)
                 .IncludeOptimized(a => a.Region)
                 .IncludeOptimized(a => a.Country)
-                .ToList();
-            // return null;
+                .FirstOrDefault();
+            return addressData;
         }
         public bool EmployeeCHExists(int id)
         {
@@ -560,7 +576,7 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
-        public bool EmployeeAddressExists(int id)
+        public bool AddressExists(int id)
         {
             bool value = _db.Addresses.Any(a => a.Id == id);
             return value;

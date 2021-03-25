@@ -64,7 +64,7 @@ namespace GDF_HRMS_v1.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (_npRepo.EmployeeAddressExists(addressDto.Id))
+            if (_npRepo.AddressExists(addressDto.Id))
             {
                 ModelState.AddModelError("", "Address already exists.");
                 return StatusCode(404, ModelState);
