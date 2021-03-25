@@ -76,7 +76,7 @@ namespace GDF_HRMS_v1.Models
 
 
 
-        public ICollection<CareerHistory> CareerHistorys { get; set; }
+        public ICollection<CareerHistory> CareerHistories { get; set; }
         public ICollection<Address> Addresses { get; set; }
         //public ICollection<Department> Departments { get; set; } 
 

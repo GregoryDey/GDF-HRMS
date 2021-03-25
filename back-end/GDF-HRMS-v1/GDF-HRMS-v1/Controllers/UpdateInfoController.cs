@@ -43,10 +43,10 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpPatch("update/employeeCH/{employeeId:int}", Name = "UpdateEmployeeCH")] //Update career history
-        public IActionResult UpdateEmployeeCH(int employeeId, [FromBody] CareerHistoryDto careerHistoryDto)
+        [HttpPatch("update/employeeCH/{employeeCHId}", Name = "UpdateEmployeeCH")] //Update career history
+        public IActionResult UpdateEmployeeCH(int employeeCHId, [FromBody] UpdateCareerHistoryDto careerHistoryDto)
         {
-            if (careerHistoryDto == null || employeeId != careerHistoryDto.Id)
+            if (careerHistoryDto == null || employeeCHId != careerHistoryDto.Id)
             {
                 return BadRequest(ModelState);
             }
@@ -55,6 +55,23 @@ namespace GDF_HRMS_v1.Controllers
             if (!_npRepo.UpdateEmployeeCH(careerHistoryObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when updating the record {careerHistoryObj.Id}");
+                return StatusCode(500, ModelState);
+            }
+            return NoContent();
+        }
+
+        [HttpPatch("update/employeePI/address/{addressId:int}", Name = "UpdateEmployeeAddress")] //Update employee address
+        public IActionResult UpdateEmployeeAddress(int addressId, [FromBody] UpdateAddressDto updateAddressDto)
+        {
+            if (updateAddressDto == null || addressId != updateAddressDto.Id)
+            {
+                return BadRequest(ModelState);
+            }
+            var addressObj = _mapper.Map<Address>(updateAddressDto);
+
+            if (!_npRepo.UpdateEmployeeAddress(addressObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when updating the record {addressObj.Id}");
                 return StatusCode(500, ModelState);
             }
             return NoContent();

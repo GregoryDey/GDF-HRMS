@@ -31,7 +31,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         Region GetRegionById(int regionId);
         Religion GetReligionById(int religionId);
         List<CareerHistory> GetEmployeeCHByEId(int employeeId);
-        List<Address> GetEmployeeAddressByEId(int employeeId);
+        Address GetAddressById(int addressId);
         EmployeePI GetEmployeePIByRegNumber(int employeeRNumber);
         ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
         bool EmployeePIExists(string name);
@@ -53,7 +53,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         bool RegionExists(int id);
         bool EmployeePIExists(int id);
         bool EmployeeCHExists(int id);
-        bool EmployeeAddressExists(int id);
+        bool AddressExists(int id);
 
         bool CreateEmployeeCH(CareerHistory careerHistory);
         bool CreateEmployeeAddress(Address address);
@@ -78,8 +78,10 @@ namespace GDF_HRMS_v1.Repository.IRepository
 
         bool DeletePosition(Position position);
         bool DeleteRegion(Region region);
+        bool DeleteAddress(Address address);
         bool DeleteReligion(Religion religion);
         bool UpdateEmployeeCH(CareerHistory careerHistory);
+        bool UpdateEmployeeAddress(Address address);
         bool Save();
 
       

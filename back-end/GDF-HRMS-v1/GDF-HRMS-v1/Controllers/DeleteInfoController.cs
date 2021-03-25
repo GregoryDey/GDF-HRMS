@@ -24,7 +24,7 @@ namespace GDF_HRMS_v1.Controllers
             _mapper = mapper;
         }
 
-        [HttpDelete("{employeeId:int}", Name = "DeleteEmployee")]
+        [HttpDelete("DeleteEmployee/{employeeId:int}", Name = "DeleteEmployee")]
 
         public IActionResult DeleteEmployeeInfo(int employeeId)
         {
@@ -189,6 +189,25 @@ namespace GDF_HRMS_v1.Controllers
             if (!_npRepo.DeleteReligion(religionObj))
             {
                 ModelState.AddModelError("", $"Something went wrong when deleting the record {religionObj.Name}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("DeleteAddress/{addressId:int}", Name = "DeleteAddress")]
+
+        public IActionResult DeleteAddress(int addressId)
+        {
+            if (!_npRepo.AddressExists(addressId))
+            {
+                return NotFound();
+            }
+
+            var addressObj = _npRepo.GetAddressById(addressId);
+            if (!_npRepo.DeleteAddress(addressObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when deleting the record {addressObj}");
                 return StatusCode(500, ModelState);
             }
 
