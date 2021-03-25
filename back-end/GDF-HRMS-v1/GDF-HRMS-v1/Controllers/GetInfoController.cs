@@ -148,12 +148,12 @@ namespace GDF_HRMS_v1.Controllers
         public IActionResult GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
             var obj = _npRepo.GetEmployeePIByOtherCriteria(employeeFname, employeeLname, employeePosition);
-            if (obj.Count == 0)
+            if (obj == null)
             {
                 return NotFound();
             }
-            //var objDto = _mapper.Map<EmployeePIDto>(obj);
-            return Ok(obj);
+            var objDto = _mapper.Map<EmployeePIDto>(obj);
+            return Ok(objDto);
 
         }
     }

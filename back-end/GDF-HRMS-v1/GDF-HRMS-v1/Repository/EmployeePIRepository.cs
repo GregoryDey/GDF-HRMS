@@ -252,7 +252,7 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
-        public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
+        public EmployeePI GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
             var employeeData = _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || _db.CareerHistories.Any(a => a.Position.Name == employeePosition)). // == employeePosition).
                
@@ -272,7 +272,8 @@ namespace GDF_HRMS_v1.Repository
                                 FirstOrDefault();
 
 
-            return (ICollection<EmployeePIDto>)employeeData;
+           // return (ICollection<EmployeePI>)employeeData;
+            return employeeData;
 
             //.Join(
             //    _db.EmployeePIs,

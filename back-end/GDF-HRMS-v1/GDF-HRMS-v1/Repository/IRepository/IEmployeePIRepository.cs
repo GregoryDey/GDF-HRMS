@@ -33,7 +33,8 @@ namespace GDF_HRMS_v1.Repository.IRepository
         List<CareerHistory> GetEmployeeCHByEId(int employeeId);
         Address GetAddressById(int addressId);
         EmployeePI GetEmployeePIByRegNumber(int employeeRNumber);
-        ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
+       // ICollection<EmployeePI> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
+        EmployeePI GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
         bool EmployeePIExists(string name);
         bool ReligionExists(string name);
         bool ReligionExists(int id);
