@@ -4,13 +4,22 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using GDF_HRMS_v1.Models;
+
 
 namespace GDF_HRMS_v1.Models
 {
     public class Address
     {
+
+        public Address()
+        {
+            //Region = new Region();
+            //Country = new Country();
+        }
         [Key]
         public int Id { get; set; }
+        [Required]
         public string Lot { get; set; }
         public string Street { get; set; }
         public string Area { get; set; }
@@ -22,6 +31,12 @@ namespace GDF_HRMS_v1.Models
         [ForeignKey("Ctry")]
         public Country Country { get; set; }
 
-        public ICollection<EmployeePI> EmployeePIs { get; set; }
+        public int? EId { get; set; }
+        [ForeignKey("EId")]
+        public EmployeePI EmployeePI { get; set; }
+
+
+        // public ICollection<EmployeePI> EmployeePIs { get; set; }
+       // public ICollection<Region> Regions { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Z.EntityFramework.Plus;
 
 namespace GDF_HRMS_v1.Repository
 {
@@ -70,6 +71,18 @@ namespace GDF_HRMS_v1.Repository
         public bool CreateRegion(Region region)
         {
             _db.Regions.Add(region);
+            return Save();
+        }
+
+        public bool CreateEmployeeCH(CareerHistory careerHistory)
+        {
+            _db.CareerHistories.Add(careerHistory);
+            return Save();
+        }
+
+        public bool CreateEmployeeAddress(Address address)
+        {
+            _db.Addresses.Add(address);
             return Save();
         }
 
@@ -235,77 +248,80 @@ namespace GDF_HRMS_v1.Repository
 
         public ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
-            var employeeData = _db.CareerHistories.Where(a => a.EmployeePI.Fname == employeeFname || a.EmployeePI.Lname == employeeLname || a.Position.Name == employeePosition)
-                .Join(
-                    _db.EmployeePIs,
-                    careerHistory => careerHistory.EId,
-                    employeePI => employeePI.Id,
-                    (careerHistory, employeePI) => new
-                    {
-                        CareerHistoryId = careerHistory.Id,
-                        EmployeePIFname = employeePI.Fname,
-                        EmployeePILname = employeePI.Lname,
-                        EmployeePIOname = employeePI.Oname,
-                        EmployeePINidNumber = employeePI.NidNumber,
-                        EmployeePIPNumber = employeePI.PNumber,
-                        EmployeePIPExpirationDate = employeePI.PExpirationDate,
-                        EmployeePISex = employeePI.Sex,
-                        EmployeePITinNumber = employeePI.TinNumber,
-                        EmployeePITitle = employeePI.Title,
-                        EmployeePIDob = employeePI.Dob,
-                        EmployeePIReligion = employeePI.Religion,
-                        EmployeePINationality = employeePI.Nationality,
-                        EmployeePIEthnicity = employeePI.Ethnicity,
-                        EmployeePIMaritalStatus = employeePI.MaritalStatus,
-                        EmployeePICountry = employeePI.Address.Country.Name,
-                        EmployeePIRegion = employeePI.Address.Region.Name,
-                        EmployeePIRNumber = employeePI.RNumber,
-                        EmployeePILot = employeePI.Address.Lot,
-                        EmployeePIArea = employeePI.Address.Area,
-                        EmployeePIStreet = employeePI.Address.Street,
-                        EmployeePIVillage = employeePI.Address.Village,
-                        EmployeePIHNumber = employeePI.ContactInfo.HNumber,
-                        EmployeePICNumber = employeePI.ContactInfo.CNumber,
-                        EmployeePIWNumber = employeePI.ContactInfo.WNumber,
-                        EmployeePIEmail = employeePI.ContactInfo.Email,
-                        CareerHistoryPosition = careerHistory.Position.Name,
-                        CareerHistoryDepartmentName = careerHistory.Department.Name,
-                        CareerHistoryDepartmentDescription = careerHistory.Department.Description,
-                        CareerHistoryDepartmentLocation = careerHistory.Department.Location
-                    }
-                ).ToList();
-            return employeeData.Select(a => new EmployeePIDto
-            {
-                FirstName = a.EmployeePIFname,
-                LastName = a.EmployeePILname,
-                OtherName = a.EmployeePIOname,
-                NationalIdNumber = a.EmployeePINidNumber,
-                PassportNumber = a.EmployeePIPNumber,
-                PassportExpirationDate = a.EmployeePIPExpirationDate,
-                Sex = a.EmployeePISex,
-                TinNumber = a.EmployeePITinNumber,
-                Title = a.EmployeePITitle,
-                DateOfBirth = a.EmployeePIDob,
-                Religion = a.EmployeePIReligion.Name,
-                Nationality = a.EmployeePINationality.Name,
-                Ethnicity = a.EmployeePIEthnicity.Name,
-                MaritalStatus = a.EmployeePIMaritalStatus.Name,
-                Country = a.EmployeePICountry,
-                Position = a.CareerHistoryPosition,
-                Region = a.EmployeePIRegion,
-                RegimentNumber = a.EmployeePIRNumber,
-                AddressLot = a.EmployeePILot,
-                AddressArea = a.EmployeePIArea,
-                AddressStreet = a.EmployeePIStreet,
-                AddressVillage = a.EmployeePIVillage,
-                HomeNumber = a.EmployeePIHNumber,
-                CellNumber = a.EmployeePICNumber,
-                WorkNumber = a.EmployeePIWNumber,
-                Email = a.EmployeePIEmail,
-                DepartmentName = a.CareerHistoryDepartmentName,
-                DepartmentDescription = a.CareerHistoryDepartmentDescription,
-                DepartmentLocation = a.CareerHistoryDepartmentLocation
-            }).ToList();
+            var employeeData = _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || _db.CareerHistories.Positions.Where(a => a.Name == employeePosition)). // == employeePosition).
+               
+
+                                IncludeOptimized(x => x.MaritalStatus).
+                                IncludeOptimized(x => x.Ethnicity).
+                                IncludeOptimized(x => x.Religion).
+                                // IncludeOptimized(x => x.Address).
+                                // IncludeOptimized(x => x.Address.Street).
+                                // IncludeOptimized(x => x.Address.Area).
+                                // IncludeOptimized(x => x.Address.Village).
+                                // IncludeOptimized(x => x.Address.Region).
+                                // IncludeOptimized(x => x.Address.Country).
+                                // IncludeOptimized(x => x.ContactInfo).
+                                IncludeOptimized(x => x.Nationality).
+                               // IncludeOptimized(x => x.CareerHistorys).
+                                FirstOrDefault();
+
+
+            return employeeData;
+
+            //.Join(
+            //    _db.EmployeePIs,
+            //    careerHistory => careerHistory.EId,
+            //    employeePI => employeePI.Id,
+            //    (careerHistory, employeePI) => new
+            //    {
+            //        CareerHistoryId = careerHistory.Id,
+            //        EmployeePIFname = employeePI.Fname,
+            //        EmployeePILname = employeePI.Lname,
+            //        EmployeePIOname = employeePI.Oname,
+            //        EmployeePINidNumber = employeePI.NidNumber,
+            //        EmployeePIPNumber = employeePI.PNumber,
+            //        EmployeePIPExpirationDate = employeePI.PExpirationDate,
+            //        EmployeePISex = employeePI.Sex,
+            //        EmployeePITinNumber = employeePI.TinNumber,
+            //        EmployeePITitle = employeePI.Title,
+            //        EmployeePIDob = employeePI.Dob,
+            //        EmployeePIReligion = employeePI.Religion,
+            //        EmployeePINationality = employeePI.Nationality,
+            //        EmployeePIEthnicity = employeePI.Ethnicity,
+            //        EmployeePIMaritalStatus = employeePI.MaritalStatus,
+            //        //EmployeePICountry = employeePI.Address.Country.Name,
+            //        //EmployeePIRegion = employeePI.Address.Region.Name,
+            //        EmployeePIRNumber = employeePI.RNumber,
+
+            //        CareerHistoryPosition = careerHistory.Position.Name,
+            //        CareerHistoryDepartmentName = careerHistory.Department.Name,
+            //        CareerHistoryDepartmentDescription = careerHistory.Department.Description,
+            //        CareerHistoryDepartmentLocation = careerHistory.Department.Location
+            //    }
+            //).ToList();
+            //return employeeData.Select(a => new EmployeePIDto
+            //{
+            //    FirstName = a.EmployeePIFname,
+            //    LastName = a.EmployeePILname,
+            //    OtherName = a.EmployeePIOname,
+            //    NationalIdNumber = a.EmployeePINidNumber,
+            //    PassportNumber = a.EmployeePIPNumber,
+            //    PassportExpirationDate = a.EmployeePIPExpirationDate,
+            //    Sex = a.EmployeePISex,
+            //    TinNumber = a.EmployeePITinNumber,
+            //    Title = a.EmployeePITitle,
+            //    DateOfBirth = a.EmployeePIDob,
+            //    Religion = a.EmployeePIReligion.Name,
+            //    Nationality = a.EmployeePINationality.Name,
+            //    Ethnicity = a.EmployeePIEthnicity.Name,
+            //    MaritalStatus = a.EmployeePIMaritalStatus.Name
+            //    //Country = a.EmployeePICountry,
+            //    //Position = a.CareerHistoryPosition,
+            //    //Region = a.EmployeePIRegion,
+            //    //DepartmentName = a.CareerHistoryDepartmentName,
+            //    //DepartmentDescription = a.CareerHistoryDepartmentDescription,
+            //    //DepartmentLocation = a.CareerHistoryDepartmentLocation
+            //}).ToList();
         }
 
         
@@ -353,79 +369,96 @@ namespace GDF_HRMS_v1.Repository
         {
             return _db.Religions.FirstOrDefault(a => a.Id == religionId);
         }
-        public EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber)
+        public EmployeePI GetEmployeePIByRegNumber(int employeeRNumber)
         {
-            var employeeData = _db.EmployeePIs.Where(a => a.RNumber.Equals(employeeRNumber))
-                .Join(
-                    _db.CareerHistories,
-                    employeePI => employeePI.Id,
-                    careerHistory => careerHistory.EmployeePI.Id,
-                    (employeePI, careerHistory) => new
-                    {
-                        CareerHistoryId = careerHistory.Id,
-                        EmployeePIFname = employeePI.Fname,
-                        EmployeePILname = employeePI.Lname,
-                        EmployeePIOname = employeePI.Oname,
-                        EmployeePINidNumber = employeePI.NidNumber,
-                        EmployeePIPNumber = employeePI.PNumber,
-                        EmployeePIPExpirationDate = employeePI.PExpirationDate,
-                        EmployeePISex = employeePI.Sex,
-                        EmployeePITinNumber = employeePI.TinNumber,
-                        EmployeePITitle = employeePI.Title,
-                        EmployeePIDob = employeePI.Dob,
-                        EmployeePIReligion = employeePI.Religion,
-                        EmployeePINationality = employeePI.Nationality,
-                        EmployeePIEthnicity = employeePI.Ethnicity,
-                        EmployeePIMaritalStatus = employeePI.MaritalStatus,
-                        EmployeePICountry = employeePI.Address.Country.Name,
-                        EmployeePIRegion = employeePI.Address.Region.Name,
-                        EmployeePIRNumber = employeePI.RNumber,
-                        EmployeePILot = employeePI.Address.Lot,
-                        EmployeePIArea = employeePI.Address.Area,
-                        EmployeePIStreet = employeePI.Address.Street,
-                        EmployeePIVillage = employeePI.Address.Village,
-                        EmployeePIHNumber = employeePI.ContactInfo.HNumber,
-                        EmployeePICNumber = employeePI.ContactInfo.CNumber,
-                        EmployeePIWNumber = employeePI.ContactInfo.WNumber,
-                        EmployeePIEmail = employeePI.ContactInfo.Email,
-                        CareerHistoryPosition = careerHistory.Position.Name,
-                        CareerHistoryDepartmentName = careerHistory.Department.Name,
-                        CareerHistoryDepartmentDescription = careerHistory.Department.Description,
-                        CareerHistoryDepartmentLocation = careerHistory.Department.Location
-                    }
-                );
-            return employeeData.Select(a => new EmployeePIDto
-            {
-                FirstName = a.EmployeePIFname,
-                LastName = a.EmployeePILname,
-                OtherName = a.EmployeePIOname,
-                NationalIdNumber = a.EmployeePINidNumber,
-                PassportNumber = a.EmployeePIPNumber,
-                PassportExpirationDate = a.EmployeePIPExpirationDate,
-                Sex = a.EmployeePISex,
-                TinNumber = a.EmployeePITinNumber,
-                Title = a.EmployeePITitle,
-                DateOfBirth = a.EmployeePIDob,
-                Religion = a.EmployeePIReligion.Name,
-                Nationality = a.EmployeePINationality.Name,
-                Ethnicity = a.EmployeePIEthnicity.Name,
-                MaritalStatus = a.EmployeePIMaritalStatus.Name,
-                Country = a.EmployeePICountry,
-                Position = a.CareerHistoryPosition,
-                Region = a.EmployeePIRegion,
-                RegimentNumber = a.EmployeePIRNumber,
-                AddressLot = a.EmployeePILot,
-                AddressArea = a.EmployeePIArea,
-                AddressStreet = a.EmployeePIStreet,
-                AddressVillage = a.EmployeePIVillage,
-                HomeNumber = a.EmployeePIHNumber,
-                CellNumber = a.EmployeePICNumber,
-                WorkNumber = a.EmployeePIWNumber,
-                Email = a.EmployeePIEmail,
-                DepartmentName = a.CareerHistoryDepartmentName,
-                DepartmentDescription = a.CareerHistoryDepartmentDescription,
-                DepartmentLocation = a.CareerHistoryDepartmentLocation
-            }).FirstOrDefault();
+            
+            var employeeData = _db.EmployeePIs.Where(a => a.RNumber == employeeRNumber).
+                                IncludeOptimized(x => x.MaritalStatus).
+                                IncludeOptimized(x => x.Ethnicity).
+                                IncludeOptimized(x => x.Religion).
+                               // IncludeOptimized(x => x.Address).
+                               // IncludeOptimized(x => x.Address.Street).
+                               // IncludeOptimized(x => x.Address.Area).
+                               // IncludeOptimized(x => x.Address.Village).
+                               // IncludeOptimized(x => x.Address.Region).
+                               // IncludeOptimized(x => x.Address.Country).
+                               // IncludeOptimized(x => x.ContactInfo).
+                                IncludeOptimized(x => x.Nationality).
+                              //  IncludeOptimized(x => x.CareerHistorys).
+                                FirstOrDefault();
+
+            //.Select(a => new EmployeePIDto
+            //{
+            //    FirstName = a.Fname,
+            //    LastName = a.Lname,
+            //    MaritalStatus = a.MaritalStatus.Name,
+            //    //OtherName = a.EmployeePIOname,
+            //    //NationalIdNumber = a.EmployeePINidNumber,
+            //    //PassportNumber = a.EmployeePIPNumber,
+            //    //PassportExpirationDate = a.EmployeePIPExpirationDate,
+            //    //Sex = a.EmployeePISex,
+            //    //TinNumber = a.EmployeePITinNumber,
+            //    //Title = a.EmployeePITitle,
+            //    //DateOfBirth = a.EmployeePIDob,
+            //    //Religion = a.EmployeePIReligion.Name,
+            //    //Nationality = a.EmployeePINationality.Name,
+            //    //Ethnicity = a.EmployeePIEthnicity.Name,
+            //    //MaritalStatus = a.EmployeePIMaritalStatus.Name,
+            //    //Country = a.EmployeePICountry,
+            //    //Position = a.CareerHistoryPosition,
+            //    //Region = a.EmployeePIRegion,
+            //    //RegimentNumber = a.EmployeePIRNumber,
+            //    //AddressLot = a.EmployeePILot,
+            //    //AddressArea = a.EmployeePIArea,
+            //    //AddressStreet = a.EmployeePIStreet,
+            //    //AddressVillage = a.EmployeePIVillage,
+            //    //HomeNumber = a.EmployeePIHNumber,
+            //    //CellNumber = a.EmployeePICNumber,
+            //    //WorkNumber = a.EmployeePIWNumber,
+            //    //Email = a.EmployeePIEmail,
+            //    DepartmentName = a.CareerHistorys.FirstOrDefault().Department.Name
+            //    //DepartmentDescription = a.CareerHistoryDepartmentDescription,
+            //    //DepartmentLocation = a.CareerHistoryDepartmentLocation
+            //}).FirstOrDefault();
+            //.Join(
+            //    _db.CareerHistories,
+            //    employeePI => employeePI.Id,
+            //    careerHistory => careerHistory.EmployeePI.Id,
+            //    (employeePI, careerHistory) => new
+            //    {
+            //        CareerHistoryId = careerHistory.Id,
+            //        EmployeePIFname = employeePI.Fname,
+            //        EmployeePILname = employeePI.Lname,
+            //        EmployeePIOname = employeePI.Oname,
+            //        EmployeePINidNumber = employeePI.NidNumber,
+            //        EmployeePIPNumber = employeePI.PNumber,
+            //        EmployeePIPExpirationDate = employeePI.PExpirationDate,
+            //        EmployeePISex = employeePI.Sex,
+            //        EmployeePITinNumber = employeePI.TinNumber,
+            //        EmployeePITitle = employeePI.Title,
+            //        EmployeePIDob = employeePI.Dob,
+            //        EmployeePIReligion = employeePI.Religion,
+            //        EmployeePINationality = employeePI.Nationality,
+            //        EmployeePIEthnicity = employeePI.Ethnicity,
+            //        EmployeePIMaritalStatus = employeePI.MaritalStatus,
+            //        EmployeePICountry = employeePI.Address.Country.Name,
+            //        EmployeePIRegion = employeePI.Address.Region.Name,
+            //        EmployeePIRNumber = employeePI.RNumber,
+            //        EmployeePILot = employeePI.Address.Lot,
+            //        EmployeePIArea = employeePI.Address.Area,
+            //        EmployeePIStreet = employeePI.Address.Street,
+            //        EmployeePIVillage = employeePI.Address.Village,
+            //        EmployeePIHNumber = employeePI.ContactInfo.HNumber,
+            //        EmployeePICNumber = employeePI.ContactInfo.CNumber,
+            //        EmployeePIWNumber = employeePI.ContactInfo.WNumber,
+            //        EmployeePIEmail = employeePI.ContactInfo.Email,
+            //        CareerHistoryPosition = careerHistory.Position.Name,
+            //        CareerHistoryDepartmentName = careerHistory.Department.Name,
+            //        CareerHistoryDepartmentDescription = careerHistory.Department.Description,
+            //        CareerHistoryDepartmentLocation = careerHistory.Department.Location
+            //    }
+            // );
+            return employeeData;
 
             //var result =  (from a in _db.EmployeePIs
             //              select new EmployeePIDto
@@ -504,14 +537,32 @@ namespace GDF_HRMS_v1.Repository
             _db.CareerHistories.Update(careerHistory);
             return Save();
         }
-        public CareerHistory GetEmployeeCHByEId(int employeeId)
+        public List<CareerHistory> GetEmployeeCHByEId(int employeeId)
         {
-            // return _db.CareerHistories.FirstOrDefault(a => a.EId == employeeId);
-            return null;
+            return _db.CareerHistories.Where(a => a.EId == employeeId)
+                .IncludeOptimized(a => a.Department)
+                .IncludeOptimized(a => a.Position)
+                .ToList();
+           // return null;
+        }
+
+        public List<Address> GetEmployeeAddressByEId(int employeeId)
+        {
+            return _db.Addresses.Where(a => a.EId == employeeId)
+                .IncludeOptimized(a => a.Region)
+                .IncludeOptimized(a => a.Country)
+                .ToList();
+            // return null;
         }
         public bool EmployeeCHExists(int id)
         {
             bool value = _db.CareerHistories.Any(a => a.Id == id);
+            return value;
+        }
+
+        public bool EmployeeAddressExists(int id)
+        {
+            bool value = _db.Addresses.Any(a => a.Id == id);
             return value;
         }
     }

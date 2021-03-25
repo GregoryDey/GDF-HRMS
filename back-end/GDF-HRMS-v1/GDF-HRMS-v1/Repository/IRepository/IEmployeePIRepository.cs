@@ -1,4 +1,5 @@
-﻿using GDF_HRMS_v1.Models;
+﻿using GDF_HRMS_v1.Data;
+using GDF_HRMS_v1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +30,9 @@ namespace GDF_HRMS_v1.Repository.IRepository
         Position GetPositionById(int positionId);
         Region GetRegionById(int regionId);
         Religion GetReligionById(int religionId);
-        CareerHistory GetEmployeeCHByEId(int employeeId);
-        EmployeePIDto GetEmployeePIByRegNumber(int employeeRNumber);
+        List<CareerHistory> GetEmployeeCHByEId(int employeeId);
+        List<Address> GetEmployeeAddressByEId(int employeeId);
+        EmployeePI GetEmployeePIByRegNumber(int employeeRNumber);
         ICollection<EmployeePIDto> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
         bool EmployeePIExists(string name);
         bool ReligionExists(string name);
@@ -51,6 +53,11 @@ namespace GDF_HRMS_v1.Repository.IRepository
         bool RegionExists(int id);
         bool EmployeePIExists(int id);
         bool EmployeeCHExists(int id);
+        bool EmployeeAddressExists(int id);
+
+        bool CreateEmployeeCH(CareerHistory careerHistory);
+        bool CreateEmployeeAddress(Address address);
+
         bool CreateEmployeePI(EmployeePI employeePI);
         bool CreateReligion(Religion religion);
 

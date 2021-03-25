@@ -56,6 +56,70 @@ namespace GDF_HRMS_v1.Controllers
             return Ok();
         }
 
+        [HttpPost("AddAnEmployeeAddress", Name = "AddAnEmployeeAddress")]
+        public IActionResult AddAnEmployeeAddress([FromBody] AddressDto addressDto)
+        {
+            if (addressDto == null)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (_npRepo.EmployeeAddressExists(addressDto.Id))
+            {
+                ModelState.AddModelError("", "Address already exists.");
+                return StatusCode(404, ModelState);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // var ContactInfoObj = _mapper.Map<CreateEmployeeDto, ContactInfo>(createEmployeeDto);
+            var employeeAddressObj = _mapper.Map<AddressDto, Address>(addressDto);
+
+            // employeePIObj.ContactInfo = ContactInfoObj;
+            if (!_npRepo.CreateEmployeeAddress(employeeAddressObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when saving the record {employeeAddressObj.Lot}");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok();
+        }
+
+        [HttpPost("AddAnEmployeeCareerHistory", Name = "AddAnEmployeeCareerHistory")]
+        public IActionResult AddAnEmployeeCH([FromBody] CareerHistoryDto careerHistoryDto)
+        {
+            if (careerHistoryDto == null)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (_npRepo.EmployeeCHExists(careerHistoryDto.Id))
+            {
+                ModelState.AddModelError("", "Career History already exists.");
+                return StatusCode(404, ModelState);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // var ContactInfoObj = _mapper.Map<CreateEmployeeDto, ContactInfo>(createEmployeeDto);
+            var employeeCHObj = _mapper.Map<CareerHistoryDto, CareerHistory>(careerHistoryDto);
+
+            // employeePIObj.ContactInfo = ContactInfoObj;
+            if (!_npRepo.CreateEmployeeCH(employeeCHObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when saving the record {employeeCHObj.StartDate}");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok();
+        }
+
         [HttpPost("AddAReligion", Name = "AddAReligion")]
         public IActionResult AddAReligion([FromBody] ReligionDto religionDto)
         {

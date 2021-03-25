@@ -22,7 +22,7 @@ namespace GDF_HRMS_v1.Models
 
         public string Religion { get; set; }
 
-        public string Region { get; set; }
+        //public string Region { get; set; }
         // public int EId { get; set; }
         // [ForeignKey("EId")]
         // public Ethnicity Ethnicity { get; set; }
@@ -33,9 +33,9 @@ namespace GDF_HRMS_v1.Models
 
         public string MaritalStatus { get; set; }
 
-        public string Position { get; set; }
+        //public string Position { get; set; }
 
-        public string Country { get; set; }
+        //public string Country { get; set; }
        // public int CId { get; set; }
        // [ForeignKey("CId")]
        // public ContactInfo ContactInfo { get; set; }
@@ -47,17 +47,17 @@ namespace GDF_HRMS_v1.Models
        // [ForeignKey("AId")]
        // public Address Address { get; set; }
 
-        public string AddressLot { get; set; }
-        public string AddressStreet { get; set; }
-        public string AddressArea { get; set; }
+        //public string AddressLot { get; set; }
+        //public string AddressStreet { get; set; }
+        //public string AddressArea { get; set; }
 
-        public string AddressVillage { get; set; }
+        //public string AddressVillage { get; set; }
 
-        public string DepartmentName { get; set; }
+        //public string DepartmentName { get; set; }
 
-        public string DepartmentDescription { get; set; }
+        //public string DepartmentDescription { get; set; }
 
-        public string DepartmentLocation { get; set; }
+        //public string DepartmentLocation { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -69,6 +69,8 @@ namespace GDF_HRMS_v1.Models
         public string PassportNumber { get; set; }
         public DateTime PassportExpirationDate { get; set; }
         public int TinNumber { get; set; }
+
+   
 
     }
 }

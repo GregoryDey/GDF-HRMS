@@ -13,8 +13,8 @@ namespace GDF_HRMS_v1.Models
 
         public EmployeePI()
         {
-            ContactInfo = new ContactInfo();
-            Address = new Address();
+           // ContactInfo = new ContactInfo();
+           // Address = new Address();
             //CareerHistory = new CareerHistory();
         }
 
@@ -37,17 +37,15 @@ namespace GDF_HRMS_v1.Models
        // public int? PId { get; set; }
        // [ForeignKey("PId")]
        // public Position Position { get; set; }
-        public int? CId { get; set; }
-        [ForeignKey("CId")]
-        public ContactInfo ContactInfo { get; set; }
+     
 
         //public int? CountryId { get; set; }
         //[ForeignKey("CountryId")]
        // public Country Country { get; set; }
         
-        public int? AId { get; set; }
-        [ForeignKey("AId")]
-        public Address Address { get; set; }
+        //public int? AId { get; set; }
+        //[ForeignKey("AId")]
+        //public Address Address { get; set; }
 
 
 
@@ -70,9 +68,16 @@ namespace GDF_HRMS_v1.Models
         public DateTime PExpirationDate { get; set; }
         public int TinNumber { get; set; }
 
+        public int HNumber { get; set; }
+        public int CNumber { get; set; }
+        public int WNumber { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
 
 
-      public ICollection<CareerHistory> CareerHistorys { get; set; }
+
+        public ICollection<CareerHistory> CareerHistorys { get; set; }
+        public ICollection<Address> Addresses { get; set; }
         //public ICollection<Department> Departments { get; set; } 
 
     }
