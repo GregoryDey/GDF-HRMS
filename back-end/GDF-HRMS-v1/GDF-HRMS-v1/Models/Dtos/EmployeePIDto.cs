@@ -10,7 +10,7 @@ namespace GDF_HRMS_v1.Models
     public class EmployeePIDto
     {
       // [Key]
-     //  public int Id { get; set; }
+       public int Id { get; set; }
      //  [Required]
        // public int NId { get; set; }
        // [ForeignKey("NId")]
