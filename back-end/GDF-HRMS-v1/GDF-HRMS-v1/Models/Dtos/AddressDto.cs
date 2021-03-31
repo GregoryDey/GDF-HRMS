@@ -11,6 +11,8 @@ namespace GDF_HRMS_v1.Models
     {
         [Key]
         public int Id { get; set; }
+
+        public int EId { get; set; }
         public string Lot { get; set; }
         public string Street { get; set; }
         public string Area { get; set; }

@@ -85,6 +85,20 @@ namespace GDF_HRMS_v1.Controllers
 
         }
 
+        //Get employee career history by ID
+        [HttpGet("GetEmployeeAddressByTheirId", Name = "GetEmployeeAddressByTheirId")]
+        public IActionResult GetEmployeeAddressByEId(int employeeId)
+        {
+            var obj = _npRepo.GetAddressByEId(employeeId);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var objDto = _mapper.Map<List<AddressDto>>(obj);
+            return Ok(objDto);
+
+        }
+
 
 
 

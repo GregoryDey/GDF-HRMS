@@ -57,7 +57,7 @@ namespace GDF_HRMS_v1.Controllers
         }
 
         [HttpPost("AddAnEmployeeAddress", Name = "AddAnEmployeeAddress")]
-        public IActionResult AddAnEmployeeAddress([FromBody] AddressDto addressDto)
+        public IActionResult AddAnEmployeeAddress([FromBody] AddAddressDto addressDto)
         {
             if (addressDto == null)
             {
@@ -76,7 +76,7 @@ namespace GDF_HRMS_v1.Controllers
             }
 
             // var ContactInfoObj = _mapper.Map<CreateEmployeeDto, ContactInfo>(createEmployeeDto);
-            var employeeAddressObj = _mapper.Map<AddressDto, Address>(addressDto);
+            var employeeAddressObj = _mapper.Map<AddAddressDto, Address>(addressDto);
 
             // employeePIObj.ContactInfo = ContactInfoObj;
             if (!_npRepo.CreateEmployeeAddress(employeeAddressObj))
@@ -89,7 +89,7 @@ namespace GDF_HRMS_v1.Controllers
         }
 
         [HttpPost("AddAnEmployeeCareerHistory", Name = "AddAnEmployeeCareerHistory")]
-        public IActionResult AddAnEmployeeCH([FromBody] CareerHistoryDto careerHistoryDto)
+        public IActionResult AddAnEmployeeCH([FromBody] AddCareerHistoryDto careerHistoryDto)
         {
             if (careerHistoryDto == null)
             {
@@ -108,7 +108,7 @@ namespace GDF_HRMS_v1.Controllers
             }
 
             // var ContactInfoObj = _mapper.Map<CreateEmployeeDto, ContactInfo>(createEmployeeDto);
-            var employeeCHObj = _mapper.Map<CareerHistoryDto, CareerHistory>(careerHistoryDto);
+            var employeeCHObj = _mapper.Map<AddCareerHistoryDto, CareerHistory>(careerHistoryDto);
 
             // employeePIObj.ContactInfo = ContactInfoObj;
             if (!_npRepo.CreateEmployeeCH(employeeCHObj))

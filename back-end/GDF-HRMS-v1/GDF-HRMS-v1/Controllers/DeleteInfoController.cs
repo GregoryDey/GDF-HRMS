@@ -213,5 +213,25 @@ namespace GDF_HRMS_v1.Controllers
 
             return NoContent();
         }
+
+
+        [HttpDelete("DeleteCareerHistory/{careerHistoryId:int}", Name = "DeleteCareerHistory")]
+
+        public IActionResult DeleteCareerHistory(int careerHistoryId)
+        {
+            if (!_npRepo.CareerHistoryExists(careerHistoryId))
+            {
+                return NotFound();
+            }
+
+            var careerHistoryObj = _npRepo.GetCareerHistoryById(careerHistoryId);
+            if (!_npRepo.DeleteCareerHistory(careerHistoryObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when deleting the record {careerHistoryObj}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+        }
     }
 }

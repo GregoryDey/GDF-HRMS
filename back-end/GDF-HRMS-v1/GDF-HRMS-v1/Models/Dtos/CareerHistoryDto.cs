@@ -11,7 +11,9 @@ namespace GDF_HRMS_v1.Models
     {
         [Key]
         public int Id { get; set; }
-       
+
+        public int EId { get; set; }
+
         public string Position { get; set; }
        
         public string Department { get; set; }

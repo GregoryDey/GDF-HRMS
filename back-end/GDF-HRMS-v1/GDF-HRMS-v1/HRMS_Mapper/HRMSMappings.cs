@@ -322,6 +322,24 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForPath(dest => dest.Region.Name, opt => opt.MapFrom(src => src.Region))
                 .ForPath(dest => dest.Country.Name, opt => opt.MapFrom(src => src.Country));
 
+            CreateMap<Address, AddAddressDto>()
+                .ForPath(dest => dest.Lot, opt => opt.MapFrom(src => src.Lot))
+                .ForPath(dest => dest.Village, opt => opt.MapFrom(src => src.Village))
+                .ForPath(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
+                .ForPath(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
+                .ForPath(dest => dest.Reg, opt => opt.MapFrom(src => src.Reg))
+                .ForPath(dest => dest.EId, opt => opt.MapFrom(src => src.EId))
+                .ForPath(dest => dest.Ctry, opt => opt.MapFrom(src => src.Ctry));
+
+            CreateMap<AddAddressDto, Address>()
+                .ForPath(dest => dest.Lot, opt => opt.MapFrom(src => src.Lot))
+                .ForPath(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
+                .ForPath(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
+                .ForPath(dest => dest.Village, opt => opt.MapFrom(src => src.Village))
+                .ForPath(dest => dest.Reg, opt => opt.MapFrom(src => src.Reg))
+                .ForPath(dest => dest.EId, opt => opt.MapFrom(src => src.EId))
+                .ForPath(dest => dest.Ctry, opt => opt.MapFrom(src => src.Ctry));
+
             CreateMap<CareerHistory, CareerHistoryDto>()
                 .ForPath(dest => dest.Position, opt => opt.MapFrom(src => src.Position.Name))
                 .ForPath(dest => dest.Department, opt => opt.MapFrom(src => src.Department.Name))
@@ -333,6 +351,22 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForPath(dest => dest.Department.Name, opt => opt.MapFrom(src => src.Department))
                 .ForPath(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
                 .ForPath(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
+
+            CreateMap<AddCareerHistoryDto, CareerHistory>()
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+               .ForMember(dest => dest.PosId, opt => opt.MapFrom(src => src.PosId))
+               .ForMember(dest => dest.DeptId, opt => opt.MapFrom(src => src.DeptId))
+               .ForMember(dest => dest.EId, opt => opt.MapFrom(src => src.EId))
+               .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+               .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
+
+            CreateMap<CareerHistory, AddCareerHistoryDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.PosId, opt => opt.MapFrom(src => src.PosId))
+                .ForMember(dest => dest.DeptId, opt => opt.MapFrom(src => src.DeptId))
+                .ForMember(dest => dest.EId, opt => opt.MapFrom(src => src.EId))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
 
             CreateMap<UpdateCareerHistoryDto, CareerHistory>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

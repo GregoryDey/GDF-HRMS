@@ -92,6 +92,12 @@ namespace GDF_HRMS_v1.Repository
             return Save();
         }
 
+        public bool DeleteCareerHistory(CareerHistory careerHistory)
+        {
+            _db.CareerHistories.Remove(careerHistory);
+            return Save();
+        }
+
         public bool DeleteEmployeePI(EmployeePI employeePI)
         {
             _db.EmployeePIs.Remove(employeePI);
@@ -173,6 +179,12 @@ namespace GDF_HRMS_v1.Repository
         public bool CountryExists(int Id)
         {
             bool value = _db.Countries.Any(a => a.Id == Id);
+            return value;
+        }
+
+        public bool CareerHistoryExists(int Id)
+        {
+            bool value = _db.CareerHistories.Any(a => a.Id == Id);
             return value;
         }
         public bool NationalityExists(string name)
@@ -345,6 +357,16 @@ namespace GDF_HRMS_v1.Repository
         public Department GetDepartmentById(int departmentId)
         {
             return _db.Departments.FirstOrDefault(a => a.Id == departmentId);
+        }
+
+        public Address GetAddressById(int addressId)
+        {
+            return _db.Addresses.FirstOrDefault(a => a.Id == addressId);
+        }
+
+        public CareerHistory GetCareerHistoryById(int careerHistoryId)
+        {
+            return _db.CareerHistories.FirstOrDefault(a => a.Id == careerHistoryId);
         }
 
         public Ethnicity GetEthnicityById(int ethnicityId)
@@ -558,18 +580,18 @@ namespace GDF_HRMS_v1.Repository
            // return null;
         }
 
-        public Address GetAddressById(int addressId)
+        public List<Address> GetAddressByEId(int employeeId)
         {
             //return _db.Addresses.Where(a => a.Id == addressId)
             //  .IncludeOptimized(a => a.Region)
             //.IncludeOptimized(a => a.Country)
             //.ToList();
             // return null;
-            var addressData = _db.Addresses.Where(a => a.Id == addressId)
+            return  _db.Addresses.Where(a => a.EId == employeeId)
                 .IncludeOptimized(a => a.Region)
                 .IncludeOptimized(a => a.Country)
-                .FirstOrDefault();
-            return addressData;
+                .ToList();
+            //return addressData;
         }
         public bool EmployeeCHExists(int id)
         {
