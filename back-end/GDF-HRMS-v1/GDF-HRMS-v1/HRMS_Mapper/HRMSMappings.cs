@@ -188,7 +188,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 // .ForMember(dest => dest.CareerHistory.Position.Id, opt => opt.MapFrom(src => src.PositionId))
                 //  .ForMember(dest => dest.CId, opt => opt.MapFrom(src => src.CountryId))
                 // .ForMember(dest => dest.DId, opt => opt.MapFrom(src => src.DepartmentId))
-                .ForMember(dest => dest.RId, opt => opt.MapFrom(src => src.RegionId))
+               // .ForMember(dest => dest.RId, opt => opt.MapFrom(src => src.RegionId))
                 .ForMember(dest => dest.RNumber, opt => opt.MapFrom(src => src.RegimentNumber))
                 .ForMember(dest => dest.Fname, opt => opt.MapFrom(src => src.FirstName))
                 .ForMember(dest => dest.Lname, opt => opt.MapFrom(src => src.LastName))
@@ -269,13 +269,13 @@ namespace GDF_HRMS_v1.HRMS_Mapper
             //    .ForPath(dest => dest.DeptId, opt => opt.MapFrom(src => src.DepartmentId))
             //     .ForPath(dest => dest.PosId, opt => opt.MapFrom(src => src.PositionId));
 
-            CreateMap<CareerHistory, UpdateEmployeeDto>()
-                .ForPath(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.DeptId))
-                 .ForPath(dest => dest.PositionId, opt => opt.MapFrom(src => src.PosId));
+           // CreateMap<CareerHistory, UpdateEmployeeDto>()
+                //.ForPath(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.DeptId))
+                // .ForPath(dest => dest.PositionId, opt => opt.MapFrom(src => src.PosId));
 
-            CreateMap<UpdateEmployeeDto, CareerHistory>()
-                .ForPath(dest => dest.DeptId, opt => opt.MapFrom(src => src.DepartmentId))
-                 .ForPath(dest => dest.PosId, opt => opt.MapFrom(src => src.PositionId));
+           // CreateMap<UpdateEmployeeDto, CareerHistory>()
+               // .ForPath(dest => dest.DeptId, opt => opt.MapFrom(src => src.DepartmentId))
+              //   .ForPath(dest => dest.PosId, opt => opt.MapFrom(src => src.PositionId));
 
             //CreateMap<Address, EmployeePIDto>()
             //    .ForPath(dest => dest.AddressLot, opt => opt.MapFrom(src => src.Lot))
