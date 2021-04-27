@@ -32,16 +32,16 @@ namespace GDF_HRMS_v1.Models
         //public string MaritalStatus { get; set; }
 
         //public string Position { get; set; }
-       // public int PositionId { get; set; }
+        // public int PositionId { get; set; }
 
         //public string Country { get; set; }
-       // public int CountryId { get; set; }
+        // public int CountryId { get; set; }
         // [ForeignKey("CId")]
 
-       // public int RegionId { get; set; }
+        // public int RegionId { get; set; }
         // public ContactInfo ContactInfo { get; set; }
 
-      //  public int DepartmentId { get; set; }
+        //  public int DepartmentId { get; set; }
         public int HomeNumber { get; set; }
         public int CellNumber { get; set; }
         public int WorkNumber { get; set; }
@@ -66,11 +66,18 @@ namespace GDF_HRMS_v1.Models
         public string PassportNumber { get; set; }
         public DateTime PassportExpirationDate { get; set; }
         public int TinNumber { get; set; }
+
+
+        // address info
+        public int EId { get; set; }
         public string Lot { get; set; }
         public string Street { get; set; }
         public string Area { get; set; }
         public string Village { get; set; }
-        public int Reg { get; set; }
-        public int Ctry { get; set; }
+
+        public int Region { get; set; }
+
+        public int Country { get; set; }
+
     }
 }

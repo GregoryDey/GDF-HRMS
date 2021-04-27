@@ -20,9 +20,49 @@ namespace GDF_HRMS_v1.Repository
             _db = db;
         }
 
-        public bool CreateEmployeePI(EmployeePI employeePI)
+        public bool CreateEmployeePI(CreateEmployeeDto employeePI)
         {
-            _db.EmployeePIs.Add(employeePI);
+            //_db.EmployeePIs.Add(employeePI);
+            // _db.Addresses.Add(employeePI);
+            //  return Save();
+
+            EmployeePI employeeData = new EmployeePI();
+           // parentEntity.Children.Add(new ChildEntity());
+           // employeeData.Addresses.Add(new Address());
+            employeeData.Dob = employeePI.DateOfBirth;
+            employeeData.Fname = employeePI.FirstName;
+            employeeData.Lname = employeePI.LastName;
+            employeeData.Oname = employeePI.OtherName;
+            employeeData.Title = employeePI.Title;
+            employeeData.Sex = employeePI.Sex;
+            employeeData.TinNumber = employeePI.TinNumber;
+            employeeData.RNumber = employeePI.RegimentNumber;
+            employeeData.WNumber = employeePI.WorkNumber;
+            employeeData.CNumber = employeePI.CellNumber;
+            employeeData.HNumber = employeePI.HomeNumber;
+            employeeData.PNumber = employeePI.PassportNumber;
+            employeeData.PExpirationDate = employeePI.PassportExpirationDate;
+            employeeData.EId = employeePI.EId;
+            employeeData.Email = employeePI.Email;
+            employeeData.MId = employeePI.MaritalStatusId;
+            employeeData.NId = employeePI.NationalityId;
+            employeeData.RId = employeePI.ReligionId;
+            _db.EmployeePIs.Add(employeeData);
+            _db.SaveChanges();
+
+            Address addressData = new Address();
+            addressData.EmployeePI = employeeData;
+            addressData.Lot = employeePI.Lot;
+            addressData.Street = employeePI.Street;
+            addressData.Area = employeePI.Area;
+            addressData.Village = employeePI.Village;
+            addressData.Reg = employeePI.Region;
+            addressData.Ctry = employeePI.Country;
+            _db.Addresses.Add(addressData);
+            _db.SaveChanges();
+
+
+
             return Save();
         }
 

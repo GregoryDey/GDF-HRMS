@@ -63,7 +63,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         bool CreateEmployeeCH(CareerHistory careerHistory);
         bool CreateEmployeeAddress(Address address);
 
-        bool CreateEmployeePI(EmployeePI employeePI);
+        bool CreateEmployeePI(CreateEmployeeDto employeePI);
         bool CreateReligion(Religion religion);
 
         bool CreateCountry(Country country);
