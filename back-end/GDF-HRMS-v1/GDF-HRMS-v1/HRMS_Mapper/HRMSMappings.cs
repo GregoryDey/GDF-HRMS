@@ -125,11 +125,11 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.TinNumber, opt => opt.MapFrom(src => src.TinNumber))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.Dob));
-               // .ForPath(dest => dest.CountryId, opt => opt.MapFrom(src => src.Address.Ctry))
-               //   .ForPath(dest => dest.RegionId, opt => opt.MapFrom(src => src.Address.Reg));
-               //.ForPath(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.Department.EmployeeId));
+            // .ForPath(dest => dest.CountryId, opt => opt.MapFrom(src => src.Address.Ctry))
+            //   .ForPath(dest => dest.RegionId, opt => opt.MapFrom(src => src.Address.Reg));
+            //.ForPath(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.Department.EmployeeId));
 
-
+            
             CreateMap<CreateEmployeeDto, EmployeePI>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.NId, opt => opt.MapFrom(src => src.NationalityId))
