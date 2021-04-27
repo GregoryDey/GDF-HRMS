@@ -67,5 +67,17 @@ namespace GDF_HRMS_v1.Models
         public DateTime PassportExpirationDate { get; set; }
         public int TinNumber { get; set; }
 
+
+        // address info
+        public int EId { get; set; }
+        public string Lot { get; set; }
+        public string Street { get; set; }
+        public string Area { get; set; }
+        public string Village { get; set; }
+
+        public int Region { get; set; }
+
+        public int Country { get; set; }
+
     }
 }

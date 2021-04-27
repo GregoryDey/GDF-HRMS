@@ -124,6 +124,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.Sex, opt => opt.MapFrom(src => src.Sex))
                 .ForMember(dest => dest.TinNumber, opt => opt.MapFrom(src => src.TinNumber))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+               // .ForMember(dest => dest.Region, opt => opt.MapFrom(src => src.Addresses)) ///???????
                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.Dob));
                // .ForPath(dest => dest.CountryId, opt => opt.MapFrom(src => src.Address.Ctry))
                //   .ForPath(dest => dest.RegionId, opt => opt.MapFrom(src => src.Address.Reg));
@@ -153,6 +154,7 @@ namespace GDF_HRMS_v1.HRMS_Mapper
                 .ForMember(dest => dest.Sex, opt => opt.MapFrom(src => src.Sex))
                 .ForMember(dest => dest.TinNumber, opt => opt.MapFrom(src => src.TinNumber))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                //.ForPath(dest => dest.Addresses, opt => opt.MapFrom(src => src.Lot))
                 .ForMember(dest => dest.Dob, opt => opt.MapFrom(src => src.DateOfBirth));
             //.ForPath(dest => dest.ContactInfo.HNumber, opt => opt.MapFrom(src => src.HomeNumber))
             // .ForPath(dest => dest.ContactInfo.CNumber, opt => opt.MapFrom(src => src.CellNumber))

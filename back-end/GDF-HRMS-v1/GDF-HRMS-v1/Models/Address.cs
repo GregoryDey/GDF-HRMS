@@ -14,8 +14,8 @@ namespace GDF_HRMS_v1.Models
 
         public Address()
         {
-            //Region = new Region();
-            //Country = new Country();
+            Region = new Region();
+            Country = new Country();
         }
         [Key]
         public int Id { get; set; }
