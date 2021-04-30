@@ -12,11 +12,11 @@ namespace GDF_HRMS_v1.Models
     public class Address
     {
 
-        public Address()
-        {
-            Region = new Region();
-            Country = new Country();
-        }
+        //public Address()
+        //{
+          //  Region = new Region();
+            //Country = new Country();
+        //}
         [Key]
         public int Id { get; set; }
         [Required]
@@ -24,10 +24,10 @@ namespace GDF_HRMS_v1.Models
         public string Street { get; set; }
         public string Area { get; set; }
         public string Village { get; set; }
-        public int Reg { get; set; }
+        public int? Reg { get; set; }
         [ForeignKey("Reg")]
         public Region Region { get; set; }
-        public int Ctry { get; set; }
+        public int? Ctry { get; set; }
         [ForeignKey("Ctry")]
         public Country Country { get; set; }
 

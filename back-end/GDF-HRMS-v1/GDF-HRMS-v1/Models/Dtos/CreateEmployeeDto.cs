@@ -32,16 +32,16 @@ namespace GDF_HRMS_v1.Models
         //public string MaritalStatus { get; set; }
 
         //public string Position { get; set; }
-       // public int PositionId { get; set; }
+        // public int PositionId { get; set; }
 
         //public string Country { get; set; }
-       // public int CountryId { get; set; }
+        // public int CountryId { get; set; }
         // [ForeignKey("CId")]
 
-       // public int RegionId { get; set; }
+        // public int RegionId { get; set; }
         // public ContactInfo ContactInfo { get; set; }
 
-      //  public int DepartmentId { get; set; }
+        //  public int DepartmentId { get; set; }
         public int HomeNumber { get; set; }
         public int CellNumber { get; set; }
         public int WorkNumber { get; set; }
