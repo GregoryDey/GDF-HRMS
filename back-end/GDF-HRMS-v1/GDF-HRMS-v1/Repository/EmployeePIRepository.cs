@@ -147,8 +147,8 @@ namespace GDF_HRMS_v1.Repository
 
         public bool DeleteCountry(Country country)
         {
-            _db.Countries.Remove(country);
-            return Save();
+           _db.Countries.Remove(country);
+           return Save();
         }
 
         public bool DeleteDepartment(Department department)
