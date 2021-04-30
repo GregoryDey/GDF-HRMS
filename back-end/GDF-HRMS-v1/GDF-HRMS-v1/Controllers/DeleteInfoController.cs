@@ -43,7 +43,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{DeleteCountry:int}/countryid", Name = "DeleteCountry")]
+        [HttpDelete("DeleteCountry/{countryId:int}", Name = "DeleteCountry")]
 
         public IActionResult DeleteCountry(int countryId)
         {
@@ -62,7 +62,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{DeleteDepartment:int}/departmentId", Name = "DeleteDepartment")]
+        [HttpDelete("DeleteDepartment/{departmentId:int}", Name = "DeleteDepartment")]
 
         public IActionResult DeleteDepartment(int departmentId)
         {
@@ -81,7 +81,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{DeleteEthnicity:int}/ethnicityId", Name = "DeleteEthnicity")]
+        [HttpDelete("DeleteEthnicity/{ethnicityId:int}", Name = "DeleteEthnicity")]
 
         public IActionResult DeleteEthnicity(int ethnicityId)
         {
@@ -100,7 +100,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{DeleteMaritalStatus:int}/maritalStatusId", Name = "DeleteMaritalSattus")]
+        [HttpDelete("DeleteMaritalStatus/{maritalStatusId:int}", Name = "DeleteMaritalSattus")]
 
         public IActionResult DeleteMaritalStatus(int maritalStatusId)
         {
@@ -119,7 +119,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{DeleteNationality:int}/nationalityId", Name = "DeleteNationality")]
+        [HttpDelete("DeleteNationality/{nationalityId:int}", Name = "DeleteNationality")]
 
         public IActionResult DeleteNationality(int nationalityId)
         {
@@ -138,7 +138,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{DeletePosition:int}/positionId", Name = "DeletePosition")]
+        [HttpDelete("DeletePosition/{positionId:int}", Name = "DeletePosition")]
 
         public IActionResult DeletePosition(int positionId)
         {
@@ -157,7 +157,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{DeleteRegion:int}/regionId", Name = "DeleteRegion")]
+        [HttpDelete("DeleteRegion/{regionId:int}", Name = "DeleteRegion")]
 
         public IActionResult DeleteRegion(int regionId)
         {
@@ -176,7 +176,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{DeleteReligion:int}/religionId", Name = "DeleteReligion")]
+        [HttpDelete("DeleteReligion/{religionId:int}", Name = "DeleteReligion")]
 
         public IActionResult DeleteReligion(int religionId)
         {
