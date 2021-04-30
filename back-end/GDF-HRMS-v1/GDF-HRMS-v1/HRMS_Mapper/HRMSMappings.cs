@@ -309,18 +309,18 @@ namespace GDF_HRMS_v1.HRMS_Mapper
 
 
             CreateMap<Address, AddressDto>()
-                .ForPath(dest => dest.Lot, opt => opt.MapFrom(src => src.Lot))
-                .ForPath(dest => dest.Village, opt => opt.MapFrom(src => src.Village))
-                .ForPath(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
-                .ForPath(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
-                .ForPath(dest => dest.Region, opt => opt.MapFrom(src => src.Region.Name))
-                .ForPath(dest => dest.Country, opt => opt.MapFrom(src => src.Country.Name));
+                .ForMember(dest => dest.Lot, opt => opt.MapFrom(src => src.Lot))
+                .ForMember(dest => dest.Village, opt => opt.MapFrom(src => src.Village))
+                .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
+                .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
+                .ForMember(dest => dest.Region, opt => opt.MapFrom(src => src.Region.Name))
+                .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country.Name));
 
             CreateMap<AddressDto, Address>()
-                .ForPath(dest => dest.Lot, opt => opt.MapFrom(src => src.Lot))
-                .ForPath(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
-                .ForPath(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
-                .ForPath(dest => dest.Village, opt => opt.MapFrom(src => src.Village))
+                .ForMember(dest => dest.Lot, opt => opt.MapFrom(src => src.Lot))
+                .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
+                .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
+                .ForMember(dest => dest.Village, opt => opt.MapFrom(src => src.Village))
                 .ForPath(dest => dest.Region.Name, opt => opt.MapFrom(src => src.Region))
                 .ForPath(dest => dest.Country.Name, opt => opt.MapFrom(src => src.Country));
 

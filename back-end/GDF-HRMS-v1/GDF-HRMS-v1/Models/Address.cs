@@ -12,10 +12,11 @@ namespace GDF_HRMS_v1.Models
     public class Address
     {
 
+        // caused the problem of creating a new record in the address table when someone tries to add the foreign key for region and country to the address table
         //public Address()
-        //{
-          //  Region = new Region();
-            //Country = new Country();
+        //{ 
+        //  Region = new Region();
+        //Country = new Country();
         //}
         [Key]
         public int Id { get; set; }
