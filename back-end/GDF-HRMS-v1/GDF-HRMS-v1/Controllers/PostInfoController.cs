@@ -44,12 +44,13 @@ namespace GDF_HRMS_v1.Controllers
             }
 
             // var ContactInfoObj = _mapper.Map<CreateEmployeeDto, ContactInfo>(createEmployeeDto);
-            var employeePIObj = _mapper.Map<CreateEmployeeDto, EmployeePI>(createEmployeeDto);
+           // var employeePIObj = _mapper.Map<CreateEmployeeDto, EmployeePI>(createEmployeeDto);
 
             // employeePIObj.ContactInfo = ContactInfoObj;
-            if (!_npRepo.CreateEmployeePI(employeePIObj))
-            {
-                ModelState.AddModelError("", $"Something went wrong when saving the record {employeePIObj.Fname}");
+           // if (!_npRepo.CreateEmployeePI(employeePIObj))
+                if (!_npRepo.CreateEmployeePI(createEmployeeDto))
+                {
+                ModelState.AddModelError("", $"Something went wrong when saving the record {createEmployeeDto.FirstName}");
                 return StatusCode(500, ModelState);
             }
 

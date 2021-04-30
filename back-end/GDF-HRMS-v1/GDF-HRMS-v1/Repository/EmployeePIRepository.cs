@@ -42,7 +42,8 @@ namespace GDF_HRMS_v1.Repository
             employeeData.HNumber = employeePI.HomeNumber;
             employeeData.PNumber = employeePI.PassportNumber;
             employeeData.PExpirationDate = employeePI.PassportExpirationDate;
-            employeeData.EId = employeePI.EId;
+            employeeData.NidNumber = employeePI.NationalIdNumber;
+            employeeData.EId = employeePI.EthnicityId;
             employeeData.Email = employeePI.Email;
             employeeData.MId = employeePI.MaritalStatusId;
             employeeData.NId = employeePI.NationalityId;
