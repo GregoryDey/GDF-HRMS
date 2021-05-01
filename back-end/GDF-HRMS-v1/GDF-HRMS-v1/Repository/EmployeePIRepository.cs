@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Z.EntityFramework.Plus;
+using System.Text.RegularExpressions;
 
 namespace GDF_HRMS_v1.Repository
 {
@@ -305,9 +306,9 @@ namespace GDF_HRMS_v1.Repository
             return value;
         }
 
-        public EmployeePI GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
+        public EmployeePI GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, int employeePosition)
         {
-            var employeeData = _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname && _db.CareerHistories.All(a => a.Position.Name == employeePosition)). // == employeePosition).
+            var employeeData = _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname && _db.CareerHistories.All(a => a.Position.Id == employeePosition)). // == employeePosition).
                
 
                                 IncludeOptimized(x => x.MaritalStatus).

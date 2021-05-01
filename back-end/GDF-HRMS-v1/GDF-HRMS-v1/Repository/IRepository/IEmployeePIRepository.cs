@@ -37,7 +37,7 @@ namespace GDF_HRMS_v1.Repository.IRepository
         List<Address> GetAddressByEId(int employeeId);
         EmployeePI GetEmployeePIByRegNumber(int employeeRNumber);
        // ICollection<EmployeePI> GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
-        EmployeePI GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition);
+        EmployeePI GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, int employeePosition);
         bool EmployeePIExists(string name);
         bool ReligionExists(string name);
         bool ReligionExists(int id);
