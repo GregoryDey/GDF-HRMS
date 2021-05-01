@@ -307,81 +307,20 @@ namespace GDF_HRMS_v1.Repository
 
         public EmployeePI GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, string employeePosition)
         {
-            var employeeData = _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname || _db.CareerHistories.Any(a => a.Position.Name == employeePosition)). // == employeePosition).
+            var employeeData = _db.EmployeePIs.Where(a => a.Fname == employeeFname || a.Lname == employeeLname && _db.CareerHistories.All(a => a.Position.Name == employeePosition)). // == employeePosition).
                
 
                                 IncludeOptimized(x => x.MaritalStatus).
                                 IncludeOptimized(x => x.Ethnicity).
                                 IncludeOptimized(x => x.Religion).
-                                // IncludeOptimized(x => x.Address).
-                                // IncludeOptimized(x => x.Address.Street).
-                                // IncludeOptimized(x => x.Address.Area).
-                                // IncludeOptimized(x => x.Address.Village).
-                                // IncludeOptimized(x => x.Address.Region).
-                                // IncludeOptimized(x => x.Address.Country).
-                                // IncludeOptimized(x => x.ContactInfo).
                                 IncludeOptimized(x => x.Nationality).
-                               // IncludeOptimized(x => x.CareerHistorys).
                                 FirstOrDefault();
 
 
-           // return (ICollection<EmployeePI>)employeeData;
             return employeeData;
 
-            //.Join(
-            //    _db.EmployeePIs,
-            //    careerHistory => careerHistory.EId,
-            //    employeePI => employeePI.Id,
-            //    (careerHistory, employeePI) => new
-            //    {
-            //        CareerHistoryId = careerHistory.Id,
-            //        EmployeePIFname = employeePI.Fname,
-            //        EmployeePILname = employeePI.Lname,
-            //        EmployeePIOname = employeePI.Oname,
-            //        EmployeePINidNumber = employeePI.NidNumber,
-            //        EmployeePIPNumber = employeePI.PNumber,
-            //        EmployeePIPExpirationDate = employeePI.PExpirationDate,
-            //        EmployeePISex = employeePI.Sex,
-            //        EmployeePITinNumber = employeePI.TinNumber,
-            //        EmployeePITitle = employeePI.Title,
-            //        EmployeePIDob = employeePI.Dob,
-            //        EmployeePIReligion = employeePI.Religion,
-            //        EmployeePINationality = employeePI.Nationality,
-            //        EmployeePIEthnicity = employeePI.Ethnicity,
-            //        EmployeePIMaritalStatus = employeePI.MaritalStatus,
-            //        //EmployeePICountry = employeePI.Address.Country.Name,
-            //        //EmployeePIRegion = employeePI.Address.Region.Name,
-            //        EmployeePIRNumber = employeePI.RNumber,
-
-            //        CareerHistoryPosition = careerHistory.Position.Name,
-            //        CareerHistoryDepartmentName = careerHistory.Department.Name,
-            //        CareerHistoryDepartmentDescription = careerHistory.Department.Description,
-            //        CareerHistoryDepartmentLocation = careerHistory.Department.Location
-            //    }
-            //).ToList();
-            //return employeeData.Select(a => new EmployeePIDto
-            //{
-            //    FirstName = a.EmployeePIFname,
-            //    LastName = a.EmployeePILname,
-            //    OtherName = a.EmployeePIOname,
-            //    NationalIdNumber = a.EmployeePINidNumber,
-            //    PassportNumber = a.EmployeePIPNumber,
-            //    PassportExpirationDate = a.EmployeePIPExpirationDate,
-            //    Sex = a.EmployeePISex,
-            //    TinNumber = a.EmployeePITinNumber,
-            //    Title = a.EmployeePITitle,
-            //    DateOfBirth = a.EmployeePIDob,
-            //    Religion = a.EmployeePIReligion.Name,
-            //    Nationality = a.EmployeePINationality.Name,
-            //    Ethnicity = a.EmployeePIEthnicity.Name,
-            //    MaritalStatus = a.EmployeePIMaritalStatus.Name
-            //    //Country = a.EmployeePICountry,
-            //    //Position = a.CareerHistoryPosition,
-            //    //Region = a.EmployeePIRegion,
-            //    //DepartmentName = a.CareerHistoryDepartmentName,
-            //    //DepartmentDescription = a.CareerHistoryDepartmentDescription,
-            //    //DepartmentLocation = a.CareerHistoryDepartmentLocation
-            //}).ToList();
+          
+            
         }
 
         
