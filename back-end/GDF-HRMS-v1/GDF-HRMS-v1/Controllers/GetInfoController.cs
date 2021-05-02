@@ -144,7 +144,7 @@ namespace GDF_HRMS_v1.Controllers
 
         }
         //Get employee info by other criteria
-        [HttpGet("OtherCriteria/{employeeFname}/ {employeeLname}/ {employeePosition}", Name = "GetEmployeePIByOtherCriteria")]
+        [HttpGet("OtherCriteria/{employeeFname}/{employeeLname}/{employeePosition}", Name = "GetEmployeePIByOtherCriteria")]
         public IActionResult GetEmployeePIByOtherCriteria(string employeeFname, string employeeLname, int employeePosition)
         {
             var obj = _npRepo.GetEmployeePIByOtherCriteria(employeeFname, employeeLname, employeePosition);
