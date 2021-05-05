@@ -43,7 +43,7 @@ namespace GDF_HRMS_v1.Controllers
             return NoContent();
         }
 
-        [HttpPatch("update/employeeCH/{employeeCHId}", Name = "UpdateEmployeeCH")] //Update career history
+        [HttpPatch("update/employeeCH/{employeeCHId:int}", Name = "UpdateEmployeeCH")] //Update career history
         public IActionResult UpdateEmployeeCH(int employeeCHId, [FromBody] UpdateCareerHistoryDto careerHistoryDto)
         {
             if (careerHistoryDto == null || employeeCHId != careerHistoryDto.Id)
