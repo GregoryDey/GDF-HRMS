@@ -327,7 +327,13 @@ namespace GDF_HRMS_v1.Repository
         
         public EmployeePI GetEmployeePIById(int employeeId)
         {
-            return _db.EmployeePIs.FirstOrDefault(a => a.Id == employeeId);
+            var employeeData = _db.EmployeePIs.Where(a => a.Id == employeeId).
+                                IncludeOptimized(x => x.MaritalStatus).
+                                IncludeOptimized(x => x.Ethnicity).
+                                IncludeOptimized(x => x.Religion).
+                                IncludeOptimized(x => x.Nationality).
+                                FirstOrDefault();
+            return employeeData;
         }
 
         public Country GetCountryById(int countryId)
