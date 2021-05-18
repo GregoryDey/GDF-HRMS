@@ -80,7 +80,7 @@ namespace GDF_HRMS_v1.Controllers
             {
                 return NotFound();
             }
-            var objDto = _mapper.Map<List<CareerHistoryDto>>(obj);
+            var objDto = _mapper.Map<List<UpdateCareerHistoryDto>>(obj);
             return Ok(objDto);
 
         }
