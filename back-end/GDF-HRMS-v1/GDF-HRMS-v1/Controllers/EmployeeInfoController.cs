@@ -66,7 +66,7 @@ namespace GDF_HRMS_v1.Controllers
             {
                 return NotFound();
             }
-            var objDto = _mapper.Map<EmployeePIDto>(obj);
+            var objDto = _mapper.Map<UpdateEmployeeDto>(obj);
             return Ok(objDto);
 
         }
