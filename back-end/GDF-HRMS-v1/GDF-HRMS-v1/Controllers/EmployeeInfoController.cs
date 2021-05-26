@@ -83,6 +83,7 @@ namespace GDF_HRMS_v1.Controllers
             var objDto = _mapper.Map<List<UpdateCareerHistoryDto>>(obj);
             return Ok(objDto);
 
+
         }
 
         //Get employee career history by ID

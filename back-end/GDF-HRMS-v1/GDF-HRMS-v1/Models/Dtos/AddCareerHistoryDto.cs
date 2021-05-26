@@ -24,7 +24,7 @@ namespace GDF_HRMS_v1.Models
       //  [ForeignKey("PosId")]
      //   public Position Position { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         //  public ICollection<EmployeePI> EmployeePIs { get; set; }
         // public ICollection<Position> Positions { get; set; }

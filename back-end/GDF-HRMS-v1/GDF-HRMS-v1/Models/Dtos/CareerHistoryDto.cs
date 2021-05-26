@@ -20,6 +20,6 @@ namespace GDF_HRMS_v1.Models
        
         
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }
