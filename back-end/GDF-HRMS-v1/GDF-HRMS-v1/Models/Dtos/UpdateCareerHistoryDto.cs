@@ -15,7 +15,7 @@ namespace GDF_HRMS_v1.Models.Dtos
         public int? DepartmentId { get; set; }
         public int? PositionId { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
     }
 }
